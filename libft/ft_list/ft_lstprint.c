@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 13:34:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 21:18:07 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 09:53:17 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/17 10:43:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list				*ft_lstcpy(t_list *lst, void *(*cpy)(void *))
+void				ft_lstprint(t_list *alst, void (*print)(void *))
 {
-	t_list			*newlst;
+	size_t			i;
 
-	if (lst == NULL)
-		return (NULL);
-	newlst = NULL;
-	while (lst != NULL)
+	i = 0;
+	while (alst != NULL)
 	{
-		ft_lstpushback(&newlst, ft_lstnew(cpy(lst->content), \
-			lst->content_size));
-		lst = lst->next;
+		ft_printf("[%zu] content:\n[\n  ", i++);
+		print(alst->content);
+		ft_printf("\n]");
+		ft_printf("\ncontent_size: %d\n\n", alst->content_size);
+		alst = alst->next;
 	}
-	return (newlst);
 }

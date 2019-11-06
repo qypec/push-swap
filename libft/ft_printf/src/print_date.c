@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delfunc__.c                                        :+:      :+:    :+:   */
+/*   print_date.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/14 21:13:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 21:13:24 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/25 17:55:46 by yquaro            #+#    #+#             */
+/*   Updated: 2019/08/07 12:43:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_printf.h"
 
-void					delfunc_lst__str(void *content, size_t content_size)
+void				print_date(void)
 {
-	ft_strdel((char **)&content);
-	content_size = 0;
-}
+	time_t			ttime;
+	char			*time_str;
 
-void					delfunc_lst__list(void *content, size_t content_size)
-{
-	ft_lstdel((t_list **)&content, delfunc_lst__str);
-	content_size = 0;
+	ttime = time(NULL);
+	time_str = ft_ctime(&ttime);
+	ft_buffadd(g_output, time_str);
+	ft_strdel(&time_str);
 }

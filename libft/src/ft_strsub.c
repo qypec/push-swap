@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 12:01:55 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/22 21:51:17 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:41:24 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len)
 	if ((substr = ft_strnew(sizeof(char) * (len + 1))) == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
-	{
+	while (i++ < len)
 		substr[i] = s[start + i];
-		i++;
-	}
 	return (substr);
 }

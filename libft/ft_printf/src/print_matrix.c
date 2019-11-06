@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mapcpy.c                                        :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 13:29:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 16:00:25 by yquaro           ###   ########.fr       */
+/*   Created: 2019/08/02 13:18:23 by yquaro            #+#    #+#             */
+/*   Updated: 2019/08/07 12:44:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_map.h"
+#include "ft_printf.h"
 
-t_map				*ft_mapcpy(t_map *map, void *(*cpy)(void *))
+void				print_matrix(va_list arg)
 {
-	t_map			*newmap;
-	size_t			i;
+	char			**matr;
+	int				i;
+	char			*number_of_str;
 
-	if (map == NULL)
-		return (NULL);
-	newmap = ft_mapinit(map->size, map->valuedel_func);
+	if ((matr = va_arg(arg, char**)) == NULL)
+		return ;
 	i = 0;
-	while (i < newmap->size)
+	while (matr[i] != NULL)
 	{
-		newmap->array[i] = ft_lstcpy(map->array[i], cpy);
-		i++;
+		ft_buffaddsymb(g_output, '[');
+		number_of_str = ft_itoa(i);
+		ft_buffadd(g_output, number_of_str);
+		ft_strdel(&number_of_str);
+		ft_buffladd(g_output, "] ", 2);
+		ft_buffadd(g_output, matr[i++]);
+		if (matr[i] != NULL)
+			ft_buffaddsymb(g_output, '\n');
 	}
-	newmap->array[i] = NULL;
-	return (newmap);
 }
