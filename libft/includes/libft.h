@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/19 11:11:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/08 18:39:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_atoi(const char *str);
 int						ft_isalpha(int c);
 int						ft_isdigit(int c);
+int						ft_isdigit_str(char *str);
 int						ft_isalnum(int c);
 int						ft_isascii(int c);
 int						ft_isprint(int c);

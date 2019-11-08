@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isdigit_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/08 18:29:54 by yquaro           ###   ########.fr       */
+/*   Created: 2019/11/08 18:37:57 by yquaro            #+#    #+#             */
+/*   Updated: 2019/11/08 18:39:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "../libft/includes/libft.h"
+int					ft_isdigit_str(char *str)
+{
+	size_t			i;
 
-# define ERROR_MSG_BAD_OPERATION "ERROR: bad operation\n!!!EXIT!!!"
-# define ERROR_MSG_BAD_NUMBER "Error"
-
-void					input_check(int argc, char **argv, int **stack_a);
-
-size_t					g_stack_size;
-
-#endif
+	i = 0;
+	while (str[i] != 0)
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

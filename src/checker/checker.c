@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/08 16:57:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/08 18:46:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,27 @@ static void				error_processing(char ***operations)
 	exit(-1);
 }
 
-static void				validate(int **stack_a, int **stack_b)
+static void				validate_stacks(int **stack_a, int **stack_b)
 {
-	// check validity
+	size_t				i;
+	int					prev_elem;
+	int					*stk_a;
+	int					*stk_b;
+
+	stk_a = *stack_a;
+	stk_b = *stack_b;
+	prev_elem = stk_a[0];
+	i = 0;
+	while (i < g_stack_size)
+	{
+		if (stk_b[i] != 0 && prev_elem > stk_a[i])
+		{
+			ft_putendl("KO");
+			return ;
+		}
+		prev_elem = stk_a[i++];
+	}
+	ft_putendl("OK");
 }
 
 static char				**get_operations(void)
@@ -46,14 +64,11 @@ int						main(int argc, char **argv)
 	char				**operations;
 
 	i = 0;
-	while (i < argc - 1)
-	{
-		stack_a[i] = ft_atoi(argv[i + 1]);
-		i++;
-	}
+	g_stack_size = argc;
+	input_check(argc, argv, (int **)&stack_a);
 	operations = get_operations();
-	if ((execute_operations(&stack_a, &stack_b, operations)) == NULL)
-		error_processing(&operations);
-	validate_stacks(&stack_a, s&tack_b);
+	// if ((execute_operations(&stack_a, &stack_b, operations)) == NULL)
+	// 	error_processing(&operations);
+	validate_stacks((int **)&stack_a, (int **)&stack_b);
 	ft_matrdel(&operations);
 }

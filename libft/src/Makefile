@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/03 20:02:41 by yquaro            #+#    #+#              #
-#    Updated: 2019/09/19 11:08:26 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/08 18:39:29 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SOURCES = ft_atoi.c ft_bzero.c \
 			ft_strncmp.c ft_strncpy.c ft_strncut.c ft_strnequ.c ft_strnew.c \
 			ft_strlglue.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 			ft_strsub.c ft_strswap.c ft_strtrim.c ft_tolower.c ft_toupper.c \
-			ft_isempty.c get_next_line.c ft_strequ.c
+			ft_isempty.c get_next_line.c ft_strequ.c ft_isdigit_str.c
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
 all: print $(OBJECTS)
