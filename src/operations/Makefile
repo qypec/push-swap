@@ -6,14 +6,14 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 17:36:51 by yquaro            #+#    #+#              #
-#    Updated: 2019/11/06 17:38:08 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/09 18:30:12 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include ../includes/push_swap.mk
 
 DIR_O = ../lib
-SOURCES =
+SOURCES = execute.c swap.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 

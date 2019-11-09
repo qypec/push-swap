@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:06:49 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/08 18:16:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/09 18:31:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ static void				*get_pointer_to_operation(char *operation)
 		return (NULL);
 }
 
-void					*execute_operations(int **stack_a, int **stack_b, \
+void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
 							char **operations)
 {
 	size_t				i;
-	void				(*exec)(int **, int **);
+	void				(*exec)(t_psstk *, t_psstk *);
 
 	i = 0;
 	while (operations[i] != NULL)

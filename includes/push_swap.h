@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/09 17:37:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/09 18:31:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 # define ERROR_MSG_BAD_OPERATION "ERROR: bad operation\n!!!EXIT!!!"
 # define ERROR_MSG_BAD_NUMBER "Error"
+
+# define FORWARD 1
+# define BACK -1
 
 typedef struct			s_numb
 {
@@ -39,5 +42,9 @@ t_numb					*numb_init(void);
 void					numb_delete(t_numb **numb);
 
 t_psstk					*get_input(int argc, char **argv);
+
+void					swap_a(t_psstk *stack_a, t_psstk *stack_b);
+void					swap_b(t_psstk *stack_a, t_psstk *stack_b);
+void					swap_ab(t_psstk *stack_a, t_psstk *stack_b);
 
 #endif
