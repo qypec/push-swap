@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:37:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/08 18:39:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:44:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int					ft_isdigit_str(char *str)
 	i = 0;
 	while (str[i] != 0)
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) && str[i] != '+' && str[i] != '-')
 			return (0);
 		i++;
 	}

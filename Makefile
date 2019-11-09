@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:01:42 by yquaro            #+#    #+#              #
-#    Updated: 2019/11/06 18:55:55 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/09 17:39:26 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ include includes/push_swap.mk
 all:
 	@make -C libft/ all
 	@mv libft/libft.a lib/libft.a
+	@make -C src/init/ all
 	@make -C src/checker/ all
 	@make -C lib/ all
 
