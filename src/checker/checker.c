@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/08 18:46:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:28:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,24 @@ static void				error_processing(char ***operations)
 	exit(-1);
 }
 
-static void				validate_stacks(int **stack_a, int **stack_b)
+static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 {
 	size_t				i;
-	int					prev_elem;
-	int					*stk_a;
-	int					*stk_b;
 
-	stk_a = *stack_a;
-	stk_b = *stack_b;
-	prev_elem = stk_a[0];
-	i = 0;
-	while (i < g_stack_size)
+	if (stack_b->used_size != 0)
 	{
-		if (stk_b[i] != 0 && prev_elem > stk_a[i])
+		ft_putendl("KO");
+		return ;
+	}
+	i = 0;
+	while (i < stack_a->size)
+	{
+		if (stack_a->arr[i + 1]->number < stack_a->arr[i]->number)
 		{
 			ft_putendl("KO");
 			return ;
 		}
-		prev_elem = stk_a[i++];
+		i++:
 	}
 	ft_putendl("OK");
 }
@@ -58,17 +57,15 @@ static char				**get_operations(void)
 
 int						main(int argc, char **argv)
 {
-	size_t				i;
-	int					stack_a[argc];
-	int					stack_b[argc];
+	t_psstk				*stack_a;
+	t_psstk				*stack_b;
 	char				**operations;
 
-	i = 0;
-	g_stack_size = argc;
-	input_check(argc, argv, (int **)&stack_a);
+	stack_a = input_check(argc, argv);
+	stack_b = psstk_init(argc - 1);
 	operations = get_operations();
 	// if ((execute_operations(&stack_a, &stack_b, operations)) == NULL)
 	// 	error_processing(&operations);
-	validate_stacks((int **)&stack_a, (int **)&stack_b);
+	validate_stacks(stack_a, stack_b);
 	ft_matrdel(&operations);
 }
