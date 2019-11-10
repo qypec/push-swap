@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 21:07:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/10 21:41:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ int						main(int argc, char **argv)
 	// operations = get_operations();
 	// if ((execute_operations(&stack_a, &stack_b, operations)) == NULL)
 	// 	error_processing(&operations);
-	validate_stacks(stack_a, stack_b);
+
+// //
+// 	add_to_psstk(stack_b, 0, 15);
+// 	dbg_print_stacks(stack_a, stack_b);
+
+// 	rotate_ab(stack_a, stack_b);
+// 	dbg_print_stacks(stack_a, stack_b);
+
+// 	rotate_ab(stack_a, stack_b);
+// 	dbg_print_stacks(stack_a, stack_b);
+
+// 	rotate_ab(stack_a, stack_b);
+// 	dbg_print_stacks(stack_a, stack_b);
+// //
+
+	// validate_stacks(stack_a, stack_b);
 	ft_matrdel(&operations);
 }
