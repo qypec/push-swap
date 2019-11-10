@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:01:42 by yquaro            #+#    #+#              #
-#    Updated: 2019/11/10 20:35:09 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/10 23:59:21 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ include includes/push_swap.mk
 
 all:
 	@make -C libft/ all
-	@mv libft/libft.a lib/libft.a
 	@make -C src/init/ all
 	@make -C src/operations/ all
 	@make -C src/checker/ all
@@ -28,5 +27,9 @@ fclean: clean
 	@make -C libft/ fclean
 	@make -C lib/ fclean
 	@rm -f $(EXECUTABLE)
+	@rm -f $(UNIT_TEST_EXECUTABLE)
 
 re: fclean all
+
+tests:
+	@make -C unit_test/ all
