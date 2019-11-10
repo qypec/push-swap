@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/09 17:45:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/10 21:07:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 	{
 		if (stack_a->arr[i + 1]->number < stack_a->arr[i]->number)
 		{
-			ft_putendl("KO\nStack A is incorrectly sorte");
+			ft_putendl("KO\nStack A is incorrectly sort");
 			return ;
 		}
 		i++;
@@ -63,7 +63,7 @@ int						main(int argc, char **argv)
 
 	stack_a = get_input(argc, argv);
 	stack_b = psstk_init(argc - 1);
-	operations = get_operations();
+	// operations = get_operations();
 	// if ((execute_operations(&stack_a, &stack_b, operations)) == NULL)
 	// 	error_processing(&operations);
 	validate_stacks(stack_a, stack_b);
