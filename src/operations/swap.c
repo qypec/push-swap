@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 18:25:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 21:30:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/11 16:13:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void					swap_a(t_psstk *stack_a, t_psstk *stack_b)
 	size_t				tmp_correct_position;
 	size_t				tmp_number;
 
-	if (stack_a->size <= 1)
+	if (stack_a->used_size <= 1)
 		return ;
 	tmp_correct_position = stack_a->arr[0]->correct_position;
 	tmp_number = stack_a->arr[0]->number;
@@ -32,7 +32,7 @@ void					swap_b(t_psstk *stack_a, t_psstk *stack_b)
 	size_t				tmp_correct_position;
 	size_t				tmp_number;
 
-	if (stack_b->size <= 1)
+	if (stack_b->used_size <= 1)
 		return ;
 	tmp_correct_position = stack_b->arr[0]->correct_position;
 	tmp_number = stack_b->arr[0]->number;

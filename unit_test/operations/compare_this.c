@@ -36,9 +36,9 @@ static void				print_stacks(char *actual, char *expected)
 
 	matr_ac = ft_strsplit(actual, ' ');
 	matr_ex = ft_strsplit(expected, ' ');
-	ft_printf("\tactual:\t\texpected:\n");
+	ft_printf("\t{cyan}actual:\t\texpected:{reset}\n");
 	i = 0;
-	while (matr_ac[i] != NULL)
+	while (matr_ac[i] != NULL && matr_ex[i] != NULL)
 	{
 		data_ac = ft_strsplit(matr_ac[i], '|');
 		data_ex = ft_strsplit(matr_ex[i], '|');

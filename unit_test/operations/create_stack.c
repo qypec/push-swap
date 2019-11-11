@@ -46,6 +46,12 @@ void						create_stacks(t_psstk *stack_a, t_psstk *stack_b, \
 
 	matr_a = ft_strsplit(a, ' ');
 	matr_b = ft_strsplit(b, ' ');
+	if (matr_a[0] == NULL || matr_b[0] == NULL)
+	{
+		ft_matrdel(&matr_a);
+		ft_matrdel(&matr_b);
+		return ;
+	}
 	fill_stack(stack_a, matr_a);
 	fill_stack(stack_b, matr_b);
 }
