@@ -33,7 +33,6 @@ typedef struct			s_psstk
 	size_t				used_size;
 }						t_psstk;
 
-
 /* debugging */
 
 void					dbg_print_stack(t_psstk *stk);
@@ -60,5 +59,8 @@ void					rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
 void					reverse_rotate_a(t_psstk *stack_a, t_psstk *stack_b);
 void					reverse_rotate_b(t_psstk *stack_a, t_psstk *stack_b);
 void					reverse_rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
+
+void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
+							char **operations);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:06:49 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/09 18:31:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/11 18:49:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
 		exec(stack_a, stack_b);
 		i++;
 	}
+	return (exec);
 }
