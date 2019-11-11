@@ -6,11 +6,43 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 21:16:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 21:39:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/11 17:38:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void				stack_shift_down(t_psstk *stk)
+{
+	size_t				i;
+
+	if (IS_EMPTY(stk))
+		return ;
+	i = stk->used_size - 1;
+	while (i)
+	{
+		stk->arr[i]->number = stk->arr[i - 1]->number;
+		stk->arr[i]->correct_position = stk->arr[i - 1]->correct_position;
+		i--;
+	}
+}
+
+static void				stack_shift_up(t_psstk *stk)
+{
+	size_t				i;
+
+	if (IS_EMPTY(stk))
+		return ;
+	i = 0;
+	while (i < stk->used_size - 1)
+	{
+		stk->arr[i]->number = stk->arr[i + 1]->number;
+		stk->arr[i]->correct_position = stk->arr[i + 1]->correct_position;
+		i++;
+	}
+	stk->arr[i]->number = 0;
+	stk->arr[i]->correct_position = 0;
+}
 
 void					rotate_a(t_psstk *stack_a, t_psstk *stack_b)
 {

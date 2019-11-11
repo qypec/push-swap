@@ -20,5 +20,6 @@ int					compare_this(t_psstk *stack, \
 
 void				check_swap_operations(void);
 void				check_push_operations(void);
+void				check_rotate_operations(void);
 
 #endif
