@@ -20,8 +20,8 @@ static char				*get_actual_result(t_psstk *stack)
 		tmp = ft_itoa((long long)(stack->arr[i]->correct_position));
 		ft_buffadd(buff, tmp);
 		ft_strdel(&tmp);
-		ft_buffaddsymb(buff, ' ');
-		i++;
+		if (++i < stack->size)
+			ft_buffaddsymb(buff, ' ');
 	}
 	return (ft_strdup(buff->str));
 }
@@ -36,13 +36,13 @@ static void				print_stacks(char *actual, char *expected)
 
 	matr_ac = ft_strsplit(actual, ' ');
 	matr_ex = ft_strsplit(expected, ' ');
-	ft_printf("\t\tactual:\t\texpected:\n");
+	ft_printf("\tactual:\t\texpected:\n");
 	i = 0;
 	while (matr_ac[i] != NULL)
 	{
 		data_ac = ft_strsplit(matr_ac[i], '|');
 		data_ex = ft_strsplit(matr_ex[i], '|');
-		ft_printf("\t\t[%d] %s | %s", i, NUMBER(data_ac), CORRECT_POSITION(data_ac));
+		ft_printf("\t[%d] %s | %s", i, NUMBER(data_ac), CORRECT_POSITION(data_ac));
 		ft_printf("\t%s | %s\n", NUMBER(data_ex), CORRECT_POSITION(data_ex));
 		ft_matrdel(&data_ac);
 		ft_matrdel(&data_ex);
