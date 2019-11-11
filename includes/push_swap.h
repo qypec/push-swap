@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/11 17:36:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/11 18:00:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,8 @@ void					push_b(t_psstk *stack_a, t_psstk *stack_b);
 void					rotate_a(t_psstk *stack_a, t_psstk *stack_b);
 void					rotate_b(t_psstk *stack_a, t_psstk *stack_b);
 void					rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
+void					reverse_rotate_a(t_psstk *stack_a, t_psstk *stack_b);
+void					reverse_rotate_b(t_psstk *stack_a, t_psstk *stack_b);
+void					reverse_rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
 
 #endif

@@ -4,7 +4,7 @@ HEADER_H = -I ../includes/
 
 DIR_O = ../../lib
 SOURCES = main.c compare_this.c create_stack.c swap_operations.c push_operations.c \
-	rotate_operations.c
+	rotate_operations.c reverse_rotate_operations.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 

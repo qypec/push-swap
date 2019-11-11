@@ -42,7 +42,7 @@ void				check_reverse_rotate_operations(void)
 	stack_b = psstk_init(3);
 	create_stacks(stack_a, stack_b, "5|0 6|0 7|0", "1|0 2|0 3|0");
 	REVERSE_ROTATE_AB(stack_a, stack_b);
-	if (compare_this(stack_a, "7|0 5|0 6|0", "reverse_rotate_ab") && compare_this(stack_a, "3|0 1|0 2|0", "reverse_rotate_ab"))
+	if (compare_this(stack_a, "7|0 5|0 6|0", "reverse_rotate_ab") && compare_this(stack_b, "3|0 1|0 2|0", "reverse_rotate_ab"))
 		ft_printf("\t{green}OK{reset}\n\n");
 	else
 		ft_printf("\t{red}KO{reset}\n\n");
