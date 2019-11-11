@@ -7,3 +7,4 @@ minishell
 /*.dSYM
 test_unit
 checker
+push_swap
