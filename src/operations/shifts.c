@@ -18,7 +18,7 @@ void					stack_shift_down(t_psstk *stk)
 
 	if (IS_EMPTY(stk))
 		return ;
-	i = stk->used_size - 1;
+	i = stk->used_size;
 	while (i)
 	{
 		stk->arr[i]->number = stk->arr[i - 1]->number;
@@ -34,7 +34,7 @@ void					stack_shift_up(t_psstk *stk)
 	if (IS_EMPTY(stk))
 		return ;
 	i = 0;
-	while (i < stk->used_size - 1)
+	while (i < stk->used_size)
 	{
 		stk->arr[i]->number = stk->arr[i + 1]->number;
 		stk->arr[i]->correct_position = stk->arr[i + 1]->correct_position;

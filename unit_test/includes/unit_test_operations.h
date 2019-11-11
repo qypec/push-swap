@@ -19,5 +19,6 @@ int					compare_this(t_psstk *stack, \
 						const char *expected_result, const char *operation);
 
 void				check_swap_operations(void);
+void				check_push_operations(void);
 
 #endif

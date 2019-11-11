@@ -6,13 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:15:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 21:26:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/11 17:13:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 void					push_a(t_psstk *stack_a, t_psstk *stack_b)
 {

@@ -3,4 +3,5 @@
 int							main(void)
 {
 	check_swap_operations();
+	check_push_operations();
 }
