@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/11 18:00:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/12 17:55:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # define ERROR_MSG_BAD_NUMBER "Error"
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
+
+# define A_ORIENTATION 1
+# define B_ORIENTATION 2
+
+// # define CORRECT_POSITION(stack, i) stack->arr[i]->correct_position
+
+# define IS_FIRST_TRIPLET(turn) (turn == 0) ? 1 : 0 
+# define IS_LAST_TRIPLET(turn, size) (((turn + 1) * 3) >= size) ? 1 : 0
 
 typedef struct			s_numb
 {
@@ -42,7 +50,9 @@ void					dbg_print_stacks(t_psstk *stk_a, t_psstk *stk_b);
 
 t_psstk					*psstk_init(int	size);
 void					psstk_delete(t_psstk **psstk);
-void					add_to_psstk(t_psstk *stack_a, size_t index, int number);
+void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
+void					add_correct_position(t_psstk *stack, int number, \
+							size_t correct_position);
 t_numb					*numb_init(void);
 void					numb_delete(t_numb **numb);
 

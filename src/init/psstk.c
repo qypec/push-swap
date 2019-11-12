@@ -6,16 +6,33 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:03:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/11 16:07:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/12 17:35:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void					add_to_psstk(t_psstk *stack_a, size_t index, int number)
+void					add_correct_position(t_psstk *stack, int number, \
+							size_t correct_position)
 {
-	stack_a->arr[index]->number = number;
-	stack_a->used_size++;
+	size_t				i;
+
+	i = 0;
+	while (i < stack->used_size - 1)
+	{
+		if (stack->arr[i]->number == number)
+		{
+			stack->arr[i]->correct_position = correct_position;
+			return ;	
+		}
+		i++;
+	}
+}
+
+void					add_number_to_psstk(t_psstk *stack, size_t index, int number)
+{
+	stack->arr[index]->number = number;
+	stack->used_size++;
 }
 
 t_psstk					*psstk_init(int	size)

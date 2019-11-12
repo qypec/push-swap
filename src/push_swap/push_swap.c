@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/12 15:43:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/12 17:54:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ int						main(int argc, char **argv)
 
 	stack_a = get_input(argc, argv);
 	stack_b = psstk_init(argc - 1);
+	operations = ft_buffinit(100); // need a formula
 	if (stack_a->used_size <= 3)
 	{
-		little_stack_sort(stack_a);
+		quick_sort_individual_parts(stack_a, operations, A_ORIENTATION);
 		return ;
 	}
-	partition = get_supporting_element(stack_a);
-	move_elements_to_stack_b(stack_a, stack_b, operations, partition);
-	quick_sort(stack_b, operations);
+	partition = get_supporting_element(stack_a); //
+	move_elements_to_stack_b(stack_a, stack_b, operations, partition); //
+	quick_sort_individual_parts(stack_b, operations, B_ORIENTATION);
 	move_elements_to_stack_a(stack_a, stack_b, operations);
 	psstk_delete(&stack_a);
 	psstk_delete(&stack_b);

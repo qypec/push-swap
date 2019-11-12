@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 22:15:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/12 17:35:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_psstk					*get_input(int argc, char **argv)
 			ft_putendl(ERROR_MSG_BAD_NUMBER);
 			exit(-1);
 		}
-		add_to_psstk(stack_a, i, ft_atoi(argv[i + 1]));
+		add_number_to_psstk(stack_a, i, ft_atoi(argv[i + 1]));
 		i++;
 	}
 	return (stack_a);
