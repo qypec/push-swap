@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:15:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/11 17:35:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 16:49:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void				stack_shift_up(t_psstk *stk)
 	if (IS_EMPTY(stk))
 		return ;
 	i = 0;
-	while (i < stk->used_size)
+	while (i < stk->used_size - 1)
 	{
 		stk->arr[i]->number = stk->arr[i + 1]->number;
 		stk->arr[i]->correct_position = stk->arr[i + 1]->correct_position;

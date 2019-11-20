@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/10 23:14:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 16:19:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,12 @@ size_t					ft_matrlen(const char **matr);
 # include "../ft_printf/ft_printf.h"
 
 int						ft_printf(const char *format, ...);
+
+/*
+** ft_sort
+*/
+
+void					ft_qsort(int *array, size_t size);
 
 /*
 ** other functions

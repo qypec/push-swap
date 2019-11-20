@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/12 17:55:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 18:20:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@
 # define A_ORIENTATION 1
 # define B_ORIENTATION 2
 
-// # define CORRECT_POSITION(stack, i) stack->arr[i]->correct_position
-
-# define IS_FIRST_TRIPLET(turn) (turn == 0) ? 1 : 0 
-# define IS_LAST_TRIPLET(turn, size) (((turn + 1) * 3) >= size) ? 1 : 0
+// # define IS_FIRST_TRIPLET(turn) (turn == 0) ? 1 : 0 
+// # define IS_LAST_TRIPLET(turn, size) (((turn + 1) * 3) >= size) ? 1 : 0
 
 typedef struct			s_numb
 {
@@ -72,5 +70,13 @@ void					reverse_rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
 
 void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
 							char **operations);
+
+void					add_operation(t_buff *operations, const char *name);
+int						*create_temp_array(t_psstk *stack, size_t size);
+
+void					push_to_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
+							t_buff *operations);
+void					sort_triplet_stack_a(t_psstk *stack_a, \
+							t_psstk *stack_b, t_buff *operations);
 
 #endif

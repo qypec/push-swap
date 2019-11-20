@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#              #
-#    Updated: 2019/09/18 09:52:57 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/20 15:24:34 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ compile_all_directory:
 	@make -C ft_map/ all
 	@make -C ft_buffer/ all
 	@make -C ft_matr/ all
+	@make -C ft_sort/ all
 	@make -C ft_printf/ all
 	@make -C src/ all
 	@make -C lib/ all
@@ -38,6 +39,7 @@ clean:
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
 	@make -C ft_matr/ clean
+	@make -C ft_sort/ clean
 	@make -C ft_printf/ clean
 	@make -C src/ clean
 
@@ -50,6 +52,7 @@ fclean: clean
 	@make -C ft_map/ fclean
 	@make -C ft_buffer/ fclean
 	@make -C ft_matr/ fclean
+	@make -C ft_sort/ fclean
 	@make -C ft_printf/ fclean
 	@make -C src/ fclean
 	@rm -f $(NAME)

@@ -118,4 +118,18 @@ void				check_push_operations(void)
 		ft_printf("\t{red}KO{reset}\n\n");
 	psstk_delete(&stack_a);
 	psstk_delete(&stack_b);
+
+/* Case 09 stack_a is full */
+
+	ft_printf("{blue}Case 09 [stack_a is full] -------------{reset}\n\n");
+	stack_a = psstk_init(6);
+	stack_b = psstk_init(6);
+	create_stacks(stack_a, stack_b, "2|0 1|0 3|0 6|0 5|0 8|0", "0|0 0|0 0|0 0|0 0|0 0|0");
+	PUSH_B(stack_a, stack_b);
+	if (compare_this(stack_a, "1|0 3|0 6|0 5|0 8|0 0|0", "push_b") && compare_this(stack_b, "2|0 0|0 0|0 0|0 0|0 0|0", "push_b"))
+		ft_printf("\t{green}OK{reset}\n\n");
+	else
+		ft_printf("\t{red}KO{reset}\n\n");
+	psstk_delete(&stack_a);
+	psstk_delete(&stack_b);
 }

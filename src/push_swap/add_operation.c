@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   add_operation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 20:29:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 16:51:21 by yquaro           ###   ########.fr       */
+/*   Created: 2019/11/20 16:18:05 by yquaro            #+#    #+#             */
+/*   Updated: 2019/11/20 17:22:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void					dbg_print_stack(t_psstk *stk)
+void					add_operation(t_buff *operations, const char *name)
 {
-	size_t				i;
-
-	i = 0;
-	while (i < stk->size)
-	{
-		ft_printf("[%zu] %d | %zu\n", i, stk->arr[i]->number, stk->arr[i]->correct_position);
-		i++;
-	}
-}
-
-void					dbg_print_stacks(t_psstk *stk_a, t_psstk *stk_b)
-{
-	ft_printf("\nstack_a:\n");
-	dbg_print_stack(stk_a);
-	ft_printf("\nstack_b:\n");
-	dbg_print_stack(stk_b);
+	if (operations->i != 0)
+		ft_buffaddsymb(operations, ' ');
+	ft_buffadd(operations, name);
 }
