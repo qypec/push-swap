@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 18:20:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 19:39:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void					push_to_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations);
 void					sort_triplet_stack_a(t_psstk *stack_a, \
 							t_psstk *stack_b, t_buff *operations);
+void					sort_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
+							t_buff *operations);
 
 #endif

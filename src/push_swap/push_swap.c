@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 18:14:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 20:05:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,23 @@ int						main(int argc, char **argv)
 
 	// 	return ;
 	// }
-	push_to_stack_b(stack_a, stack_b, operations);
-	sort_triplet_stack_a(stack_a, stack_b, operations);
-	ft_putendl(operations->str);
 
-	// sort_stack_b(stack_a, stack_b, operations);
+	dbg_print_stacks(stack_a, stack_b);
+
+	push_to_stack_b(stack_a, stack_b, operations);
+
+	// ft_putendl("after push_to_stack_b");
+	// dbg_print_stacks(stack_a, stack_b);
+
+	sort_triplet_stack_a(stack_a, stack_b, operations);
+
+	// ft_putendl("after sort_triplet_stack_a");
+	// dbg_print_stacks(stack_a, stack_b);
+
+	sort_stack_b(stack_a, stack_b, operations);
+
+	// ft_putendl("after sort_stack_b");
+	dbg_print_stacks(stack_a, stack_b);
 	// psstk_delete(&stack_a);
 	// psstk_delete(&stack_b);
 	// set_of_operations = operations_analysis(operations);
