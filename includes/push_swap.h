@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 19:39:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/20 21:06:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
-# define A_ORIENTATION 1
-# define B_ORIENTATION 2
-
-// # define IS_FIRST_TRIPLET(turn) (turn == 0) ? 1 : 0 
-// # define IS_LAST_TRIPLET(turn, size) (((turn + 1) * 3) >= size) ? 1 : 0
+# define HEAD_ITEM(stack) stack->arr[0]->number
 
 typedef struct			s_numb
 {
@@ -72,13 +68,8 @@ void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
 							char **operations);
 
 void					add_operation(t_buff *operations, const char *name);
-int						*create_temp_array(t_psstk *stack, size_t size);
-
-void					push_to_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
+void					stack_split(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations);
-void					sort_triplet_stack_a(t_psstk *stack_a, \
-							t_psstk *stack_b, t_buff *operations);
-void					sort_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
-							t_buff *operations);
+int						median_search(t_psstk *stack_a, size_t size);
 
 #endif

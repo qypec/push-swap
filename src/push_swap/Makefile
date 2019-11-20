@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 17:36:59 by yquaro            #+#    #+#              #
-#    Updated: 2019/11/20 19:39:14 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/20 21:06:25 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ include ../../includes/push_swap.mk
 HEADER_H = -I ../../includes/
 
 DIR_O = ../../lib
-SOURCES = push_swap.c push_to_stack_b.c add_operation.c sort_triplet.c \
-			sort_stack_b.c
+SOURCES = push_swap.c add_operation.c median_search.c stack_split.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
