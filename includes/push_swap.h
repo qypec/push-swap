@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 01:34:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 02:17:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct			s_stack
 /* debugging */
 
 void					dbg_print_stack(t_psstk *stk);
-void					dbg_print_stacks(t_psstk *stk_a, t_psstk *stk_b);
+void					dbg_print_stacks(t_stack *stack);
 
 /* */
 
@@ -77,20 +77,16 @@ void					reverse_rotate_ab(t_stack *stack);
 void					*execute_operations(t_stack *stack, char **operations);
 
 void					add_operation(t_buff *operations, const char *name);
-void					stack_split(t_psstk *stack_a, t_psstk *stack_b, \
-							t_buff *operations);
-int						median_search(t_psstk *stack_a, size_t size, \
+int						median_search(t_psstk *stack, size_t size, \
 							const char *rounding);
 void					fill_correct_position(t_psstk *stack, size_t size);
 
-void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
-							t_buff *operations, size_t border, int need_to_return);
-void					sort_top_part_a(t_psstk *stack_a, t_psstk *stack_b, t_buff *operations, \
-							size_t border);
-void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
-							t_buff *operations, size_t border, int need_to_return);
-void					sort_top_part_b(t_psstk *stack_a, t_psstk *stack_b, t_buff *operations, \
-							size_t border);
+void					sorting_stack_a(t_stack *stack, size_t border, \
+							int need_to_return);
+void					sort_top_part_a(t_stack *stack, size_t border);
+void					sorting_stack_b(t_stack *stack, size_t border, \
+							int need_to_return);
+void					sort_top_part_b(t_stack *stack, size_t border);
 
 
 #endif

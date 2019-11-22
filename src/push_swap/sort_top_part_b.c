@@ -6,72 +6,68 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 00:24:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 21:40:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 02:13:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void				check_to_swap_first_second(t_psstk *stack_a, \
-							t_psstk *stack_b, t_buff *operations)
+static void				check_to_swap_first_second(t_stack *stack)
 {
-	if (stack_b->arr[0]->correct_position == 1 && \
-			stack_b->arr[1]->correct_position == 2)
+	if (stack->b->arr[0]->correct_position == 1 && \
+			stack->b->arr[1]->correct_position == 2)
 	{
-		swap_b(stack_a, stack_b);
-		add_operation(operations, "sb");
+		swap_b(stack);
+		add_operation(stack->operations, "sb");
 	}
 }
 
-static void				check_to_swap(t_psstk *stack_a,	t_psstk *stack_b, \
-							t_buff *operations)
+static void				check_to_swap(t_stack *stack)
 {
-	if (stack_b->arr[2]->correct_position == 2 && \
-			stack_b->arr[1]->correct_position == 1)
+	if (stack->b->arr[2]->correct_position == 2 && \
+			stack->b->arr[1]->correct_position == 1)
 	{
-		rotate_b(stack_a, stack_b);
-		add_operation(operations, "rb");
-		swap_b(stack_a, stack_b);
-		add_operation(operations, "sb");
-		reverse_rotate_b(stack_a, stack_b);
-		add_operation(operations, "rrb");
+		rotate_b(stack);
+		add_operation(stack->operations, "rb");
+		swap_b(stack);
+		add_operation(stack->operations, "sb");
+		reverse_rotate_b(stack);
+		add_operation(stack->operations, "rrb");
 	}
 }
 
-static void				sort_triplet_descending(t_psstk *stack_a, \
-							t_psstk *stack_b, t_buff *operations)
+static void				sort_triplet_descending(t_stack *stack)
 {
-	if (stack_b->arr[0]->correct_position == 3)
-		check_to_swap(stack_a, stack_b, operations);
-	else if (stack_b->arr[1]->correct_position == 3)
+	if (stack->b->arr[0]->correct_position == 3)
+		check_to_swap(stack);
+	else if (stack->b->arr[1]->correct_position == 3)
 	{
-		swap_b(stack_a, stack_b);
-		add_operation(operations, "sb");
-		check_to_swap(stack_a, stack_b, operations);
+		swap_b(stack);
+		add_operation(stack->operations, "sb");
+		check_to_swap(stack);
 	}
 	else
 	{
-		check_to_swap_first_second(stack_a, stack_b, operations);
-		rotate_b(stack_a, stack_b);
-		add_operation(operations, "rb");
-		swap_b(stack_a, stack_b);
-		add_operation(operations, "sb");
-		reverse_rotate_b(stack_a, stack_b);
-		add_operation(operations, "rrb");
-		swap_b(stack_a, stack_b);
-		add_operation(operations, "sb");
+		check_to_swap_first_second(stack);
+		rotate_b(stack);
+		add_operation(stack->operations, "rb");
+		swap_b(stack);
+		add_operation(stack->operations, "sb");
+		reverse_rotate_b(stack);
+		add_operation(stack->operations, "rrb");
+		swap_b(stack);
+		add_operation(stack->operations, "sb");
 	}
 }
 
-void					sort_top_part_b(t_psstk *stack_a, t_psstk *stack_b, t_buff *operations, \
-							size_t border)
+void					sort_top_part_b(t_stack *stack, size_t border)
 {
 
 	if (border == 1) // need?
 		return ;
-	fill_correct_position(stack_b, border);
+	fill_correct_position(stack->b, border);
 	if (border == 2)
-		check_to_swap_first_second(stack_a, stack_b, operations);
+		check_to_swap_first_second(stack);
 	else
-		sort_triplet_descending(stack_a, stack_b, operations);
+		sort_triplet_descending(stack);
 }

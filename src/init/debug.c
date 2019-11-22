@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:29:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 16:51:21 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 02:17:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void					dbg_print_stack(t_psstk *stk)
 	}
 }
 
-void					dbg_print_stacks(t_psstk *stk_a, t_psstk *stk_b)
+void					dbg_print_stacks(t_stack *stack)
 {
 	ft_printf("\nstack_a:\n");
-	dbg_print_stack(stk_a);
+	dbg_print_stack(stack->a);
 	ft_printf("\nstack_b:\n");
-	dbg_print_stack(stk_b);
+	dbg_print_stack(stack->b);
 }

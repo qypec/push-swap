@@ -36,7 +36,7 @@ static int				is_median(int large_counter, int less_counter, \
 	return (0);
 }
 
-int						median_search(t_psstk *stack_a, size_t size, \
+int						median_search(t_psstk *stack, size_t size, \
 							const char *rounding)
 {
 	size_t				i;
@@ -52,9 +52,9 @@ int						median_search(t_psstk *stack_a, size_t size, \
 		j = 0;
 		while (j < size)
 		{
-			if (stack_a->arr[j]->number > stack_a->arr[i]->number)
+			if (stack->arr[j]->number > stack->arr[i]->number)
 				large_counter++;
-			else if (stack_a->arr[j]->number < stack_a->arr[i]->number)
+			else if (stack->arr[j]->number < stack->arr[i]->number)
 				less_counter++;
 			j++;
 		}
@@ -62,5 +62,5 @@ int						median_search(t_psstk *stack_a, size_t size, \
 			break ;
 		i++;
 	}
-	return (stack_a->arr[i]->number);
+	return (stack->arr[i]->number);
 }
