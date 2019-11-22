@@ -38,8 +38,8 @@ static void					fill_stack(t_psstk *stack, char **matr_a)
 	}
 }
 
-void						create_stacks(t_psstk *stack_a, t_psstk *stack_b, \
-								const char *a, const char *b)
+void						create_stacks(t_stack *stack, const char *a, \
+								const char *b)
 {
 	char					**matr_a;
 	char					**matr_b;
@@ -52,6 +52,6 @@ void						create_stacks(t_psstk *stack_a, t_psstk *stack_b, \
 		ft_matrdel(&matr_b);
 		return ;
 	}
-	fill_stack(stack_a, matr_a);
-	fill_stack(stack_b, matr_b);
+	fill_stack(stack->a, matr_a);
+	fill_stack(stack->b, matr_b);
 }

@@ -16,8 +16,8 @@
 # define REVERSE_ROTATE_B reverse_rotate_b
 # define REVERSE_ROTATE_AB reverse_rotate_ab
 
-void				create_stacks(t_psstk *stack_a, t_psstk *stack_b, \
-						const char *a, const char *b);
+void				create_stacks(t_stack *stack, const char *a, \
+						const char *b);
 int					compare_this(t_psstk *stack, \
 						const char *expected_result, const char *operation);
 
