@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 21:06:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/22 02:54:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define ERROR_MSG_BAD_NUMBER "Error"
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
+#define IS_EVEN(num) (num % 2 == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]->number
 
@@ -71,5 +72,16 @@ void					add_operation(t_buff *operations, const char *name);
 void					stack_split(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations);
 int						median_search(t_psstk *stack_a, size_t size);
+void					fill_correct_position(t_psstk *stack, size_t size);
+
+void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
+							t_buff *operations, size_t border, int need_to_return);
+void					sort_top_part_a(t_psstk *stack_a, t_psstk *stack_b, t_buff *operations, \
+							size_t border);
+void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
+							t_buff *operations, size_t border, int need_to_return);
+void					sort_top_part_b(t_psstk *stack_a, t_psstk *stack_b, t_buff *operations, \
+							size_t border);
+
 
 #endif

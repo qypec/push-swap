@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:08:01 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 15:50:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/22 03:29:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void				swap(int *first, int *second)
 	*second = tmp;
 }
 
-static void				qs(int *arr, size_t first, size_t last)
+static void				qs(int *arr, int first, int last)
 {
-	size_t				left;
-	size_t				right;
+	int					left;
+	int					right;
 	int					piv;
 
 	left = first;
@@ -49,5 +49,7 @@ static void				qs(int *arr, size_t first, size_t last)
 
 void				ft_qsort(int *array, size_t size)
 {
-	qs(array, 0, size - 1);
+	if (size == 0)
+		return ;
+	qs(array, 0, (int)(size - 1));
 }

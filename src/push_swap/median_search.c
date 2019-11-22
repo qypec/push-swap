@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 20:51:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 21:31:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/21 23:28:25 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#define IS_EVEN(num) (num % 2 == 0) ? 1 : 0
+
 
 static int				is_median(size_t large_counter, size_t less_counter, \
 							size_t stack_size)
