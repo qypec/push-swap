@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 01:06:49 by yquaro           ###   ########.fr       */
+/*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
+/*   Updated: 2019/11/23 01:02:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void					get_input(t_psstk *stack_a, int argc, char **argv)
+t_stack					*stack_init(size_t size)
 {
-	size_t				i;
+	t_stack				*stack;
 
-	i = 0;
-	while (i < argc - 1)
-	{
-		if (!ft_isdigit_str(argv[i + 1]))
-		{
-			ft_putendl(ERROR_MSG_BAD_NUMBER);
-			exit(-1);
-		}
-		add_number_to_psstk(stack_a, i, ft_atoi(argv[i + 1]));
-		i++;
-	}
+	if ((stack = (t_stack *)malloc(sizeof(t_stack))) == NULL)
+		exit(-1);
+	stack->a = psstk_init(size);
+	stack->b = psstk_init(size);
+	stack->operations = ft_buffinit(100);
+	return (stack);
+}
+
+void					stack_delete(t_stack **stack)
+{
+	psstk_delete(&((*stack)->a));
+	psstk_delete(&((*stack)->b));
+	ft_buffdel(&((*stack)->operations));
+	free(*stack);
+	*stack = NULL;
 }

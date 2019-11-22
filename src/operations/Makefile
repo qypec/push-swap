@@ -15,7 +15,7 @@ include ../../includes/push_swap.mk
 HEADER_H = -I ../../includes/
 
 DIR_O = ../../lib
-SOURCES = execute.c swap.c push.c rotate.c reverse_rotate.c
+SOURCES = swap.c push.c rotate.c reverse_rotate.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 

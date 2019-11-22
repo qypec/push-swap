@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 04:48:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 01:34:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct			s_psstk
 	size_t				used_size;
 }						t_psstk;
 
+typedef struct			s_stack
+{
+	t_psstk				*a;
+	t_psstk				*b;
+	t_buff				*operations;
+}						t_stack;
+
 /* debugging */
 
 void					dbg_print_stack(t_psstk *stk);
@@ -43,6 +50,8 @@ void					dbg_print_stacks(t_psstk *stk_a, t_psstk *stk_b);
 
 /* */
 
+t_stack					*stack_init(size_t size);
+void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
 void					psstk_delete(t_psstk **psstk);
 void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
@@ -51,22 +60,21 @@ void					add_correct_position(t_psstk *stack, int number, \
 t_numb					*numb_init(void);
 void					numb_delete(t_numb **numb);
 
-t_psstk					*get_input(int argc, char **argv);
+void					get_input(t_psstk *stack_a, int argc, char **argv);
 
-void					swap_a(t_psstk *stack_a, t_psstk *stack_b);
-void					swap_b(t_psstk *stack_a, t_psstk *stack_b);
-void					swap_ab(t_psstk *stack_a, t_psstk *stack_b);
-void					push_a(t_psstk *stack_a, t_psstk *stack_b);
-void					push_b(t_psstk *stack_a, t_psstk *stack_b);
-void					rotate_a(t_psstk *stack_a, t_psstk *stack_b);
-void					rotate_b(t_psstk *stack_a, t_psstk *stack_b);
-void					rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
-void					reverse_rotate_a(t_psstk *stack_a, t_psstk *stack_b);
-void					reverse_rotate_b(t_psstk *stack_a, t_psstk *stack_b);
-void					reverse_rotate_ab(t_psstk *stack_a, t_psstk *stack_b);
+void					swap_a(t_stack *stack);
+void					swap_b(t_stack *stack);
+void					swap_ab(t_stack *stack);
+void					push_a(t_stack *stack);
+void					push_b(t_stack *stack);
+void					rotate_a(t_stack *stack);
+void					rotate_b(t_stack *stack);
+void					rotate_ab(t_stack *stack);
+void					reverse_rotate_a(t_stack *stack);
+void					reverse_rotate_b(t_stack *stack);
+void					reverse_rotate_ab(t_stack *stack);
 
-void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
-							char **operations);
+void					*execute_operations(t_stack *stack, char **operations);
 
 void					add_operation(t_buff *operations, const char *name);
 void					stack_split(t_psstk *stack_a, t_psstk *stack_b, \

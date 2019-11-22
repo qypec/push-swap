@@ -13,8 +13,6 @@
 #include "push_swap.h"
 // #include <stdio.h>
 
-
-
 void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations, size_t border, int need_to_return)
 {

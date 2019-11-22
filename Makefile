@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:01:42 by yquaro            #+#    #+#              #
-#    Updated: 2019/11/11 19:06:57 by yquaro           ###   ########.fr        #
+#    Updated: 2019/11/23 01:34:41 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ all:
 	@make -C src/operations/ all
 	@make -C src/checker/ all
 	@make -C lib/ checker_compile
-	@make -C src/push_swap/ all
-	@make -C lib/ push_swap_compile
+# 	@make -C src/push_swap/ all
+# 	@make -C lib/ push_swap_compile
 
 clean:
 	@make -C libft/ clean

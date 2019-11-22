@@ -6,14 +6,15 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/11 18:57:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 01:34:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void				error_processing(char ***operations)
+static void				error_processing(t_stack **stack, char ***operations)
 {
+	stack_delete(stack);
 	ft_matrdel(operations);
 	ft_putendl(ERROR_MSG_BAD_OPERATION);
 	exit(-1);
@@ -57,15 +58,15 @@ static char				**get_operations(void)
 
 int						main(int argc, char **argv)
 {
-	t_psstk				*stack_a;
-	t_psstk				*stack_b;
+	t_stack				*stack;
 	char				**operations;
 
-	stack_a = get_input(argc, argv);
-	stack_b = psstk_init(argc - 1);
+	stack = stack_init(argc - 1);
+	get_input(stack->a, argc, argv);
 	operations = get_operations();
-	if ((execute_operations(stack_a, stack_b, operations)) == NULL)
-		error_processing(&operations);
-	validate_stacks(stack_a, stack_b);
+	if ((execute_operations(stack, operations)) == NULL)
+		error_processing(&stack, &operations);
+	validate_stacks(stack->a, stack->b);
+	stack_delete(&stack);
 	ft_matrdel(&operations);
 }

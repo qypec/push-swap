@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:15:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 16:49:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 01:33:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,24 @@ static void				stack_shift_up(t_psstk *stk)
 	stk->arr[i]->correct_position = 0;
 }
 
-void					push_a(t_psstk *stack_a, t_psstk *stack_b)
+void					push_a(t_stack *stack)
 {
-	if (IS_EMPTY(stack_b))
+	if (IS_EMPTY(stack->b))
 		return ;
-	stack_shift_down(stack_a);
-	add_number_to_psstk(stack_a, 0, stack_b->arr[0]->number);
-	stack_a->arr[0]->correct_position = stack_b->arr[0]->correct_position;
-	stack_shift_up(stack_b);
-	stack_b->used_size--;
+	stack_shift_down(stack->a);
+	add_number_to_psstk(stack->a, 0, stack->b->arr[0]->number);
+	stack->a->arr[0]->correct_position = stack->b->arr[0]->correct_position;
+	stack_shift_up(stack->b);
+	stack->b->used_size--;
 }
 
-void					push_b(t_psstk *stack_a, t_psstk *stack_b)
+void					push_b(t_stack *stack)
 {
-	if (IS_EMPTY(stack_a))
+	if (IS_EMPTY(stack->a))
 		return ;
-	stack_shift_down(stack_b);
-	add_number_to_psstk(stack_b, 0, stack_a->arr[0]->number);
-	stack_b->arr[0]->correct_position = stack_a->arr[0]->correct_position;
-	stack_shift_up(stack_a);
-	stack_a->used_size--;
+	stack_shift_down(stack->b);
+	add_number_to_psstk(stack->b, 0, stack->a->arr[0]->number);
+	stack->b->arr[0]->correct_position = stack->a->arr[0]->correct_position;
+	stack_shift_up(stack->a);
+	stack->a->used_size--;
 }
