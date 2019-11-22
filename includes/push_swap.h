@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 02:54:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/22 04:48:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void					*execute_operations(t_psstk *stack_a, t_psstk *stack_b, \
 void					add_operation(t_buff *operations, const char *name);
 void					stack_split(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations);
-int						median_search(t_psstk *stack_a, size_t size);
+int						median_search(t_psstk *stack_a, size_t size, \
+							const char *rounding);
 void					fill_correct_position(t_psstk *stack, size_t size);
 
 void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \

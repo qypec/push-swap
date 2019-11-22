@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 18:58:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 03:50:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/22 05:19:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 		transfer_tmp = transferred_size;
 		transferred_size = 0;
 		if (transfer_tmp != 0)
-			sorting_stack_a(stack_a, stack_b, operations, transfer_tmp, 1);
+			sorting_stack_a(stack_a, stack_b, operations, transfer_tmp, transfer_tmp);
 		dbg_print_stacks(stack_a, stack_b);
 		if (need_to_return)
 		{
-			while (border--)
+			while (need_to_return--)
 			{
 				push_a(stack_a, stack_b);
 				add_operation(operations, "pa");
@@ -45,14 +45,14 @@ void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 		}
 		return ;
 	}
-	median = median_search(stack_b, border);
+	median = median_search(stack_b, border, "less");
 	ft_printf("median = %d\n", median);
 	limit = stack_a->used_size + (border / 2);
 	push_counter = 0;
 	rotate_counter = 0;
 	while (stack_a->used_size < limit)
 	{
-		if (HEAD_ITEM(stack_b) >= median)
+		if (HEAD_ITEM(stack_b) > median)
 		{
 			push_a(stack_a, stack_b);
 			add_operation(operations, "pa");
@@ -94,11 +94,11 @@ void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
 		transfer_tmp = transferred_size;
 		transferred_size = 0;
 		if (transfer_tmp != 0)
-			sorting_stack_b(stack_a, stack_b, operations, transfer_tmp, 1);
+			sorting_stack_b(stack_a, stack_b, operations, transfer_tmp, transfer_tmp);
 		dbg_print_stacks(stack_a, stack_b);
 		if (need_to_return)
 		{
-			while (border--)
+			while (need_to_return--)
 			{
 				push_b(stack_a, stack_b);
 				add_operation(operations, "pb");
@@ -106,7 +106,7 @@ void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
 		}
 		return ;
 	}
-	median = median_search(stack_a, border);
+	median = median_search(stack_a, border, "more");
 	ft_printf("median = %d\n", median);
 	limit = stack_b->used_size + (border / 2);
 	push_counter = 0;
