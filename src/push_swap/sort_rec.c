@@ -6,12 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 18:58:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 05:19:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 00:49:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+// #include <stdio.h>
+
+
 
 void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 							t_buff *operations, size_t border, int need_to_return)
@@ -23,8 +25,6 @@ void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 	int					median;
 	int					limit;
 
-	ft_printf("{green}b{reset}:\ntransfer = %zu\nborder = %zu\n", transferred_size, border);
-	dbg_print_stacks(stack_a, stack_b);
 	if (border == 0)
 		return ;
 	if (border <= 3)
@@ -34,7 +34,6 @@ void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 		transferred_size = 0;
 		if (transfer_tmp != 0)
 			sorting_stack_a(stack_a, stack_b, operations, transfer_tmp, transfer_tmp);
-		dbg_print_stacks(stack_a, stack_b);
 		if (need_to_return)
 		{
 			while (need_to_return--)
@@ -46,7 +45,6 @@ void					sorting_stack_b(t_psstk *stack_a, t_psstk *stack_b, \
 		return ;
 	}
 	median = median_search(stack_b, border, "less");
-	ft_printf("median = %d\n", median);
 	limit = stack_a->used_size + (border / 2);
 	push_counter = 0;
 	rotate_counter = 0;
@@ -84,8 +82,6 @@ void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
 	int					median;
 	int					limit;
 
-	ft_printf("{red}a{reset}:\ntransfer = %zu\nborder = %zu\n", transferred_size, border);
-	dbg_print_stacks(stack_a, stack_b);
 	if (border == 0)
 		return ;
 	if (border <= 3)
@@ -95,7 +91,6 @@ void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
 		transferred_size = 0;
 		if (transfer_tmp != 0)
 			sorting_stack_b(stack_a, stack_b, operations, transfer_tmp, transfer_tmp);
-		dbg_print_stacks(stack_a, stack_b);
 		if (need_to_return)
 		{
 			while (need_to_return--)
@@ -107,7 +102,6 @@ void					sorting_stack_a(t_psstk *stack_a, t_psstk *stack_b, \
 		return ;
 	}
 	median = median_search(stack_a, border, "more");
-	ft_printf("median = %d\n", median);
 	limit = stack_b->used_size + (border / 2);
 	push_counter = 0;
 	rotate_counter = 0;
