@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 07:24:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 08:52:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,12 @@ void				ft_putmap(t_map *map, void (*printvalue)(void *));
 ** ft_math
 */
 
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
+# define IS_INT_OVERFLOW(num) (num > MAX_INT || num < MIN_INT) ? 1 : 0
 # define ROUND_DOWN(number) ((int)number)
-int						ft_round_up(float num);
 
+int						ft_round_up(float num);
 int						ft_abs(int num);
 int						ft_pow(int num, int power);
 
@@ -164,7 +167,7 @@ char					*ft_strstr(const char *s1, const char *s2);
 char					*ft_strnstr(const char *s1, const char *s2, size_t n);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
-int						ft_atoi(const char *str);
+long					ft_atoi(const char *str);
 int						ft_isalpha(int c);
 int						ft_isdigit(int c);
 int						ft_isdigit_str(char *str);

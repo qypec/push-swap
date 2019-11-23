@@ -32,15 +32,11 @@ printf "\033[34;1mShould return Error (double)\033[0m\n"
 ./push_swap 45 12 57 52 33 33
 ./push_swap 45 12 57 52 33 45
 
-# add error to double
-
 printf "\033[34;1mShould return Error (bigger than integer)\033[0m\n"
 ./push_swap 2147483648
 ./push_swap 29999999999
 ./push_swap -2147483649
 ./push_swap -29999999999
-
-# add error to bigger than integer
 
 printf "\033[34;1mShould return no operations\033[0m\n"
 ./push_swap 2

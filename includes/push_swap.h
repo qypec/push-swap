@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 05:43:08 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 08:53:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 # define ERROR_MSG_BAD_OPERATION "ERROR: bad operation\n!!!EXIT!!!"
 # define ERROR_MSG_BAD_NUMBER "Error"
+# define ERROR_MSG_PAIR_OF_ELEMENTS "ERROR: pair of elements\n!!!EXIT!!!"
+# define ERROR_MSG_BIGGER_THAN_LONG "ERROR: bigger than long\n!!!EXIT!!!"
+# define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int\n!!!EXIT!!!"
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 #define IS_EVEN(num) (num % 2 == 0) ? 1 : 0

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 18:06:25 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/18 13:30:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 08:40:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_map				*ft_mapinit(size_t mapsize, void *valuedel_func)
 	t_map			*map;
 	size_t			i;
 
+	if (mapsize == 0 || valuedel_func == NULL)
+		return (NULL);
 	if ((map = (t_map *)malloc(sizeof(t_map))) == NULL)
 		return (NULL);
 	map->size = mapsize;
