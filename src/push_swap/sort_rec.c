@@ -6,42 +6,20 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 18:58:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 02:06:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 03:02:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// #include <stdio.h>
+#include <stdio.h>
 
-void					sorting_stack_b(t_stack *stack, size_t border, \
-							int need_to_return)
+static size_t			push_to_stack_a(t_stack *stack, size_t border)
 {
-	static size_t		transferred_size = 0;
-	size_t				transfer_tmp;
 	size_t				rotate_counter;
 	size_t				push_counter;
 	int					median;
-	int					limit;
+	size_t				limit;
 
-	if (border == 0)
-		return ;
-	if (border <= 3)
-	{
-		sort_top_part_b(stack, border);
-		transfer_tmp = transferred_size;
-		transferred_size = 0;
-		if (transfer_tmp != 0)
-			sorting_stack_a(stack, transfer_tmp, transfer_tmp);
-		if (need_to_return)
-		{
-			while (need_to_return--)
-			{
-				push_a(stack);
-				add_operation(stack->operations, "pa");
-			}
-		}
-		return ;
-	}
 	median = median_search(stack->b, border, "less");
 	limit = stack->a->used_size + (border / 2);
 	push_counter = 0;
@@ -51,54 +29,51 @@ void					sorting_stack_b(t_stack *stack, size_t border, \
 		if (HEAD_ITEM(stack->b) > median)
 		{
 			push_a(stack);
-			add_operation(stack->operations, "pa");
-			transferred_size++;
 			push_counter++;
 		}
 		else
 		{
-			rotate_counter++;
 			rotate_b(stack);
-			add_operation(stack->operations, "rb");
+			rotate_counter++;
 		}
 	}
 	while (rotate_counter--)
-	{
 		reverse_rotate_b(stack);
-		add_operation(stack->operations, "rrb");
-	}
-	sorting_stack_b(stack, border - push_counter, need_to_return);
+	return (push_counter);
 }
 
-void					sorting_stack_a(t_stack *stack, size_t border, \
+void					sorting_stack_b(t_stack *stack, size_t border, \
 							int need_to_return)
 {
 	static size_t		transferred_size = 0;
 	size_t				transfer_tmp;
-	size_t				rotate_counter;
-	size_t				push_counter;
-	int					median;
-	int					limit;
+	size_t				number_of_push;
 
-	if (border == 0)
-		return ;
 	if (border <= 3)
 	{
-		sort_top_part_a(stack, border);
+		sort_top_part_b(stack, border);
 		transfer_tmp = transferred_size;
 		transferred_size = 0;
 		if (transfer_tmp != 0)
-			sorting_stack_b(stack, transfer_tmp, transfer_tmp);
-		if (need_to_return)
-		{
-			while (need_to_return--)
-			{
-				push_b(stack);
-				add_operation(stack->operations, "pb");
-			}
-		}
-		return ;
+			sorting_stack_a(stack, transfer_tmp, transfer_tmp);
+		while (need_to_return--)
+			push_a(stack);
 	}
+	else
+	{
+		number_of_push = push_to_stack_a(stack, border);
+		transferred_size += number_of_push;
+		sorting_stack_b(stack, border - number_of_push, need_to_return);
+	}
+}
+
+static size_t			push_to_stack_b(t_stack *stack, size_t border)
+{
+	size_t				rotate_counter;
+	size_t				push_counter;
+	int					median;
+	size_t				limit;
+
 	median = median_search(stack->a, border, "more");
 	limit = stack->b->used_size + (border / 2);
 	push_counter = 0;
@@ -108,21 +83,40 @@ void					sorting_stack_a(t_stack *stack, size_t border, \
 		if (HEAD_ITEM(stack->a) < median)
 		{
 			push_b(stack);
-			add_operation(stack->operations, "pb");
-			transferred_size++;
 			push_counter++;
 		}
 		else
 		{
 			rotate_counter++;
 			rotate_a(stack);
-			add_operation(stack->operations, "ra");
 		}
 	}
 	while (rotate_counter--)
-	{
 		reverse_rotate_a(stack);
-		add_operation(stack->operations, "rra");
+	return (push_counter);
+}
+
+void					sorting_stack_a(t_stack *stack, size_t border, \
+							int need_to_return)
+{
+	static size_t		transferred_size = 0;
+	size_t				transfer_tmp;
+	size_t				number_of_push;
+
+	if (border <= 3)
+	{
+		sort_top_part_a(stack, border);
+		transfer_tmp = transferred_size;
+		transferred_size = 0;
+		if (transfer_tmp != 0)
+			sorting_stack_b(stack, transfer_tmp, transfer_tmp);
+		while (need_to_return--)
+			push_b(stack);
 	}
-	sorting_stack_a(stack, border - push_counter, need_to_return);
+	else
+	{
+		number_of_push = push_to_stack_b(stack, border);
+		transferred_size += number_of_push;
+		sorting_stack_a(stack, border - number_of_push, need_to_return);
+	}
 }
