@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 05:26:24 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 07:10:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 07:31:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static size_t			push_to_stack_b(t_stack *stack, size_t border)
 	return (push_counter);
 }
 
-static void				rotate_down(t_stack *stack, size_t last_sorted_index, \
+static int				rotate_down(t_stack *stack, size_t last_sorted_index, \
 							size_t border)
 {
 	size_t				i;
@@ -63,17 +63,7 @@ static void				rotate_down(t_stack *stack, size_t last_sorted_index, \
 		rotate_a(stack);
 		i++;
 	}
-}
-
-static int				round_up(float num)
-{
-	float				res;
-
-	res = num - (int)num;
-	if (res == 0.0)
-		return ((int)num);
-	else 
-		return ((int)(num + 1));
+	return (SORTED);
 }
 
 static int				check_sorted_part(t_stack *stack, size_t border)
@@ -90,10 +80,7 @@ static int				check_sorted_part(t_stack *stack, size_t border)
 		i++;
 	}
 	if ((i > (border / 2)) && (i != (border - 1)))
-	{
-		rotate_down(stack, i, border);
-		return (SORTED);
-	}
+		return (rotate_down(stack, i, border));
 	i = border - 1;
 	while (i - 1)
 	{
@@ -102,7 +89,7 @@ static int				check_sorted_part(t_stack *stack, size_t border)
 			break ;
 		i--;
 	}
-	if (i <= round_up(border / 2))
+	if (i <= ft_round_up(border / 2))
 		sorting_stack_a(stack, i - 1, 0);
 	else
 		return (UNSORTED);
@@ -116,11 +103,8 @@ void					sorting_stack_a(t_stack *stack, size_t border, \
 	size_t				transfer_tmp;
 	size_t				number_of_push;
 
-	if (border > 4)
-	{
-		if (check_sorted_part(stack, border) == SORTED)
-			return ;
-	}
+	if (border > 4 && check_sorted_part(stack, border) == SORTED)
+		return ;
 	if (border <= 3)
 	{
 		sort_top_part_a(stack, border);

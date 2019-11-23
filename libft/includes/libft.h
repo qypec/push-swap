@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/20 16:19:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 07:24:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void				ft_putmap(t_map *map, void (*printvalue)(void *));
 */
 
 # define ROUND_DOWN(number) ((int)number)
+int						ft_round_up(float num);
 
 int						ft_abs(int num);
 int						ft_pow(int num, int power);
