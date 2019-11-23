@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 21:16:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 02:26:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 04:29:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void					rotate_a(t_stack *stack)
 	stack_shift_up(stack->a);
 	stack->a->arr[stack->a->used_size - 1]->number = tmp_number;
 	stack->a->arr[stack->a->used_size - 1]->correct_position = tmp_correct_position;
-	add_operation(stack->operations, "ra");
+	add_operation(&(stack->operation), "ra");
 }
 
 void					rotate_b(t_stack *stack)
@@ -75,7 +75,7 @@ void					rotate_b(t_stack *stack)
 	stack_shift_up(stack->b);
 	stack->b->arr[stack->b->used_size - 1]->number = tmp_number;
 	stack->b->arr[stack->b->used_size - 1]->correct_position = tmp_correct_position;
-	add_operation(stack->operations, "rb");
+	add_operation(&(stack->operation), "rb");
 }
 
 void					rotate_ab(t_stack *stack)

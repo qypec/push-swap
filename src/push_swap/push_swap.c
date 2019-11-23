@@ -6,11 +6,20 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 03:56:17 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 04:29:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void					print_operations(t_list *operation)
+{
+	while (operation != NULL)
+	{
+		ft_putendl((char *)(operation->content));
+		operation = operation->next;
+	}
+}
 
 int						main(int argc, char **argv)
 {
@@ -20,7 +29,7 @@ int						main(int argc, char **argv)
 	get_input(stack->a, argc, argv);
 
 	sorting_stack_a(stack, stack->a->used_size, 0);
-	ft_putendl(stack->operations->str);
+	print_operations(stack->operation);
 	// dbg_print_stacks(stack);
 
 	stack_delete(&stack);

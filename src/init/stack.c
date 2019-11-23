@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 01:56:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 04:27:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ t_stack					*stack_init(size_t size)
 		exit(-1);
 	stack->a = psstk_init(size);
 	stack->b = psstk_init(size);
-	stack->operations = ft_buffinit(100);
+	stack->operation = NULL;
 	return (stack);
+}
+
+static void				lst_content_del(void *content, size_t content_size)
+{
+	ft_strdel((char **)&content);
+	content_size = 0;
 }
 
 void					stack_delete(t_stack **stack)
 {
 	psstk_delete(&((*stack)->a));
 	psstk_delete(&((*stack)->b));
-	ft_buffdel(&((*stack)->operations));
+	ft_lstdel(&((*stack)->operation), lst_content_del);
 	free(*stack);
 	*stack = NULL;
 }

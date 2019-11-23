@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 02:17:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 04:26:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct			s_stack
 {
 	t_psstk				*a;
 	t_psstk				*b;
-	t_buff				*operations;
+	t_list				*operation;
 }						t_stack;
 
 /* debugging */
@@ -76,7 +76,9 @@ void					reverse_rotate_ab(t_stack *stack);
 
 void					*execute_operations(t_stack *stack, char **operations);
 
-void					add_operation(t_buff *operations, const char *name);
+void					print_operations(t_list *operation);
+
+void					add_operation(t_list **operation, const char *name);
 int						median_search(t_psstk *stack, size_t size, \
 							const char *rounding);
 void					fill_correct_position(t_psstk *stack, size_t size);
