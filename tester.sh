@@ -8,13 +8,13 @@ printf "\033[34;1mShould return 0 (or nothing)\033[0m\n"
 printf "\033[34;1mShould be done in 2 operations (okay for 3)\033[0m\n"
 ./push_swap 3 2 1
 
-# sa ra sa rra sa  (if stack->size == border -> other sorting algorithm)
-
 printf "\033[34;1mShould be done in only one swap\033[0m\n"
 ./push_swap 2 1 3
 
 printf "\033[34;1mShould be done in less than 8 operations (5 is good)\033[0m\n"
 ./push_swap 4 6 10 12 19 25 36 29
+
+# sorted part checker
 
 printf "\033[34;1mShould be done between 5 and 20 operations\033[0m\n"
 ./push_swap 100 1000 10 100000 10000

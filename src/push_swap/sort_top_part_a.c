@@ -63,6 +63,8 @@ static void				sort_triplet_ascending(t_stack *stack)
 
 void					sort_top_part_a(t_stack *stack, size_t border)
 {
+	if (border < 2)
+		return ;
 	fill_correct_position(stack->a, border);
 	if (border == 2)
 		check_to_swap(stack);

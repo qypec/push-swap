@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 04:29:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 07:07:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void					print_operations(t_list *operation)
 {
+	if (operation == NULL) // delete
+		ft_putchar('\n'); 
 	while (operation != NULL)
 	{
 		ft_putendl((char *)(operation->content));

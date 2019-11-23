@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 00:24:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 04:11:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 07:13:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static void				sort_triplet_descending(t_stack *stack)
 
 void					sort_top_part_b(t_stack *stack, size_t border)
 {
+	if (border < 2)
+		return ;
 	fill_correct_position(stack->b, border);
 	if (border == 2)
 		check_to_swap_first_second(stack);
