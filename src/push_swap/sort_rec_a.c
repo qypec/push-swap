@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 05:26:24 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 07:31:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 07:50:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 #define UNSORTED 1
 #define SORTED 0
 
