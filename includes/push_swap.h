@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 20:46:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/25 23:14:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]->number
+
+#define ALREADY_SORTED 1
+#define UNSORTED 0
 
 typedef struct			s_numb
 {
@@ -88,6 +91,7 @@ size_t					nulling_static_variable(size_t *transfered_size);
 
 void					sorting_stack_a(t_stack *stack, size_t border, \
 							size_t need_to_return);
+int						check_sorted_part_a(t_stack *stack, size_t border);
 void					sort_top_part_a(t_stack *stack, size_t border);
 void					sorting_stack_b(t_stack *stack, size_t border, \
 							size_t need_to_return);
