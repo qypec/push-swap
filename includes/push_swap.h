@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 09:10:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/25 20:46:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int\n!!!EXIT!!!"
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
-
 
 # define HEAD_ITEM(stack) stack->arr[0]->number
 
@@ -85,11 +84,13 @@ int						median_search(t_psstk *stack, size_t size, \
 							const char *rounding);
 void					fill_correct_position(t_psstk *stack, size_t size);
 
+size_t					nulling_static_variable(size_t *transfered_size);
+
 void					sorting_stack_a(t_stack *stack, size_t border, \
-							int need_to_return);
+							size_t need_to_return);
 void					sort_top_part_a(t_stack *stack, size_t border);
 void					sorting_stack_b(t_stack *stack, size_t border, \
-							int need_to_return);
+							size_t need_to_return);
 void					sort_top_part_b(t_stack *stack, size_t border);
 
 
