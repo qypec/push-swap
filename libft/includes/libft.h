@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 08:52:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 08:58:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void				ft_putmap(t_map *map, void (*printvalue)(void *));
 /*
 ** ft_math
 */
-
+# define IS_EVEN(num) (num % 2 == 0) ? 1 : 0
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 # define IS_INT_OVERFLOW(num) (num > MAX_INT || num < MIN_INT) ? 1 : 0

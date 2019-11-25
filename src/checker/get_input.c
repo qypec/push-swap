@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 08:53:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/23 09:10:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void					get_input(t_psstk *stack_a, int argc, char **argv)
 			error_processing(ERROR_MSG_BAD_NUMBER);
 		if (ft_ismapitem(map, argv[i + 1]))
 			error_processing(ERROR_MSG_PAIR_OF_ELEMENTS);
-		if ((num = ft_atoi(argv[i + 1])) == - 1)
-			error_processing(ERROR_MSG_BIGGER_THAN_LONG);
+		num = ft_atoi(argv[i + 1]);
 		if (IS_INT_OVERFLOW(num))
 			error_processing(ERROR_MSG_BIGGER_THAN_INT);
 		add_number_to_psstk(stack_a, i, num);

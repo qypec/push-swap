@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 05:26:27 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 07:49:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/25 18:38:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #define UNSORTED 1
 #define SORTED 0
+
+static int				check_sorted_part(t_stack *stack, size_t border);
 
 static size_t			push_to_stack_a(t_stack *stack, size_t border)
 {
@@ -57,6 +59,8 @@ static int				rotate_down(t_stack *stack, size_t last_sorted_index, \
 		reverse_rotate_b(stack);
 		i++;
 	}
+	// if (check_sorted_part(stack, border) == SORTED)
+		// return (SORTED);
 	sorting_stack_b(stack, number_of_rotate, 0);
 	i = 0;
 	while (i < number_of_rotate)
@@ -91,7 +95,7 @@ static int				check_sorted_part(t_stack *stack, size_t border)
 		i--;
 	}
 	if (i <= ft_round_up(border / 2))
-		sorting_stack_b(stack, i - 1, 0);
+		sorting_stack_b(stack, i, 0);
 	else
 		return (UNSORTED);
 	return (SORTED);
