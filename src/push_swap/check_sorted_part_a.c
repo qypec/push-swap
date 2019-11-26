@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 22:46:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 11:13:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 11:50:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void					rotate_down(t_stack *stack, size_t number_of_rotate)
+static void				rotate_down(t_stack *stack, size_t number_of_rotate)
 {
 	while (number_of_rotate--)
 		reverse_rotate_a(stack);

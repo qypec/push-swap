@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 04:37:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 11:50:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int						median_search(t_psstk *stack, size_t size, \
 void					fill_correct_position(t_psstk *stack, size_t size);
 
 size_t					nulling_static_variable(size_t *transfered_size);
-void					rotate_down(t_stack *stack, size_t number_of_rotate);
 
 void					sorting_stack_a(t_stack *stack, size_t border, \
 							size_t need_to_return);
