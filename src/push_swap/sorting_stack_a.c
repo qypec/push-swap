@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 19:33:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 23:25:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 07:08:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void					sorting_stack_a(t_stack *stack, size_t border, \
 			push_b(stack);
 	}
 	else if (border == stack->a->used_size && \
-				(check_sorted_part_a(stack) == ALREADY_SORTED))
+				(check_sorted_part_a(stack) == SORTED))
 		return ;
 	else
 	{

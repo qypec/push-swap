@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 23:14:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 04:37:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 # define HEAD_ITEM(stack) stack->arr[0]->number
 
-#define ALREADY_SORTED 1
-#define UNSORTED 0
+# define DELIMITER(num) ((IS_EVEN(num)) ? (num / 2) : ((num / 2) + 1))
+#define SORTED 1
+#define NO_RESULT 0
 
 typedef struct			s_numb
 {
@@ -88,13 +89,15 @@ int						median_search(t_psstk *stack, size_t size, \
 void					fill_correct_position(t_psstk *stack, size_t size);
 
 size_t					nulling_static_variable(size_t *transfered_size);
+void					rotate_down(t_stack *stack, size_t number_of_rotate);
 
 void					sorting_stack_a(t_stack *stack, size_t border, \
 							size_t need_to_return);
-int						check_sorted_part_a(t_stack *stack, size_t border);
+int						check_sorted_part_a(t_stack *stack);
 void					sort_top_part_a(t_stack *stack, size_t border);
 void					sorting_stack_b(t_stack *stack, size_t border, \
 							size_t need_to_return);
+int						check_sorted_part_b(t_stack *stack);
 void					sort_top_part_b(t_stack *stack, size_t border);
 
 

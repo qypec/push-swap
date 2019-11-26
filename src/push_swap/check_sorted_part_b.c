@@ -6,60 +6,78 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 23:13:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 23:24:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 07:35:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int				rotate_down(t_stack *stack, size_t number_of_rotate)
+static size_t			is_sorted_from_top(t_stack *stack, int *is_sorted_stack)
 {
 	size_t				i;
+	size_t				last_sorted_index;
 
 	i = 0;
-	while (i < number_of_rotate)
+	while (i < stack->b->used_size)
 	{
-		reverse_rotate_b(stack);
-		i++;
-	}
-	sorting_stack_b(stack, number_of_rotate, 0);
-	fill_correct_position(stack->a, number_of_rotate); // need?
-	i = 0;
-	if (stack->b->arr[0]->correct_position == )
-	while (i < number_of_rotate)
-	{
-		rotate_b(stack);
-		i++;
-	}
-	return (ALREADY_SORTED);
-}
-
-static int				check_sorted_part(t_stack *stack, size_t border)
-{
-	size_t				i;
-
-	fill_correct_position(stack->b, border);
-	i = 0;
-	while (i < border - 1)
-	{
-		if ((stack->b->arr[i]->correct_position - 1) != \
-				stack->b->arr[i + 1]->correct_position)
+		if (stack->b->arr[i]->correct_position != (stack->b->used_size - i))
 			break ;
 		i++;
 	}
-	if ((i > (border / 2)) && (i != (border - 1)))
-		return (rotate_down(stack, border - i - 1, ));
-	i = border - 1;
-	while (i - 1)
+	if (i == 0)			/// kostil
+		return (0);		///
+	last_sorted_index = (i - 1);
+	if (last_sorted_index == stack->b->used_size - 4)
+		*is_sorted_stack = 1;
+	else if (last_sorted_index >= DELIMITER(stack->b->used_size))
+		return (last_sorted_index);
+	return (0);
+}
+
+static size_t			is_sorted_from_down(t_stack *stack, int *is_sorted_stack)
+{
+	size_t				i;
+	size_t				last_sorted_index;
+
+	i = stack->b->used_size - 1;
+	while (i)
 	{
-		if ((stack->b->arr[i]->correct_position + 1) != \
-				stack->b->arr[i - 1]->correct_position)
+		if (stack->b->arr[i]->correct_position != (stack->b->used_size - i))
 			break ;
 		i--;
 	}
-	if (i <= ft_round_up(border / 2))
-		sorting_stack_b(stack, i, 0);
-	else
-		return (UNSORTED);
-	return (ALREADY_SORTED);
+	last_sorted_index = (i + 1);
+	if (last_sorted_index == 1)
+		*is_sorted_stack = 1;
+	else if (last_sorted_index < DELIMITER(stack->b->used_size))
+		return (last_sorted_index);
+	return (0);
+}
+
+int						check_sorted_part_b(t_stack *stack)
+{
+	size_t				number_of_rotate;
+	size_t				last_sorted_index;
+	int					is_sorted_stack;
+
+	is_sorted_stack = 0;
+	fill_correct_position(stack->b, stack->b->used_size);
+	if ((last_sorted_index = is_sorted_from_top(stack, &is_sorted_stack)))
+	{
+		number_of_rotate = stack->b->used_size - last_sorted_index - 1;
+		rotate_down(stack, number_of_rotate);
+		sorting_stack_b(stack, number_of_rotate, 0);
+		while (number_of_rotate--)
+			rotate_b(stack);
+	}
+	else if ((last_sorted_index = is_sorted_from_down(stack, &is_sorted_stack)))
+	{
+		number_of_rotate = last_sorted_index;
+		sorting_stack_b(stack, last_sorted_index, 0);
+		while (number_of_rotate--)
+			rotate_b(stack);
+	}
+	else if (!is_sorted_stack)
+		return (NO_RESULT);
+	return (SORTED);
 }
