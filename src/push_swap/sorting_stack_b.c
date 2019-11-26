@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 20:36:36 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 04:12:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 11:13:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void					sorting_stack_b(t_stack *stack, size_t border, \
 	size_t				transfer_tmp;
 	size_t				number_of_push;
 
+	// ft_printf("{green}b: transfer = {reset} %d {green} need_to_return = {reset} %d \n", transfered_size, need_to_return);
+	// dbg_print_stacks(stack);
 	if (border == 0)
 		return ;
 	if (border <= 3)
@@ -53,12 +55,18 @@ void					sorting_stack_b(t_stack *stack, size_t border, \
 		sort_top_part_b(stack, border);
 		transfer_tmp = nulling_static_variable(&transfered_size);
 		sorting_stack_a(stack, transfer_tmp, transfer_tmp);
-		while (transfer_tmp <= 3 && need_to_return--)
+		while (need_to_return--)
 			push_a(stack);
 	}
 	else if (border == stack->b->used_size && \
 				(check_sorted_part_b(stack) == SORTED))
+	{
+		transfer_tmp = nulling_static_variable(&transfered_size);
+		sorting_stack_a(stack, transfer_tmp, transfer_tmp);
+		while (need_to_return--)
+			push_a(stack);
 		return ;
+	}
 	else
 	{
 		number_of_push = push_to_stack_a(stack, border, median_search(stack->b, border, "less"));

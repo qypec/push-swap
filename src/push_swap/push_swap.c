@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 19:34:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/26 09:59:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int						main(int argc, char **argv)
 {
 	t_stack				*stack;
 
+	// ft_printf("{reset}");
+
 	stack = stack_init(argc - 1);
 	get_input(stack->a, argc, argv);
 
@@ -35,4 +37,6 @@ int						main(int argc, char **argv)
 	// dbg_print_stacks(stack);
 
 	stack_delete(&stack);
+	
+	// ft_printf("{reset}");	
 }
