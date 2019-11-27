@@ -6,17 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 23:13:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 11:51:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/27 16:22:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void				rotate_down(t_stack *stack, size_t number_of_rotate)
-{
-	while (number_of_rotate--)
-		reverse_rotate_b(stack);
-}
 
 static size_t			is_sorted_from_top(t_stack *stack, int *is_sorted_stack)
 {
@@ -73,17 +67,14 @@ int						check_sorted_part_b(t_stack *stack)
 	if ((last_sorted_index = is_sorted_from_top(stack, &is_sorted_stack)))
 	{
 		number_of_rotate = stack->b->used_size - last_sorted_index - 1;
-		rotate_down(stack, number_of_rotate);
+		rotate_down_b(stack, number_of_rotate);
 		sorting_stack_b(stack, number_of_rotate, 0);
-		while (number_of_rotate--)
-			rotate_b(stack);
+		rotate_top_b(stack, number_of_rotate);
 	}
 	else if ((last_sorted_index = is_sorted_from_down(stack, &is_sorted_stack)))
 	{
 		number_of_rotate = last_sorted_index;
 		sorting_stack_b(stack, last_sorted_index, 0);
-		// while (number_of_rotate--)
-			// rotate_b(stack);
 	}
 	else if (!is_sorted_stack)
 		return (NO_RESULT);

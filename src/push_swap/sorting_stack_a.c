@@ -6,25 +6,33 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 19:33:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 11:50:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/27 16:22:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#define ALREADY_SORTED 1
-#define UNSORTED 0
-
-size_t					nulling_static_variable(size_t *transfered_size)
+static int				tail_item_should_be_push(t_stack *stack, \
+							size_t border, int median)
 {
-	size_t				transfer_tmp;
-
-	transfer_tmp = *transfered_size;
-	*transfered_size = 0;
-	return (transfer_tmp);
+	if (stack->a->used_size == border && \
+		TAIL_ITEM(stack->a)->number < median && \
+			(TAIL_ITEM(stack->a)->correct_position < \
+				HEAD_ITEM(stack->a)->correct_position))
+		return (1);
+	return (0);
 }
 
-static size_t			push_to_stack_b(t_stack *stack, size_t border, int median) // optimize
+static void				check_to_swap(t_stack *stack, int median)
+{
+	if (stack->a->arr[1]->number < median && \
+		(HEAD_ITEM(stack->a)->correct_position > \
+			stack->a->arr[1]->correct_position))
+		swap_a(stack);
+}
+
+static size_t			split_unsorted_part(t_stack *stack, size_t border, \
+							int median)
 {
 	size_t				rotate_counter;
 	size_t				push_counter;
@@ -35,19 +43,26 @@ static size_t			push_to_stack_b(t_stack *stack, size_t border, int median) // op
 	rotate_counter = 0;
 	while (stack->b->used_size < limit)
 	{
-		if (HEAD_ITEM(stack->a) < median)
+		if (tail_item_should_be_push(stack, border - push_counter, median))
 		{
+			reverse_rotate_a(stack);
+			push_b(stack);
+			push_counter++;
+		}
+		else if (HEAD_ITEM(stack->a)->number < median)
+		{
+			check_to_swap(stack, median);
 			push_b(stack);
 			push_counter++;
 		}
 		else
 		{
-			rotate_counter++;
 			rotate_a(stack);
+			rotate_counter++;
 		}
 	}
-	while (rotate_counter--) // if used_size != border
-		reverse_rotate_a(stack);
+	if (stack->a->used_size != (border - push_counter))
+		rotate_down_a(stack, rotate_counter);
 	return (push_counter);
 }
 
@@ -81,7 +96,7 @@ void					sorting_stack_a(t_stack *stack, size_t border, \
 	}
 	else
 	{
-		number_of_push = push_to_stack_b(stack, border, median_search(stack->a, border, "more"));
+		number_of_push = split_unsorted_part(stack, border, median_search(stack->a, border, "more"));
 		transfered_size += number_of_push;
 		sorting_stack_a(stack, border - number_of_push, need_to_return);
 	}

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/26 11:50:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/27 15:57:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
-# define HEAD_ITEM(stack) stack->arr[0]->number
+# define HEAD_ITEM(stack) stack->arr[0]
+# define TAIL_ITEM(stack) stack->arr[stack->used_size - 1]
 
 # define DELIMITER(num) ((IS_EVEN(num)) ? (num / 2) : ((num / 2) + 1))
 #define SORTED 1
@@ -89,6 +90,10 @@ int						median_search(t_psstk *stack, size_t size, \
 void					fill_correct_position(t_psstk *stack, size_t size);
 
 size_t					nulling_static_variable(size_t *transfered_size);
+void					rotate_down_b(t_stack *stack, size_t number_of_rotate);
+void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
+void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
+void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
 void					sorting_stack_a(t_stack *stack, size_t border, \
 							size_t need_to_return);

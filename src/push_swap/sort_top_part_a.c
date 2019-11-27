@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 23:36:00 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/25 20:35:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/27 14:53:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void				check_to_swap(t_stack *stack)
 {
-	if (stack->a->arr[0]->correct_position == 2 && \
+	if (HEAD_ITEM(stack->a)->correct_position == 2 && \
 			stack->a->arr[1]->correct_position == 1)
 		swap_a(stack);
 }
