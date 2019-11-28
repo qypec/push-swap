@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 19:33:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/27 16:22:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/28 22:20:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,18 @@ static int				tail_item_should_be_push(t_stack *stack, \
 	return (0);
 }
 
-static void				check_to_swap(t_stack *stack, int median)
+static void				check_to_swap_pushed(t_stack *stack, int median)
 {
 	if (stack->a->arr[1]->number < median && \
 		(HEAD_ITEM(stack->a)->correct_position > \
+			stack->a->arr[1]->correct_position))
+		swap_a(stack);
+}
+
+static void				check_to_swap_rotated(t_stack *stack, int median)
+{
+	if (stack->a->arr[1]->number >= median && \
+		((HEAD_ITEM(stack->a)->correct_position - 1) == \
 			stack->a->arr[1]->correct_position))
 		swap_a(stack);
 }
@@ -51,12 +59,13 @@ static size_t			split_unsorted_part(t_stack *stack, size_t border, \
 		}
 		else if (HEAD_ITEM(stack->a)->number < median)
 		{
-			check_to_swap(stack, median);
+			check_to_swap_pushed(stack, median);
 			push_b(stack);
 			push_counter++;
 		}
 		else
 		{
+			check_to_swap_rotated(stack, median);
 			rotate_a(stack);
 			rotate_counter++;
 		}
