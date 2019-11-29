@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/27 13:53:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/29 08:36:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int						main(int argc, char **argv)
 	get_input(stack->a, argc, argv);
 
 	sorting_stack_a(stack, stack->a->used_size, 0);
+	// print_operations(stack->operation);
+	remove_self_destruction_operations(&(stack->operation));
 	print_operations(stack->operation);
 
 /* debugging */

@@ -24,7 +24,7 @@ t_stack					*stack_init(size_t size)
 	return (stack);
 }
 
-static void				lst_content_del(void *content, size_t content_size)
+void					lst_content_del(void *content, size_t content_size)
 {
 	ft_strdel((char **)&content);
 	content_size = 0;

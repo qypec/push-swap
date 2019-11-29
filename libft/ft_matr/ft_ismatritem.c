@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelthis.c                                    :+:      :+:    :+:   */
+/*   ft_ismatritem.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 10:04:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/29 08:24:08 by yquaro           ###   ########.fr       */
+/*   Created: 2019/11/28 23:58:37 by yquaro            #+#    #+#             */
+/*   Updated: 2019/11/28 23:58:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_lstdelthis(t_list **alst, size_t lstnum, \
-											void (*del)(void *, size_t))
+int					ft_ismatritem(char **matr, const char *item)
 {
-	t_list			*tmp;
+	size_t			i;
 
-	while (*alst != NULL && lstnum)
+	i = 0;
+	while (matr[i] != NULL)
 	{
-		alst = &(*alst)->next;
-		lstnum--;
+		if (ft_strequ(matr[i], item))
+			return (1);
+		i++;
 	}
-	if (lstnum == 0 && *alst != NULL)
-	{
-		tmp = (*alst)->next;
-		ft_lstdelone(alst, del);
-		*alst = tmp;
-	}
+	return (0);
 }

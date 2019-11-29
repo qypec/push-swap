@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/27 15:57:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/29 00:09:27 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
 void					psstk_delete(t_psstk **psstk);
+void					lst_content_del(void *content, size_t content_size);
+
 void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
 void					add_correct_position(t_psstk *stack, int number, \
 							size_t correct_position);
@@ -103,6 +105,8 @@ void					sorting_stack_b(t_stack *stack, size_t border, \
 							size_t need_to_return);
 int						check_sorted_part_b(t_stack *stack);
 void					sort_top_part_b(t_stack *stack, size_t border);
+
+void					remove_self_destruction_operations(t_list **operation);
 
 
 #endif

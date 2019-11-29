@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 08:58:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/29 00:01:21 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ char					**ft_matrmemalloc(size_t size);
 char					**ft_matrnew(const char *first_str, ...);
 char					**ft_matrdup(const char **matr);
 void					ft_strswap(char **matr, int first, int second);
+int						ft_ismatritem(char **matr, const char *item);
 void					*ft_matrdel(char ***ret);
 size_t					ft_matrlen(const char **matr);
 
