@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 01:34:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/30 14:02:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 	char				**operations;
 
-	stack = stack_init(argc - 1);
-	get_input(stack->a, argc, argv);
+	stack = get_input(argc, argv);
 	operations = get_operations();
 	if ((execute_operations(stack, operations)) == NULL)
 		error_processing(&stack, &operations);

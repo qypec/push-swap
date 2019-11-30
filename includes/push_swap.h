@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/30 11:52:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/30 14:17:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void					add_correct_position(t_psstk *stack, int number, \
 t_numb					*numb_init(void);
 void					numb_delete(t_numb **numb);
 
-void					get_input(t_psstk *stack_a, int argc, char **argv);
+t_stack					*get_input(int argc, char **argv);
 
 void					swap_a(t_stack *stack);
 void					swap_b(t_stack *stack);

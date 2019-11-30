@@ -6,11 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/27 13:34:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/30 14:31:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+#define COUNTER_I ((argc == 2) ? i : (i + 1))
 
 static  void			mapvalue_del(void **value)
 {
@@ -23,26 +25,56 @@ static void				error_processing(const char *msg)
 	exit (-1);
 }
 
-void					get_input(t_psstk *stack_a, int argc, char **argv)
+static void				check_errors(char *item, long num, t_map **map)
 {
-	size_t				i;
-	long				num;
-	t_map				*map;
+	if (!ft_isdigit_str(item))
+		error_processing(ERROR_MSG_BAD_NUMBER);
+	if (ft_ismapitem(*map, item))
+		error_processing(ERROR_MSG_PAIR_OF_ELEMENTS);
+	if (IS_INT_OVERFLOW(num))
+		error_processing(ERROR_MSG_BIGGER_THAN_INT);
+	ft_mapinsert(map, item, (void *)&num);
+}
 
-	map = ft_mapinit(argc * 4, mapvalue_del);
+static void				add_numbers_to_stack(t_stack *stack, char **matr, int argc)
+{
+	t_map				*map;
+	long				num;
+	size_t				i;
+
+	map = ft_mapinit(stack->a->size * 4, mapvalue_del);
 	i = 0;
-	while (i < argc - 1)
+	while (i < stack->a->size)
 	{
-		if (!ft_isdigit_str(argv[i + 1]))
-			error_processing(ERROR_MSG_BAD_NUMBER);
-		if (ft_ismapitem(map, argv[i + 1]))
-			error_processing(ERROR_MSG_PAIR_OF_ELEMENTS);
-		num = ft_atoi(argv[i + 1]);
-		if (IS_INT_OVERFLOW(num))
-			error_processing(ERROR_MSG_BIGGER_THAN_INT);
-		add_number_to_psstk(stack_a, i, num);
-		ft_mapinsert(&map, argv[i + 1], (void *)&num);
+		num = ft_atoi(matr[COUNTER_I]);
+		check_errors(matr[COUNTER_I], num, &map);
+		add_number_to_psstk(stack->a, i, num);
 		i++;
 	}
 	ft_mapdel(&map);
+}
+
+t_stack					*get_input(int argc, char **argv)
+{
+	t_stack				*stack;
+	char				**matr;
+	size_t				stacks_size;
+
+	if (argc == 1)
+		exit(1);
+	if (argc == 2)
+	{
+		matr = ft_strsplit(argv[1], ' ');
+		stacks_size = ft_matrlen((const char **)matr);
+	}
+	else
+	{
+		matr = argv;
+		stacks_size = argc - 1;
+	}
+	stack = stack_init(stacks_size);
+	add_numbers_to_stack(stack, matr, argc);
+	if (argc == 2)
+		ft_matrdel(&matr);
+	return (stack);
 }
