@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_analyzer.c                              :+:      :+:    :+:   */
+/*   self_destruction_operations.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 22:42:53 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/29 08:50:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/30 13:26:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,10 @@ static int				find_and_remove_pair(t_list **oper)
 	t_list				*operation;
 	char				**changing;
 	const char			*pair;
-	const char			*name;
 	size_t				counter;
 
-	name = (const char *)((*oper)->content);
-	pair = get_pair_name(name);
-	changing = get_changing_operations_matr(name);
+	pair = get_pair_name((const char *)((*oper)->content));
+	changing = get_changing_operations_matr((const char *)((*oper)->content));
 	operation = (*oper)->next;
 	counter = 1;
 	while (operation != NULL)
@@ -75,23 +73,13 @@ static int				find_and_remove_pair(t_list **oper)
 	}
 	if (operation == NULL)
 		return (0);
-	// ft_printf("before operation:\n");
-	// ft_lstprint(*oper, ft_putstr);
 	ft_lstdelthis(oper, counter, lst_content_del);
-	// ft_printf("after operation:\n");
-	// ft_lstprint(*oper, ft_putstr);
-
-	// ft_printf("before:\n");
-	// ft_lstprint(*oper, ft_putstr);
 	ft_lstdelthis(oper, 0, lst_content_del);
-	// ft_printf("after:\n");
-	// ft_lstprint(*oper, ft_putstr);
 	return (1);
 }
 
 void					remove_self_destruction_operations(t_list **operation)
 {
-	t_list				*oper;
 	int					ret;
 
 	while (*operation != NULL)
@@ -99,8 +87,6 @@ void					remove_self_destruction_operations(t_list **operation)
 		ret = 0;
 		if (IS_SELF_DESTRUCTION_OPERATIONS(((char *)((*operation)->content))))
 			ret = find_and_remove_pair(operation);
-		// print_operations(*operation);
-		// ft_putchar('\n');
 		if (ret != 1)
 			operation = &(*operation)->next;
 	}

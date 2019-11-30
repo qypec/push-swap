@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/29 00:09:27 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/11/30 11:52:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ int						check_sorted_part_b(t_stack *stack);
 void					sort_top_part_b(t_stack *stack, size_t border);
 
 void					remove_self_destruction_operations(t_list **operation);
-
+void					combine_operations(t_list **operation);
 
 #endif
