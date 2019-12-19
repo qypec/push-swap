@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/30 14:31:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/19 13:52:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void				error_processing(const char *msg)
 
 static void				check_errors(char *item, long num, t_map **map)
 {
-	if (!ft_isdigit_str(item))
+	if (!ft_is_digitline(item))
 		error_processing(ERROR_MSG_BAD_NUMBER);
 	if (ft_ismapitem(*map, item))
 		error_processing(ERROR_MSG_PAIR_OF_ELEMENTS);
@@ -42,7 +42,7 @@ static void				add_numbers_to_stack(t_stack *stack, char **matr, int argc)
 	long				num;
 	size_t				i;
 
-	map = ft_mapinit(stack->a->size * 4, mapvalue_del);
+	map = ft_mapinit(stack->a->size * 4, NULL, mapvalue_del);
 	i = 0;
 	while (i < stack->a->size)
 	{

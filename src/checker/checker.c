@@ -51,7 +51,7 @@ static char				**get_operations(void)
 	buffer = ft_buffinit(100);
 	while (read(0, &symb, 1) > 0)
 		ft_buffaddsymb(buffer, symb);
-	operations = ft_strsplit(buffer->str, '\n');
+	operations = ft_strsplit(buffer->line, '\n');
 	ft_buffdel(&buffer);
 	return (operations);
 }
