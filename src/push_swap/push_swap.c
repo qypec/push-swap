@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/19 14:11:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/22 08:22:24 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
-	sorting_stack_a(stack, stack->a->used_size, 0);
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	print_operations(stack->operation);

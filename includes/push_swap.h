@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/30 14:17:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/22 08:23:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,7 @@ void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
-void					sorting_stack_a(t_stack *stack, size_t border, \
-							size_t need_to_return);
-int						check_sorted_part_a(t_stack *stack);
-void					sort_top_part_a(t_stack *stack, size_t border);
-void					sorting_stack_b(t_stack *stack, size_t border, \
-							size_t need_to_return);
-int						check_sorted_part_b(t_stack *stack);
-void					sort_top_part_b(t_stack *stack, size_t border);
+
 
 void					remove_self_destruction_operations(t_list **operation);
 void					combine_operations(t_list **operation);
