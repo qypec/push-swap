@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 23:54:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 05:43:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int				*create_temp_array(t_psstk *stack, size_t size)
 	i = 0;
 	while (i < size)
 	{
-		arr[i] = stack->arr[i]->number;
+		arr[i] = stack->arr[i].number;
 		i++;
 	}
 	return (arr);
@@ -42,9 +42,9 @@ void					fill_correct_position(t_psstk *stack, size_t size)
 		j = 0;
 		while (j < stack->used_size)
 		{
-			if (stack->arr[j]->number == arr[i])
+			if (stack->arr[j].number == arr[i])
 			{
-				stack->arr[j]->correct_position = i + 1;
+				stack->arr[j].correct_position = i + 1;
 				break ;
 			}
 			j++;

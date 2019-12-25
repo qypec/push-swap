@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:29:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/23 02:17:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void					dbg_print_stack(t_psstk *stk)
 	i = 0;
 	while (i < stk->size)
 	{
-		ft_printf("[%zu] %d | %zu\n", i, stk->arr[i]->number, stk->arr[i]->correct_position);
+		ft_printf("[%zu] %d | %zu\n", i, stk->arr[i].number, stk->arr[i].correct_position);
 		i++;
 	}
 }

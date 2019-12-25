@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/22 08:23:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/25 15:27:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct			s_numb
 
 typedef struct			s_psstk
 {
-	t_numb				**arr;
+	t_numb				*arr;
 	size_t				size;
 	size_t				used_size;
 }						t_psstk;
@@ -65,8 +65,7 @@ void					lst_content_del(void *content, size_t content_size);
 void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
 void					add_correct_position(t_psstk *stack, int number, \
 							size_t correct_position);
-t_numb					*numb_init(void);
-void					numb_delete(t_numb **numb);
+t_numb					numb_init(void);
 
 t_stack					*get_input(int argc, char **argv);
 

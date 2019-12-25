@@ -31,8 +31,8 @@ static void					fill_stack(t_psstk *stack, char **matr_a)
 	while (i < matrsize)
 	{
 		data = ft_strsplit(matr_a[i], '|');
-		stack->arr[i]->number = ft_atoi(NUMBER(data));
-		stack->arr[i]->correct_position = ft_atoi(CORRECT_POSITION(data));
+		stack->arr[i].number = ft_atoi(NUMBER(data));
+		stack->arr[i].correct_position = ft_atoi(CORRECT_POSITION(data));
 		ft_matrdel(&data);
 		i++;
 	}

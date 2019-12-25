@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 20:51:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/11/22 05:16:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int						median_search(t_psstk *stack, size_t size, \
 		j = 0;
 		while (j < size)
 		{
-			if (stack->arr[j]->number > stack->arr[i]->number)
+			if (stack->arr[j].number > stack->arr[i].number)
 				large_counter++;
-			else if (stack->arr[j]->number < stack->arr[i]->number)
+			else if (stack->arr[j].number < stack->arr[i].number)
 				less_counter++;
 			j++;
 		}
@@ -62,5 +62,5 @@ int						median_search(t_psstk *stack, size_t size, \
 			break ;
 		i++;
 	}
-	return (stack->arr[i]->number);
+	return (stack->arr[i].number);
 }

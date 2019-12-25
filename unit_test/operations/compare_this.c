@@ -13,11 +13,11 @@ static char				*get_actual_result(t_psstk *stack)
 	i = 0;
 	while (i < stack->size)
 	{
-		tmp = ft_itoa((long long)(stack->arr[i]->number));
+		tmp = ft_itoa((long long)(stack->arr[i].number));
 		ft_buffadd(buff, tmp);
 		ft_strdel(&tmp);
 		ft_buffaddsymb(buff, '|');
-		tmp = ft_itoa((long long)(stack->arr[i]->correct_position));
+		tmp = ft_itoa((long long)(stack->arr[i].correct_position));
 		ft_buffadd(buff, tmp);
 		ft_strdel(&tmp);
 		if (++i < stack->size)
