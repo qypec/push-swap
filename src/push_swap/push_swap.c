@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 20:59:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/02 22:20:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,33 @@ int						main(int argc, char **argv)
 
 /* debugging */
 
-	size_t i;
+	// size_t i;
 
-	i = 0;
-	while (i < stack->num_of_chunks)
-	{
-		ft_printf("[%zu] size: %zu\n", i, stack->chunk[i].size);
-		i++;
-	}
-	ft_putchar('\n');
+	// i = 0;
+	// while (i < stack->num_of_chunks)
+	// {
+	// 	ft_printf("[%zu] size: %zu\n", i, stack->chunk[i].size);
+	// 	i++;
+	// }
+	// ft_putchar('\n');
 /* */
 	
 	move_to_stack_b(stack);
-	// move_to_stack_a(stack);
-	// remove_self_destruction_operations(&(stack->operation));
-	// combine_operations(&(stack->operation));
-	// print_operations(stack->operation);
+	
+/* debugging */
+
+	// dbg_print_stacks(stack);
+	
+/* */
+
+	move_to_stack_a(stack);
+	remove_self_destruction_operations(&(stack->operation));
+	combine_operations(&(stack->operation));
+	print_operations(stack->operation);
 
 /* debugging */
 
-	dbg_print_stacks(stack);
+	// dbg_print_stacks(stack);
 	
 /* */
 	stack_delete(&stack);
