@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/19 13:52:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/02 20:58:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_stack					*get_input(int argc, char **argv)
 	}
 	stack = stack_init(stacks_size);
 	add_numbers_to_stack(stack, matr, argc);
+	fill_correct_position(stack->a, stack->a->size);
 	if (argc == 2)
 		ft_matrdel(&matr);
 	return (stack);

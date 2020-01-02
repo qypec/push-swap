@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:27:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/02 20:35:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ERROR_MSG_PAIR_OF_ELEMENTS "ERROR: pair of elements\n!!!EXIT!!!"
 # define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int\n!!!EXIT!!!"
 
+# define STACK_SIZE stack->a->size
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]
@@ -35,6 +36,12 @@ typedef struct			s_numb
 	int					number;
 }						t_numb;
 
+typedef struct			s_chunk
+{
+	size_t				size;
+	int					maxitem;
+}						t_chunk;
+
 typedef struct			s_psstk
 {
 	t_numb				*arr;
@@ -47,6 +54,8 @@ typedef struct			s_stack
 	t_psstk				*a;
 	t_psstk				*b;
 	t_list				*operation;
+	size_t				num_of_chunks;
+	t_chunk				*chunk;
 }						t_stack;
 
 /* debugging */
@@ -61,6 +70,8 @@ void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
 void					psstk_delete(t_psstk **psstk);
 void					lst_content_del(void *content, size_t content_size);
+// void					chunk_delete(t_chunk **chunks);
+void					chunk_init(t_stack *stack);
 
 void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
 void					add_correct_position(t_psstk *stack, int number, \
@@ -96,7 +107,7 @@ void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
-
+void                    move_to_stack_b(t_stack *stack);
 
 void					remove_self_destruction_operations(t_list **operation);
 void					combine_operations(t_list **operation);

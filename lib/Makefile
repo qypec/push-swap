@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:11:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/12/22 08:24:08 by yquaro           ###   ########.fr        #
+#    Updated: 2020/01/02 20:43:42 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ push_swap_compile:
 	@rm -r checker.o
 	$(COMPILING) *.o $(LIBNAME) -o $(EXECUTABLE_PUSH_SWAP)
 	@mv $(EXECUTABLE_PUSH_SWAP) ../$(EXECUTABLE_PUSH_SWAP) 
-	@rm -r push_swap.o
+	# @rm -r push_swap.o
 	@echo \*\*\* PUSH_SWAP COMPILED!
 
 unit_test:
