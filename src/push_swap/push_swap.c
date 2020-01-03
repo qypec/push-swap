@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 22:20:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/03 14:38:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
+
+/* debugging */
+
+	// dbg_print_stacks(stack);
+	
+/* */
 
 /* debugging */
 

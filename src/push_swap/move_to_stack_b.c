@@ -6,13 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:26:12 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 21:20:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/03 15:06:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#define NUM_OF_OPERATIONS_FROM_DOWN (stack->a->used_size - down_position)
 
-size_t					chunk_element_from_top(t_psstk *stack, \
+static size_t			chunk_element_from_top(t_psstk *stack, \
 							size_t pushed_chunk, size_t chunk_size)
 {
 	size_t				i;
@@ -27,7 +28,7 @@ size_t					chunk_element_from_top(t_psstk *stack, \
 	return (0);
 }
 
-size_t					chunk_element_from_down(t_psstk *stack, \
+static size_t			chunk_element_from_down(t_psstk *stack, \
 							size_t pushed_chunk, size_t chunk_size)
 {
 	size_t				i;
@@ -42,17 +43,23 @@ size_t					chunk_element_from_down(t_psstk *stack, \
 	return (0);
 }
 
-void                    move_to_top(t_stack *stack, size_t pushed_chunk)
+static void				move_to_top(t_stack *stack, size_t pushed_chunk)
 {
     size_t				top_position;
 	size_t				down_position;
 	
-    top_position = chunk_element_from_top(stack->a, pushed_chunk, stack->chunk[pushed_chunk].size);
-	down_position = chunk_element_from_down(stack->a, pushed_chunk, stack->chunk[pushed_chunk].size);
-	if (top_position < stack->a->used_size - down_position)
+    top_position = chunk_element_from_top(stack->a, pushed_chunk, \
+		stack->chunk[pushed_chunk].size);
+	down_position = chunk_element_from_down(stack->a, pushed_chunk, \
+		stack->chunk[pushed_chunk].size);
+	if (top_position == NUM_OF_OPERATIONS_FROM_DOWN && \
+			stack->a->arr[top_position].correct_position < \
+				stack->a->arr[down_position].correct_position)
+		rotate_top_a(stack, top_position);
+	else if (top_position < NUM_OF_OPERATIONS_FROM_DOWN)
 		rotate_top_a(stack, top_position);
 	else
-		rotate_down_a(stack, stack->a->used_size - down_position);
+		rotate_down_a(stack, NUM_OF_OPERATIONS_FROM_DOWN);
 }
 
 void                    move_to_stack_b(t_stack *stack)
@@ -70,6 +77,11 @@ void                    move_to_stack_b(t_stack *stack)
             push_b(stack);
             i++;
         }
+/* debugging */
+
+		// dbg_print_stacks(stack);
+	
+/* */
         pushed_chunk++;
     }
 }

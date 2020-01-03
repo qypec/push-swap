@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:28:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/03 14:14:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int						main(int argc, char **argv)
 
 	stack = get_input(argc, argv);
 	operations = get_operations();
-	if ((execute_operations(stack, operations)) == NULL)
+	if (operations != NULL && (execute_operations(stack, operations)) == NULL)
 		error_processing(&stack, &operations);
 	validate_stacks(stack->a, stack->b);
 	stack_delete(&stack);
