@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:11:54 by yquaro            #+#    #+#              #
-#    Updated: 2020/01/03 14:15:47 by yquaro           ###   ########.fr        #
+#    Updated: 2020/01/10 16:15:27 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ COMPILING = $(CC) $(CFLAGS) $(HEADER_H)
 
 checker_compile:
 	@mv ../libft/$(LIBNAME) $(LIBNAME)
-	$(COMPILING) *.o $(LIBNAME) -o $(EXECUTABLE_CHECKER)
+	@mv checker.o main/checker.o
+	$(COMPILING) *.o main/checker.o $(LIBNAME) -o $(EXECUTABLE_CHECKER)
 	@mv $(EXECUTABLE_CHECKER) ../$(EXECUTABLE_CHECKER)
 	@echo \*\*\* CHECKER COMPILED!
 
 push_swap_compile:
-	@rm -r checker.o
-	$(COMPILING) *.o $(LIBNAME) -o $(EXECUTABLE_PUSH_SWAP)
+	@mv push_swap.o main/push_swap.o
+	$(COMPILING) *.o main/push_swap.o $(LIBNAME) -o $(EXECUTABLE_PUSH_SWAP)
 	@mv $(EXECUTABLE_PUSH_SWAP) ../$(EXECUTABLE_PUSH_SWAP) 
-	# @rm -r push_swap.o
 	@echo \*\*\* PUSH_SWAP COMPILED!
 
 unit_test:
@@ -36,6 +36,8 @@ unit_test:
 
 clean:
 	@rm -f *.o
+	@rm -f checker/checker.o
+	@rm -f push_swap/push_swap.o
 
-fclean:
+fclean: clean
 	@rm -f $(LIBNAME)
