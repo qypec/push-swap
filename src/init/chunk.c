@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:59:20 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 18:11:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/10 16:55:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define CHUNK_SIZE (STACK_SIZE / stack->num_of_chunks)
-#define REMAINDER_SIZE (STACK_SIZE - (CHUNK_SIZE * (stack->num_of_chunks - 1)))
+#define CHUNK_SIZE ((STACK_SIZE - 2) / stack->num_of_chunks)
+#define REMAINDER_SIZE ((STACK_SIZE - 2) - (CHUNK_SIZE * (stack->num_of_chunks - 1)))
 
 void				chunk_init(t_stack *stack)
 {

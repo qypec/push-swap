@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/09 16:05:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/13 18:29:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ void					print_operations(t_list *operation)
 		ft_putendl((char *)(operation->content));
 		operation = operation->next;
 	}
+}
+
+static void				rotate_to_sorting_state(t_stack *stack)
+{
+	size_t				i;
+
+	i = 0;
+	while (i < stack->a->used_size)
+	{
+		if (stack->a->arr[i].correct_position == 1)
+			break ;
+		i++;
+	}
+	if (i <= stack->a->used_size / 2)
+		rotate_top_a(stack, i);
+	else
+		rotate_down_a(stack, stack->a->used_size - i);	
 }
 
 int						main(int argc, char **argv)
@@ -50,21 +67,22 @@ int						main(int argc, char **argv)
 	
 	move_to_stack_b(stack);
 	
-/* debugging */
+// /* debugging */
 
-	dbg_print_stacks(stack);
+	// dbg_print_stacks(stack);
 	
-/* */
+// /* */
 
 	move_to_stack_a(stack);
+	rotate_to_sorting_state(stack);
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	print_operations(stack->operation);
 
-/* debugging */
+// /* debugging */
 
-	dbg_print_stacks(stack);
+	// dbg_print_stacks(stack);
 	
-/* */
+// /* */
 	stack_delete(&stack);
 }

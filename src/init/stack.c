@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 20:57:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/13 18:49:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ static size_t		get_num_of_chunks(size_t size) // temp
 {
     if (size <= 5)
         return (1);
+	else if (size <= 15)
+		return (2);
+	else if (size <= 25)
+		return (3);
+	else if (size <= 50)
+		return (4);
     else if (size <= 100)
         return (5);
-    else if (size <= 500)
-        return (11);
-    return (size / 50);
-    
+    else
+        return (11);    
 }
 
 t_stack					*stack_init(size_t size)

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/06 13:59:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/13 17:45:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@
 
 # define STACK_SIZE stack->a->size
 # define IS_MIN_ITEM(stack, i) ((stack->arr[i].correct_position == 1) ? 1 : 0)
-# define IS_MAX_ITEM(stack, i) ((stack->arr[i].correct_position == STACK_SIZE - 1) ? 1 : 0)
+# define IS_MAX_ITEM(stack, i) ((stack->arr[i].correct_position == STACK_SIZE) ? 1 : 0)
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]
 # define TAIL_ITEM(stack) stack->arr[stack->used_size - 1]
-
-# define DELIMITER(num) ((IS_EVEN(num)) ? (num / 2) : ((num / 2) + 1))
-#define SORTED 1
-#define NO_RESULT 0
 
 typedef struct			s_numb
 {
