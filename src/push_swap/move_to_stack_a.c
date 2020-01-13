@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/13 17:57:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/13 20:39:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@ static int				correct_place_a(t_stack *stack, size_t correct_position)
 	if (stack->a->arr[stack->a->used_size - 1].correct_position + 1 == correct_position)
 		return (0);
 	i = 0;
-	while (i < stack->a->used_size && stack->a->arr[i].correct_position - 1 != correct_position)
+	while (i < stack->a->used_size)
+	{
+		if (stack->a->arr[i].correct_position - 1 == correct_position)
+			break ;
+		if (i != 0 && stack->a->arr[i - 1].correct_position + 1 == correct_position)
+			break ;
 		i++;
+	}
 	if (i == stack->a->used_size)
 		return (-1);
+	if (i > stack->a->used_size / 2)
+		return (stack->a->used_size - i);
 	return (i);
 }
 
