@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/13 17:45:43 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/14 18:04:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int\n!!!EXIT!!!"
 
 # define STACK_SIZE stack->a->size
+# define U_SIZE(stack) (stack->used_size)
 # define IS_MIN_ITEM(stack, i) ((stack->arr[i].correct_position == 1) ? 1 : 0)
 # define IS_MAX_ITEM(stack, i) ((stack->arr[i].correct_position == STACK_SIZE) ? 1 : 0)
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0

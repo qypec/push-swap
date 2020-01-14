@@ -6,80 +6,105 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/13 20:39:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/14 20:00:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int				correct_place_a(t_stack *stack, size_t correct_position)
-{
-	size_t				i;
+#define CALCULATE_OP(i_a, i_b) ((i_a >= i_b) ? i_a : i_b)
 
-	if (stack->a->arr[stack->a->used_size - 1].correct_position + 1 == correct_position)
-		return (0);
-	i = 0;
-	while (i < stack->a->used_size)
-	{
-		if (stack->a->arr[i].correct_position - 1 == correct_position)
-			break ;
-		if (i != 0 && stack->a->arr[i - 1].correct_position + 1 == correct_position)
-			break ;
-		i++;
-	}
-	if (i == stack->a->used_size)
-		return (-1);
-	if (i > stack->a->used_size / 2)
-		return (stack->a->used_size - i);
-	return (i);
+static size_t			calculate_optimum(t_stack *stk, size_t index_a, \
+							size_t index_b)
+{
+	if ((index_a > U_SIZE(stk->a) / 2) && (index_b > U_SIZE(stk->b) / 2))
+		return (CALCULATE_OP(U_SIZE(stk->a) - index_a, U_SIZE(stk->b) - index_b));
+	else if ((index_a <= U_SIZE(stk->a) / 2) && (index_b <= U_SIZE(stk->b) / 2))
+		return (CALCULATE_OP(index_a, index_b));
+	else if ((index_a <= U_SIZE(stk->a) / 2) && (index_b > U_SIZE(stk->b) / 2))
+		return (index_a + U_SIZE(stk->b) - index_b);
+	else
+		return (index_b + U_SIZE(stk->a) - index_a);
 }
 
-static void				move_optimum_item_to_top(t_stack *stack)
+static size_t			get_optimum_operations(t_stack *stack, size_t index_b)
 {
-	size_t				num_of_operations[stack->b->used_size];
+	size_t				index_a;
+	size_t				correct_position_b;
+
+	correct_position_b = stack->b->arr[index_b].correct_position;
+	if (TAIL_ITEM(stack->a).correct_position + 1 == correct_position_b)
+		return (((index_b <= U_SIZE(stack->b) ? index_b : U_SIZE(stack->b) - index_b)));
+	index_a = 0;
+	while (index_a < stack->a->used_size)
+	{
+		if (stack->a->arr[index_a].correct_position - 1 == correct_position_b)
+			break ;
+		if (index_a != 0 && \
+				stack->a->arr[index_a - 1].correct_position + 1 == \
+					correct_position_b)
+			break;
+		index_a++;
+	}
+	if (index_a == stack->a->used_size)
+		return ((size_t)0 - 1);
+	return (calculate_optimum(stack, index_a, index_b));
+}
+
+static void				rotate_a_for_min(t_stack *stack, size_t index_b)
+{
+	size_t				index_a;
+	size_t				correct_position_b;
+
+	correct_position_b = stack->b->arr[index_b].correct_position;
+	if (TAIL_ITEM(stack->a).correct_position + 1 == correct_position_b)
+		return ;
+	index_a = 0;
+	while (index_a < stack->a->used_size)
+	{
+		if (stack->a->arr[index_a].correct_position - 1 == correct_position_b)
+			break ;
+		if (index_a != 0 && \
+				stack->a->arr[index_a - 1].correct_position + 1 == \
+					correct_position_b)
+			break;
+		index_a++;
+	}
+	if (index_a <= U_SIZE(stack->a) / 2)
+		rotate_top_a(stack, index_a);
+	else
+		rotate_down_a(stack, U_SIZE(stack->a) - index_a);
+}
+
+static void				move_optimum_to_top(t_stack *stack)
+{
+	size_t				num_of_op[stack->b->used_size];
 	size_t				i;
-	int					num_to_correct_place;
+	size_t				min_b;
 
 	i = 0;
 	while (i < stack->b->used_size)
 	{
-		num_of_operations[i] = i;
-		if (num_of_operations[i] > stack->b->used_size / 2)
-			num_of_operations[i] = stack->b->used_size - num_of_operations[i];
-		if ((num_to_correct_place = correct_place_a(stack, stack->b->arr[i].correct_position)) == -1)
-			num_of_operations[i] = (size_t)0 - 1;
-		else
-			num_of_operations[i] += num_to_correct_place;
+		num_of_op[i] = get_optimum_operations(stack, i);
 		i++;
 	}
-	if ((i = ft_arraymin((size_t *)&num_of_operations, stack->b->used_size)) <= stack->b->used_size / 2)
-		rotate_top_b(stack, i);
+	min_b = ft_arraymin((size_t *)&num_of_op, stack->b->used_size);
+	rotate_a_for_min(stack, min_b);
+	if (min_b <= U_SIZE(stack->b) / 2)
+		rotate_top_b(stack, min_b);
 	else
-		rotate_down_b(stack, stack->b->used_size - i);
-}
-
-static void				push_to_a(t_stack *stack)
-{
-	size_t				need_to_rotate;
-
-	need_to_rotate = correct_place_a(stack, HEAD_ITEM(stack->b).correct_position);
-	if (need_to_rotate <= stack->a->used_size / 2)
-		rotate_top_a(stack, need_to_rotate);
-	else
-		rotate_down_a(stack, stack->a->used_size - need_to_rotate);
-	push_a(stack);
+		rotate_down_b(stack, U_SIZE(stack->b) - min_b);
 }
 
 void                    move_to_stack_a(t_stack *stack)
 {
-	while (stack->b->used_size != 0)
+	while (stack->b->used_size)
 	{
-		move_optimum_item_to_top(stack);
-		push_to_a(stack);
-
+		move_optimum_to_top(stack);
+		push_a(stack);
 // /* debugging */
 
-		// dbg_print_stacks(stack);
+	// dbg_print_stacks(stack);
 	
 // /* */
 	}
