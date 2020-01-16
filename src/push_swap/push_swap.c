@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/14 20:00:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 01:29:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,44 +45,11 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
-
-/* debugging */
-
-	// dbg_print_stacks(stack);
-	
-/* */
-
-/* debugging */
-
-	// size_t i;
-
-	// i = 0;
-	// while (i < stack->num_of_chunks)
-	// {
-	// 	ft_printf("[%zu] size: %zu\n", i, stack->chunk[i].size);
-	// 	i++;
-	// }
-	// ft_putchar('\n');
-/* */
-	
 	move_to_stack_b(stack);
-	
-// /* debugging */
-
-	// dbg_print_stacks(stack);
-	
-// /* */
-
 	move_to_stack_a(stack);
 	rotate_to_sorting_state(stack);
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	print_operations(stack->operation);
-
-// /* debugging */
-
-	// dbg_print_stacks(stack);
-	
-// /* */
 	stack_delete(&stack);
 }

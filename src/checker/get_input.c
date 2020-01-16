@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/02 20:58:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:02:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define COUNTER_I ((argc == 2) ? i : (i + 1))
 
-static  void			mapvalue_del(void **value)
+static void				mapvalue_del(void **value)
 {
 	*value = 0;
 }
@@ -22,7 +22,7 @@ static  void			mapvalue_del(void **value)
 static void				error_processing(const char *msg)
 {
 	ft_putendl(msg);
-	exit (-1);
+	exit(-1);
 }
 
 static void				check_errors(char *item, long num, t_map **map)
@@ -36,7 +36,8 @@ static void				check_errors(char *item, long num, t_map **map)
 	ft_mapinsert(map, item, (void *)&num);
 }
 
-static void				add_numbers_to_stack(t_stack *stack, char **matr, int argc)
+static void				add_numbers_to_stack(t_stack *stack, \
+							char **matr, int argc)
 {
 	t_map				*map;
 	long				num;

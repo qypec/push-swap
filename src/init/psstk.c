@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:03:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 16:00:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:05:25 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@ void					add_correct_position(t_psstk *stack, int number, \
 		if (stack->arr[i].number == number)
 		{
 			stack->arr[i].correct_position = correct_position;
-			return ;	
+			return ;
 		}
 		i++;
 	}
 }
 
-void					add_number_to_psstk(t_psstk *stack, size_t index, int number)
+void					add_number_to_psstk(t_psstk *stack, size_t index, \
+							int number)
 {
 	stack->arr[index].number = number;
 	stack->used_size++;
 }
-
-
 
 t_psstk					*psstk_init(int	size)
 {

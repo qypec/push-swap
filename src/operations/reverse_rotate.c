@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:55:01 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:04:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void					reverse_rotate_a(t_stack *stack)
 		return ;
 	i = 0;
 	tmp_number = stack->a->arr[stack->a->used_size - 1].number;
-	tmp_correct_position = stack->a->arr[stack->a->used_size - 1].correct_position;
+	tmp_correct_position = \
+		stack->a->arr[stack->a->used_size - 1].correct_position;
 	stack_shift_down(stack->a);
 	stack->a->arr[0].number = tmp_number;
 	stack->a->arr[0].correct_position = tmp_correct_position;
@@ -71,7 +72,8 @@ void					reverse_rotate_b(t_stack *stack)
 		return ;
 	i = 0;
 	tmp_number = stack->b->arr[stack->b->used_size - 1].number;
-	tmp_correct_position = stack->b->arr[stack->b->used_size - 1].correct_position;
+	tmp_correct_position = \
+		stack->b->arr[stack->b->used_size - 1].correct_position;
 	stack_shift_down(stack->b);
 	stack->b->arr[0].number = tmp_number;
 	stack->b->arr[0].correct_position = tmp_correct_position;

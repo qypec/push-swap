@@ -6,16 +6,16 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/13 18:49:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:03:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t		get_num_of_chunks(size_t size) // temp
+static size_t			get_num_of_chunks(size_t size)
 {
     if (size <= 5)
-        return (1);
+		return (1);
 	else if (size <= 15)
 		return (2);
 	else if (size <= 25)
@@ -25,7 +25,7 @@ static size_t		get_num_of_chunks(size_t size) // temp
     else if (size <= 100)
         return (5);
     else
-        return (11);    
+        return (11);
 }
 
 t_stack					*stack_init(size_t size)

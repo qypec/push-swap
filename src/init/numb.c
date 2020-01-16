@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:14:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:25:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:01:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_numb					numb_init(void)
 	t_numb				numb;
 
 	numb.correct_position = 0;
-	numb.number= 0;
+	numb.number = 0;
 	return (numb);
 }
-

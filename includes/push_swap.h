@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/14 18:04:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 01:32:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define STACK_SIZE stack->a->size
 # define U_SIZE(stack) (stack->used_size)
 # define IS_MIN_ITEM(stack, i) ((stack->arr[i].correct_position == 1) ? 1 : 0)
-# define IS_MAX_ITEM(stack, i) ((stack->arr[i].correct_position == STACK_SIZE) ? 1 : 0)
+# define IS_MAX_ITEM(s, i) ((s->arr[i].correct_position == STACK_SIZE) ? 1 : 0)
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]
@@ -57,22 +57,15 @@ typedef struct			s_stack
 	t_chunk				*chunk;
 }						t_stack;
 
-/* debugging */
-
-void					dbg_print_stack(t_psstk *stk);
-void					dbg_print_stacks(t_stack *stack);
-
-/* */
-
 t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
 void					psstk_delete(t_psstk **psstk);
 void					lst_content_del(void *content, size_t content_size);
-// void					chunk_delete(t_chunk **chunks);
 void					chunk_init(t_stack *stack);
 
-void					add_number_to_psstk(t_psstk *stack_a, size_t index, int number);
+void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
+							int number);
 void					add_correct_position(t_psstk *stack, int number, \
 							size_t correct_position);
 t_numb					numb_init(void);
@@ -106,8 +99,8 @@ void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
-void                    move_to_stack_b(t_stack *stack);
-void                    move_to_stack_a(t_stack *stack);
+void					move_to_stack_b(t_stack *stack);
+void					move_to_stack_a(t_stack *stack);
 
 void					remove_self_destruction_operations(t_list **operation);
 void					combine_operations(t_list **operation);

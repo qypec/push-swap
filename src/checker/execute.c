@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:00:58 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/09 16:03:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 02:00:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,4 @@ void					*execute_operations(t_stack *stack, char **operations)
 		i++;
 	}
 	return (exec);
-} 
+}
