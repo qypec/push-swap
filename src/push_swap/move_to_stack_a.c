@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 12:01:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:38:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static void				move_optimum_to_top(t_stack *stack)
 
 void                    move_to_stack_a(t_stack *stack)
 {
+	if (STACK_SIZE < 3)
+		return ;
 	while (stack->b->used_size)
 	{
 		move_optimum_to_top(stack);

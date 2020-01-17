@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 16:26:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:39:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void				rotate_to_sorting_state(t_stack *stack)
 
 static void				sort_triplet_a(t_stack *stack)
 {
+	if (STACK_SIZE < 3)
+		return ;
 	if (HEAD_ITEM(stack->a).correct_position == 1 && \
 		TAIL_ITEM(stack->a).correct_position != STACK_SIZE)
 	{
@@ -68,6 +70,14 @@ static void				sort_triplet_a(t_stack *stack)
 	}
 }
 
+static void				sort_pair_a(t_stack *stack)
+{
+	if (HEAD_ITEM(stack->a).correct_position == 1)
+		return ;
+	else
+		swap_a(stack);
+}
+
 int						main(int argc, char **argv)
 {
 	t_stack				*stack;
@@ -79,7 +89,8 @@ int						main(int argc, char **argv)
 	// dbg_print_stacks(stack);
 
 //
-
+	if (STACK_SIZE < 3)
+		sort_pair_a(stack);
 	move_to_stack_b(stack);
 	sort_triplet_a(stack);
 

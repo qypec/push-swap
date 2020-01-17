@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:26:12 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 11:24:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:37:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void                    move_to_stack_b(t_stack *stack)
     size_t              chunk_num;
     size_t              i;
 
+	if (STACK_SIZE < 3)
+		return ;
     chunk_num = 0;
     while (chunk_num < NUM_OF_CHUNKS)
     {
