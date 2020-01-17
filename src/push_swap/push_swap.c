@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 12:01:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:26:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ int						main(int argc, char **argv)
 //
 
 	rotate_to_sorting_state(stack);
+
+	// print_operations(stack->operation);
+
+	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	print_operations(stack->operation);
 
