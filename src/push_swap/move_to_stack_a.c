@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 10:16:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 12:01:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ static size_t			get_optimum_operations(t_stack *stack, size_t index_b)
 			item_b < HEAD_ITEM(stack->a).correct_position)
 		return (index_b);
 	index_a = 1;
-	while (index_a < stack->a->used_size - 1)
+	while (index_a < stack->a->used_size)
 	{
 		if (item_b > stack->a->arr[index_a - 1].correct_position && \
 				item_b < stack->a->arr[index_a].correct_position)
-			return (index_a);
+			break ;
 		index_a++;
 	}
+	if (index_a == stack->a->used_size)
+		return ((size_t)0 - 1);
 	return (calculate_optimum(stack, index_a, index_b));
 }
 

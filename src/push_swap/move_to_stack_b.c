@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:26:12 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 09:15:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 11:24:24 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,7 @@ static void				move_to_top(t_stack *stack, size_t chunk_num)
 	
     top_position = chunk_element_from_top(stack, chunk_num);
 	down_position = chunk_element_from_down(stack, chunk_num);
-	if (top_position == NUM_OF_OPERATIONS_FROM_DOWN && \
-			stack->a->arr[top_position].correct_position < \
-				stack->a->arr[down_position].correct_position) // ???????????need???????????
-		rotate_top_a(stack, top_position);
-	else if (top_position < NUM_OF_OPERATIONS_FROM_DOWN)
+	if (top_position <= NUM_OF_OPERATIONS_FROM_DOWN)
 		rotate_top_a(stack, top_position);
 	else
 		rotate_down_a(stack, NUM_OF_OPERATIONS_FROM_DOWN);
