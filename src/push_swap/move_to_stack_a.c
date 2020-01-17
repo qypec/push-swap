@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 09:15:10 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 10:02:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,44 +30,38 @@ static size_t			calculate_optimum(t_stack *stk, size_t index_a, \
 static size_t			get_optimum_operations(t_stack *stack, size_t index_b)
 {
 	size_t				index_a;
-	size_t				correct_position_b;
+	size_t				item_b;
 
-	correct_position_b = stack->b->arr[index_b].correct_position;
-	if (TAIL_ITEM(stack->a).correct_position + 1 == correct_position_b)
-		return (((index_b <= U_SIZE(stack->b) ? index_b : U_SIZE(stack->b) - index_b)));
-	index_a = 0;
-	while (index_a < stack->a->used_size)
+	item_b = stack->b->arr[index_b].correct_position;
+	if (item_b > TAIL_ITEM(stack->a).correct_position && \
+			item_b < HEAD_ITEM(stack->a).correct_position)
+		return (index_b);
+	index_a = 1;
+	while (index_a < stack->a->used_size - 1)
 	{
-		if (stack->a->arr[index_a].correct_position - 1 == correct_position_b)
-			break ;
-		if (index_a != 0 && \
-				stack->a->arr[index_a - 1].correct_position + 1 == \
-					correct_position_b)
-			break;
+		if (item_b > stack->a->arr[index_a - 1].correct_position && \
+				item_b < stack->a->arr[index_a].correct_position)
+			return (index_a);
 		index_a++;
 	}
-	if (index_a == stack->a->used_size)
-		return ((size_t)0 - 1);
 	return (calculate_optimum(stack, index_a, index_b));
 }
 
 static void				rotate_a_for_min(t_stack *stack, size_t index_b)
 {
 	size_t				index_a;
-	size_t				correct_position_b;
+	size_t				item_b;
 
-	correct_position_b = stack->b->arr[index_b].correct_position;
-	if (TAIL_ITEM(stack->a).correct_position + 1 == correct_position_b)
+	item_b = stack->b->arr[index_b].correct_position;
+	if (item_b > TAIL_ITEM(stack->a).correct_position && \
+			item_b < HEAD_ITEM(stack->a).correct_position)
 		return ;
-	index_a = 0;
-	while (index_a < stack->a->used_size)
+	index_a = 1;
+	while (index_a < stack->a->used_size - 1)
 	{
-		if (stack->a->arr[index_a].correct_position - 1 == correct_position_b)
+		if (item_b > stack->a->arr[index_a - 1].correct_position && \
+				item_b < stack->a->arr[index_a].correct_position)
 			break ;
-		if (index_a != 0 && \
-				stack->a->arr[index_a - 1].correct_position + 1 == \
-					correct_position_b)
-			break;
 		index_a++;
 	}
 	if (index_a <= U_SIZE(stack->a) / 2)
