@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 01:32:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 08:13:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 
 # define STACK_SIZE stack->a->size
 # define U_SIZE(stack) (stack->used_size)
-# define IS_MIN_ITEM(stack, i) ((stack->arr[i].correct_position == 1) ? 1 : 0)
-# define IS_MAX_ITEM(s, i) ((s->arr[i].correct_position == STACK_SIZE) ? 1 : 0)
+
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
 # define HEAD_ITEM(stack) stack->arr[0]
 # define TAIL_ITEM(stack) stack->arr[stack->used_size - 1]
+
+# define NUM_OF_CHUNKS 3
 
 typedef struct			s_numb
 {
@@ -38,7 +39,7 @@ typedef struct			s_numb
 typedef struct			s_chunk
 {
 	size_t				size;
-	int					maxitem;
+	int					fixed_item;
 }						t_chunk;
 
 typedef struct			s_psstk
@@ -53,9 +54,15 @@ typedef struct			s_stack
 	t_psstk				*a;
 	t_psstk				*b;
 	t_list				*operation;
-	size_t				num_of_chunks;
 	t_chunk				*chunk;
 }						t_stack;
+
+// debug
+
+void					dbg_print_stacks(t_stack *stack);
+
+//
+
 
 t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);

@@ -6,27 +6,27 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 02:03:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 07:46:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t			get_num_of_chunks(size_t size)
-{
-    if (size <= 5)
-		return (1);
-	else if (size <= 15)
-		return (2);
-	else if (size <= 25)
-		return (3);
-	else if (size <= 50)
-		return (4);
-    else if (size <= 100)
-        return (5);
-    else
-        return (11);
-}
+// static size_t			get_num_of_chunks(size_t size)
+// {
+//     if (size <= 5)
+// 		return (1);
+// 	else if (size <= 15)
+// 		return (2);
+// 	else if (size <= 25)
+// 		return (3);
+// 	else if (size <= 50)
+// 		return (4);
+//     else if (size <= 100)
+//         return (5);
+//     else
+//         return (11);
+// }
 
 t_stack					*stack_init(size_t size)
 {
@@ -37,7 +37,6 @@ t_stack					*stack_init(size_t size)
 	stack->a = psstk_init(size);
 	stack->b = psstk_init(size);
 	stack->operation = NULL;
-	stack->num_of_chunks = get_num_of_chunks(size);
 	chunk_init(stack);
 	return (stack);
 }

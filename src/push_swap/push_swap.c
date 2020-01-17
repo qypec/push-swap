@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 01:29:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 09:33:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,73 @@ static void				rotate_to_sorting_state(t_stack *stack)
 		rotate_down_a(stack, stack->a->used_size - i);	
 }
 
+static void				sort_triplet_a(t_stack *stack)
+{
+	if (HEAD_ITEM(stack->a).correct_position == 1 && \
+		TAIL_ITEM(stack->a).correct_position != STACK_SIZE)
+	{
+		reverse_rotate_a(stack);
+		swap_a(stack);
+	}
+	else if (HEAD_ITEM(stack->a).correct_position == STACK_SIZE)
+	{
+		if (TAIL_ITEM(stack->a).correct_position == 1)
+		{
+			rotate_a(stack);
+			swap_a(stack);
+		}
+		else
+			rotate_a(stack);
+	}
+	else if (HEAD_ITEM(stack->a).correct_position != STACK_SIZE && \
+			HEAD_ITEM(stack->a).correct_position != 1)
+	{
+		if (TAIL_ITEM(stack->a).correct_position == 1)
+			reverse_rotate_a(stack);
+		else if (TAIL_ITEM(stack->a).correct_position == STACK_SIZE)
+			swap_a(stack);
+	}
+}
+
 int						main(int argc, char **argv)
 {
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
+
+// debug
+
+	// dbg_print_stacks(stack);
+
+//
+
 	move_to_stack_b(stack);
+	sort_triplet_a(stack);
+
+// debug
+
+	// dbg_print_stacks(stack);
+
+//
+
 	move_to_stack_a(stack);
+
+// debug
+
+	// dbg_print_stacks(stack);
+
+//
+
 	rotate_to_sorting_state(stack);
-	remove_self_destruction_operations(&(stack->operation));
-	combine_operations(&(stack->operation));
+	// remove_self_destruction_operations(&(stack->operation));
+	// combine_operations(&(stack->operation));
 	print_operations(stack->operation);
+
+// debug
+
+	// dbg_print_stacks(stack);
+
+//
+
 	stack_delete(&stack);
 }

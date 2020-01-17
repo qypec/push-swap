@@ -6,65 +6,67 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:26:12 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/13 18:14:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/17 09:15:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define NUM_OF_OPERATIONS_FROM_DOWN (stack->a->used_size - down_position)
 
-static size_t			get_border(size_t chunk_size, size_t pushed_chunk)
+#define NUM_OF_OPERATIONS_FROM_DOWN (stack->a->used_size - down_position)
+#define BORDER (stack->chunk[chunk_num].size * (chunk_num + 1))
+
+static int				is_fixed(t_stack *stack, size_t index_a)
 {
-	// if (pushed_chunk == 0)
-		return ((chunk_size * (pushed_chunk + 1)) + 1);
-	// else
-	// 	return (chunk_size * (pushed_chunk + 1));
+	size_t				i;
+
+	i = 0;
+	while (i < NUM_OF_CHUNKS)
+	{
+		if (stack->a->arr[index_a].correct_position == stack->chunk[i].fixed_item)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-static size_t			chunk_element_from_top(t_stack *stack, \
-							size_t pushed_chunk, size_t chunk_size)
+static size_t			chunk_element_from_top(t_stack *stack, size_t chunk_num)
 {
 	size_t				i;
 
 	i = 0;
 	while (i < stack->a->used_size)
 	{
-		if ((!IS_MIN_ITEM(stack->a, i) && !IS_MAX_ITEM(stack->a, i)) && \
-				stack->a->arr[i].correct_position <= get_border(chunk_size, pushed_chunk))
+		if (!is_fixed(stack, i) && stack->a->arr[i].correct_position <= BORDER)
 			return (i);
 		i++;
 	}
 	return (0);
 }
 
-static size_t			chunk_element_from_down(t_stack *stack, \
-							size_t pushed_chunk, size_t chunk_size)
+static size_t			chunk_element_from_down(t_stack *stack, size_t chunk_num)
 {
 	size_t				i;
 
 	i = stack->a->used_size - 1;
 	while (i)
 	{
-		if ((!IS_MIN_ITEM(stack->a, i) && !IS_MAX_ITEM(stack->a, i)) && \
-				stack->a->arr[i].correct_position <= get_border(chunk_size, pushed_chunk))
+		if (!is_fixed(stack, i) && stack->a->arr[i].correct_position <= BORDER)
 			return (i);
 		i--;
 	}
 	return (0);
 }
 
-static void				move_to_top(t_stack *stack, size_t pushed_chunk)
+static void				move_to_top(t_stack *stack, size_t chunk_num)
 {
     size_t				top_position;
 	size_t				down_position;
 	
-    top_position = chunk_element_from_top(stack, pushed_chunk, \
-		stack->chunk[pushed_chunk].size);
-	down_position = chunk_element_from_down(stack, pushed_chunk, \
-		stack->chunk[pushed_chunk].size);
+    top_position = chunk_element_from_top(stack, chunk_num);
+	down_position = chunk_element_from_down(stack, chunk_num);
 	if (top_position == NUM_OF_OPERATIONS_FROM_DOWN && \
 			stack->a->arr[top_position].correct_position < \
-				stack->a->arr[down_position].correct_position)
+				stack->a->arr[down_position].correct_position) // ???????????need???????????
 		rotate_top_a(stack, top_position);
 	else if (top_position < NUM_OF_OPERATIONS_FROM_DOWN)
 		rotate_top_a(stack, top_position);
@@ -74,16 +76,16 @@ static void				move_to_top(t_stack *stack, size_t pushed_chunk)
 
 void                    move_to_stack_b(t_stack *stack)
 {
-    size_t              pushed_chunk;
+    size_t              chunk_num;
     size_t              i;
 
-    pushed_chunk = 0;
-    while (pushed_chunk < stack->num_of_chunks)
+    chunk_num = 0;
+    while (chunk_num < NUM_OF_CHUNKS)
     {
         i = 0;
-        while (i < stack->chunk[pushed_chunk].size)
+        while (i < stack->chunk[chunk_num].size - 1)
         {
-            move_to_top(stack, pushed_chunk);
+            move_to_top(stack, chunk_num);
             push_b(stack);
             i++;
 
@@ -94,6 +96,6 @@ void                    move_to_stack_b(t_stack *stack)
 /* */
 
         }
-        pushed_chunk++;
+        chunk_num++;
     }
 }

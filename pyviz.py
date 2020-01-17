@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# python3 pyviz.py `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
 
 from tkinter import *
 import sys
