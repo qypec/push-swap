@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define CHUNK_SIZE (STACK_SIZE / 3)
-#define REMAINING_SIZE (STACK_SIZE - CHUNK_SIZE * 2)
+#define CHUNK_SIZE (STACK_SIZE / NUM_OF_CHUNKS)
+#define REMAINING_SIZE (STACK_SIZE - CHUNK_SIZE * (NUM_OF_CHUNKS - 1))
 
 void				chunk_init(t_stack *stack)
 {

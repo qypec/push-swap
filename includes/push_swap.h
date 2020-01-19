@@ -67,8 +67,6 @@ void					chunk_init(t_stack *stack);
 
 void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
 							int number);
-void					add_correct_position(t_psstk *stack, int number, \
-							size_t correct_position);
 
 t_stack					*get_input(int argc, char **argv);
 
@@ -84,20 +82,16 @@ void					reverse_rotate_a(t_stack *stack);
 void					reverse_rotate_b(t_stack *stack);
 void					reverse_rotate_ab(t_stack *stack);
 
-void					*execute_operations(t_stack *stack, char **operations);
-
-void					print_operations(t_list *operation);
-
-void					add_operation(t_list **operation, const char *name);
-int						median_search(t_psstk *stack, size_t size, \
-							const char *rounding);
-void					fill_correct_position(t_psstk *stack, size_t size);
-
-size_t					nulling_static_variable(size_t *transfered_size);
 void					rotate_down_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
+
+void					*execute_operations(t_stack *stack, char **operations);
+
+void					print_operations(t_list *operation);
+void					add_operation(t_list **operation, const char *name);
+void					fill_correct_position(t_psstk *stack, size_t size);
 
 void					move_to_stack_b(t_stack *stack);
 void					move_to_stack_a(t_stack *stack);
