@@ -22,7 +22,7 @@ static int				is_fixed(t_stack *stack, size_t index_a)
 	i = 0;
 	while (i < NUM_OF_CHUNKS)
 	{
-		if (stack->a->arr[index_a].correct_position == stack->chunk[i].fixed_item)
+		if (stack->a->num[index_a] == stack->chunk[i].fixed_item)
 			return (1);
 		i++;
 	}
@@ -36,7 +36,7 @@ static size_t			chunk_element_from_top(t_stack *stack, size_t chunk_num)
 	i = 0;
 	while (i < stack->a->used_size)
 	{
-		if (!is_fixed(stack, i) && stack->a->arr[i].correct_position <= BORDER)
+		if (!is_fixed(stack, i) && stack->a->num[i] <= BORDER)
 			return (i);
 		i++;
 	}
@@ -50,7 +50,7 @@ static size_t			chunk_element_from_down(t_stack *stack, size_t chunk_num)
 	i = stack->a->used_size - 1;
 	while (i)
 	{
-		if (!is_fixed(stack, i) && stack->a->arr[i].correct_position <= BORDER)
+		if (!is_fixed(stack, i) && stack->a->num[i] <= BORDER)
 			return (i);
 		i--;
 	}

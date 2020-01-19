@@ -32,7 +32,7 @@ static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 	i = 0;
 	while (i < stack_a->size - 1)
 	{
-		if (stack_a->arr[i + 1].number < stack_a->arr[i].number)
+		if (stack_a->num[i + 1] < stack_a->num[i])
 		{
 			ft_putendl("KO\nStack A is incorrectly sort");
 			return ;

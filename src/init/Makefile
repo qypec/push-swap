@@ -15,7 +15,7 @@ include ../../includes/push_swap.mk
 HEADER_H = -I ../../includes/
 
 DIR_O = ../../lib
-SOURCES = stack.c psstk.c numb.c debug.c chunk.c
+SOURCES = stack.c psstk.c debug.c chunk.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 

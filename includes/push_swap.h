@@ -25,16 +25,10 @@
 
 # define IS_EMPTY(stack) (stack->used_size == 0) ? 1 : 0
 
-# define HEAD_ITEM(stack) stack->arr[0]
-# define TAIL_ITEM(stack) stack->arr[stack->used_size - 1]
+# define HEAD_ITEM(stack) stack->num[0]
+# define TAIL_ITEM(stack) stack->num[stack->used_size - 1]
 
 # define NUM_OF_CHUNKS 3
-
-typedef struct			s_numb
-{
-	size_t				correct_position;
-	int					number;
-}						t_numb;
 
 typedef struct			s_chunk
 {
@@ -44,7 +38,7 @@ typedef struct			s_chunk
 
 typedef struct			s_psstk
 {
-	t_numb				*arr;
+	int					*num;
 	size_t				size;
 	size_t				used_size;
 }						t_psstk;
@@ -75,7 +69,6 @@ void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
 							int number);
 void					add_correct_position(t_psstk *stack, int number, \
 							size_t correct_position);
-t_numb					numb_init(void);
 
 t_stack					*get_input(int argc, char **argv);
 

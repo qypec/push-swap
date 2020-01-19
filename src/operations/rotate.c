@@ -21,8 +21,7 @@ static void				stack_shift_down(t_psstk *stk)
 	i = stk->used_size - 1;
 	while (i)
 	{
-		stk->arr[i].number = stk->arr[i - 1].number;
-		stk->arr[i].correct_position = stk->arr[i - 1].correct_position;
+		stk->num[i] = stk->num[i - 1];
 		i--;
 	}
 }
@@ -36,45 +35,37 @@ static void				stack_shift_up(t_psstk *stk)
 	i = 0;
 	while (i < stk->used_size - 1)
 	{
-		stk->arr[i].number = stk->arr[i + 1].number;
-		stk->arr[i].correct_position = stk->arr[i + 1].correct_position;
+		stk->num[i] = stk->num[i + 1];
 		i++;
 	}
-	stk->arr[i].number = 0;
-	stk->arr[i].correct_position = 0;
+	stk->num[i] = 0;
 }
 
 void					rotate_a(t_stack *stack)
 {
 	size_t				i;
-	int					tmp_number;
-	size_t				tmp_correct_position;
+	size_t				tmp;
 
 	if (IS_EMPTY(stack->a))
 		return ;
 	i = 0;
-	tmp_number = stack->a->arr[0].number;
-	tmp_correct_position = stack->a->arr[0].correct_position;
+	tmp = stack->a->num[0];
 	stack_shift_up(stack->a);
-	stack->a->arr[stack->a->used_size - 1].number = tmp_number;
-	stack->a->arr[stack->a->used_size - 1].correct_position = tmp_correct_position;
+	stack->a->num[stack->a->used_size - 1] = tmp;
 	add_operation(&(stack->operation), "ra");
 }
 
 void					rotate_b(t_stack *stack)
 {
 	size_t				i;
-	int					tmp_number;
-	size_t				tmp_correct_position;
+	size_t				tmp;
 
 	if (IS_EMPTY(stack->b))
 		return ;
 	i = 0;
-	tmp_number = stack->b->arr[0].number;
-	tmp_correct_position = stack->b->arr[0].correct_position;
+	tmp = stack->b->num[0];
 	stack_shift_up(stack->b);
-	stack->b->arr[stack->b->used_size - 1].number = tmp_number;
-	stack->b->arr[stack->b->used_size - 1].correct_position = tmp_correct_position;
+	stack->b->num[stack->b->used_size - 1] = tmp;
 	add_operation(&(stack->operation), "rb");
 }
 

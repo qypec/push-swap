@@ -12,22 +12,6 @@
 
 #include "push_swap.h"
 
-// static size_t			get_num_of_chunks(size_t size)
-// {
-//     if (size <= 5)
-// 		return (1);
-// 	else if (size <= 15)
-// 		return (2);
-// 	else if (size <= 25)
-// 		return (3);
-// 	else if (size <= 50)
-// 		return (4);
-//     else if (size <= 100)
-//         return (5);
-//     else
-//         return (11);
-// }
-
 t_stack					*stack_init(size_t size)
 {
 	t_stack				*stack;

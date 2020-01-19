@@ -15,7 +15,7 @@ include ../../includes/push_swap.mk
 HEADER_H = -I ../../includes/
 
 DIR_O = ../../lib
-SOURCES = push_swap.c median_search.c move_to_stack_b.c  move_to_stack_a.c \
+SOURCES = push_swap.c move_to_stack_b.c  move_to_stack_a.c \
 			rotate_top_down.c self_destruction_operations.c \
 			combine_operations.c
 

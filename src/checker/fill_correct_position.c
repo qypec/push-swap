@@ -14,18 +14,18 @@
 
 static int				*create_temp_array(t_psstk *stack, size_t size)
 {
-	int					*arr;
+	int					*num;
 	size_t				i;
 
-	if ((arr = (int *)malloc(sizeof(int) * size)) == NULL)
+	if ((num = (int *)malloc(sizeof(int) * size)) == NULL)
 		exit(-1);
 	i = 0;
 	while (i < size)
 	{
-		arr[i] = stack->arr[i].number;
+		num[i] = stack->num[i];
 		i++;
 	}
-	return (arr);
+	return (num);
 }
 
 void					fill_correct_position(t_psstk *stack, size_t size)
@@ -42,9 +42,9 @@ void					fill_correct_position(t_psstk *stack, size_t size)
 		j = 0;
 		while (j < stack->used_size)
 		{
-			if (stack->arr[j].number == arr[i])
+			if (stack->num[j] == arr[i])
 			{
-				stack->arr[j].correct_position = i + 1;
+				stack->num[j] = i + 1;
 				break ;
 			}
 			j++;

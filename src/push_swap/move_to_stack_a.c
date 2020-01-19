@@ -32,15 +32,15 @@ static size_t			get_optimum_operations(t_stack *stack, size_t index_b)
 	size_t				index_a;
 	size_t				item_b;
 
-	item_b = stack->b->arr[index_b].correct_position;
-	if (item_b > TAIL_ITEM(stack->a).correct_position && \
-			item_b < HEAD_ITEM(stack->a).correct_position)
+	item_b = stack->b->num[index_b];
+	if (item_b > TAIL_ITEM(stack->a) && \
+			item_b < HEAD_ITEM(stack->a))
 		return (index_b);
 	index_a = 1;
 	while (index_a < stack->a->used_size)
 	{
-		if (item_b > stack->a->arr[index_a - 1].correct_position && \
-				item_b < stack->a->arr[index_a].correct_position)
+		if (item_b > stack->a->num[index_a - 1] && \
+				item_b < stack->a->num[index_a])
 			break ;
 		index_a++;
 	}
@@ -54,15 +54,15 @@ static void				rotate_a_for_min(t_stack *stack, size_t index_b)
 	size_t				index_a;
 	size_t				item_b;
 
-	item_b = stack->b->arr[index_b].correct_position;
-	if (item_b > TAIL_ITEM(stack->a).correct_position && \
-			item_b < HEAD_ITEM(stack->a).correct_position)
+	item_b = stack->b->num[index_b];
+	if (item_b > TAIL_ITEM(stack->a) && \
+			item_b < HEAD_ITEM(stack->a))
 		return ;
 	index_a = 1;
 	while (index_a < stack->a->used_size - 1)
 	{
-		if (item_b > stack->a->arr[index_a - 1].correct_position && \
-				item_b < stack->a->arr[index_a].correct_position)
+		if (item_b > stack->a->num[index_a - 1] && \
+				item_b < stack->a->num[index_a])
 			break ;
 		index_a++;
 	}

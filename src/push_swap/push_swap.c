@@ -30,7 +30,7 @@ static void				rotate_to_sorting_state(t_stack *stack)
 	i = 0;
 	while (i < stack->a->used_size)
 	{
-		if (stack->a->arr[i].correct_position == 1)
+		if (stack->a->num[i] == 1)
 			break ;
 		i++;
 	}
@@ -44,15 +44,15 @@ static void				sort_triplet_a(t_stack *stack)
 {
 	if (STACK_SIZE < 3)
 		return ;
-	if (HEAD_ITEM(stack->a).correct_position == 1 && \
-		TAIL_ITEM(stack->a).correct_position != STACK_SIZE)
+	if (HEAD_ITEM(stack->a) == 1 && \
+		TAIL_ITEM(stack->a) != STACK_SIZE)
 	{
 		reverse_rotate_a(stack);
 		swap_a(stack);
 	}
-	else if (HEAD_ITEM(stack->a).correct_position == STACK_SIZE)
+	else if (HEAD_ITEM(stack->a) == STACK_SIZE)
 	{
-		if (TAIL_ITEM(stack->a).correct_position == 1)
+		if (TAIL_ITEM(stack->a) == 1)
 		{
 			rotate_a(stack);
 			swap_a(stack);
@@ -60,19 +60,19 @@ static void				sort_triplet_a(t_stack *stack)
 		else
 			rotate_a(stack);
 	}
-	else if (HEAD_ITEM(stack->a).correct_position != STACK_SIZE && \
-			HEAD_ITEM(stack->a).correct_position != 1)
+	else if (HEAD_ITEM(stack->a) != STACK_SIZE && \
+			HEAD_ITEM(stack->a) != 1)
 	{
-		if (TAIL_ITEM(stack->a).correct_position == 1)
+		if (TAIL_ITEM(stack->a) == 1)
 			reverse_rotate_a(stack);
-		else if (TAIL_ITEM(stack->a).correct_position == STACK_SIZE)
+		else if (TAIL_ITEM(stack->a) == STACK_SIZE)
 			swap_a(stack);
 	}
 }
 
 static void				sort_pair_a(t_stack *stack)
 {
-	if (HEAD_ITEM(stack->a).correct_position == 1)
+	if (HEAD_ITEM(stack->a) == 1)
 		return ;
 	else
 		swap_a(stack);

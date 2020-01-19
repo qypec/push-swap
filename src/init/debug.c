@@ -19,7 +19,7 @@ void					dbg_print_stack(t_psstk *stk)
 	i = 0;
 	while (i < stk->size)
 	{
-		ft_printf("[%zu] %d | %zu\n", i, stk->arr[i].number, stk->arr[i].correct_position);
+		ft_printf("[%zu] %zu\n", i, stk->num[i]);
 		i++;
 	}
 }

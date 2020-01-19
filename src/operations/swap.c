@@ -14,33 +14,25 @@
 
 void					swap_a(t_stack *stack)
 {
-	size_t				tmp_correct_position;
-	size_t				tmp_number;
+	size_t				tmp;
 
 	if (stack->a->used_size < 2)
 		return ;
-	tmp_correct_position = stack->a->arr[0].correct_position;
-	tmp_number = stack->a->arr[0].number;
-	stack->a->arr[0].correct_position = stack->a->arr[1].correct_position;
-	stack->a->arr[0].number = stack->a->arr[1].number;
-	stack->a->arr[1].correct_position = tmp_correct_position;
-	stack->a->arr[1].number = tmp_number;
+	tmp = stack->a->num[0];
+	stack->a->num[0] = stack->a->num[1];
+	stack->a->num[1] = tmp;
 	add_operation(&(stack->operation), "sa");
 }
 
 void					swap_b(t_stack *stack)
 {
-	size_t				tmp_correct_position;
-	size_t				tmp_number;
+	size_t				tmp;
 
 	if (stack->b->used_size < 2)
 		return ;
-	tmp_correct_position = stack->b->arr[0].correct_position;
-	tmp_number = stack->b->arr[0].number;
-	stack->b->arr[0].correct_position = stack->b->arr[1].correct_position;
-	stack->b->arr[0].number = stack->b->arr[1].number;
-	stack->b->arr[1].correct_position = tmp_correct_position;
-	stack->b->arr[1].number = tmp_number;
+	tmp = stack->b->num[0];
+	stack->b->num[0] = stack->b->num[1];
+	stack->b->num[1] = tmp;
 	add_operation(&(stack->operation), "sb");
 }
 

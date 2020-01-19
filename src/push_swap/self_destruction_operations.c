@@ -38,7 +38,7 @@ static int              destroy(t_list **oper, size_t counter)
     return (1);
 }
 
-static int                 find_and_remove_pair(t_list **oper)
+static int				find_and_remove_pair(t_list **oper)
 {
     t_list				*operation;
 	const char			*pair;
