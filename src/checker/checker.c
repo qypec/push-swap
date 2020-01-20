@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 12:53:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:02:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 {
 	size_t				i;
-	
+
 	if (stack_b->used_size != 0)
 	{
 		ft_putendl("KO\nStack B is not empty");

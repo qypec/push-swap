@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 16:38:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:09:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static size_t			calculate_optimum(t_stack *stk, size_t index_a, \
 							size_t index_b)
 {
 	if ((index_a > U_SIZE(stk->a) / 2) && (index_b > U_SIZE(stk->b) / 2))
-		return (CALCULATE_OP(U_SIZE(stk->a) - index_a, U_SIZE(stk->b) - index_b));
+		return (CALCULATE_OP(U_SIZE(stk->a) - index_a, \
+					U_SIZE(stk->b) - index_b));
 	else if ((index_a <= U_SIZE(stk->a) / 2) && (index_b <= U_SIZE(stk->b) / 2))
 		return (CALCULATE_OP(index_a, index_b));
 	else if ((index_a <= U_SIZE(stk->a) / 2) && (index_b > U_SIZE(stk->b) / 2))
@@ -92,7 +93,7 @@ static void				move_optimum_to_top(t_stack *stack)
 		rotate_down_b(stack, U_SIZE(stack->b) - min_b);
 }
 
-void                    move_to_stack_a(t_stack *stack)
+void					move_to_stack_a(t_stack *stack)
 {
 	if (STACK_SIZE < 3)
 		return ;
@@ -100,10 +101,5 @@ void                    move_to_stack_a(t_stack *stack)
 	{
 		move_optimum_to_top(stack);
 		push_a(stack);
-// /* debugging */
-
-	// dbg_print_stacks(stack);
-	
-// /* */
 	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   self_destruction_oerations.c                       :+:      :+:    :+:   */
+/*   self_destruction_operations.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 22:42:53 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 16:33:22 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:14:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static const char		*get_pair_name(const char *name)
 	return (NULL);
 }
 
-static int              destroy(t_list **oper, size_t counter)
+static int				destroy(t_list **oper, size_t counter)
 {
-    ft_lstdelthis(oper, counter, lst_content_del);
-    ft_lstdelthis(oper, 0, lst_content_del);
-    return (1);
+	ft_lstdelthis(oper, counter, lst_content_del);
+	ft_lstdelthis(oper, 0, lst_content_del);
+	return (1);
 }
 
 static int				find_and_remove_pair(t_list **oper)
 {
-    t_list				*operation;
+	t_list				*operation;
 	const char			*pair;
 	size_t				counter;
 
@@ -51,7 +51,8 @@ static int				find_and_remove_pair(t_list **oper)
 	{
 		if (ft_strequ((const char *)operation->content, pair))
 			return (destroy(oper, counter));
-		else if (!ft_strequ(((const char *)operation->content), (const char *)((*oper)->content)))
+		else if (!ft_strequ(((const char *)operation->content), \
+				(const char *)((*oper)->content)))
 			return (0);
 		operation = operation->next;
 		counter++;

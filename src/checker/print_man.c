@@ -6,14 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 09:31:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 12:45:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:04:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void                    print_man(void)
+void					print_man(void)
 {
-    ft_printf("./push_swap(./checker) `argument`\n");
-    exit(1);
+	ft_printf("./push_swap(./checker) `argument`\n");
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:26:12 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 16:37:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:12:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static size_t			chunk_element_from_top(t_stack *stack, size_t chunk_num)
 	return (0);
 }
 
-static size_t			chunk_element_from_down(t_stack *stack, size_t chunk_num)
+static size_t			chunk_element_from_down(t_stack *stack, \
+							size_t chunk_num)
 {
 	size_t				i;
 
@@ -59,10 +60,10 @@ static size_t			chunk_element_from_down(t_stack *stack, size_t chunk_num)
 
 static void				move_to_top(t_stack *stack, size_t chunk_num)
 {
-    size_t				top_position;
+	size_t				top_position;
 	size_t				down_position;
-	
-    top_position = chunk_element_from_top(stack, chunk_num);
+
+	top_position = chunk_element_from_top(stack, chunk_num);
 	down_position = chunk_element_from_down(stack, chunk_num);
 	if (top_position <= NUM_OF_OPERATIONS_FROM_DOWN)
 		rotate_top_a(stack, top_position);
@@ -70,30 +71,23 @@ static void				move_to_top(t_stack *stack, size_t chunk_num)
 		rotate_down_a(stack, NUM_OF_OPERATIONS_FROM_DOWN);
 }
 
-void                    move_to_stack_b(t_stack *stack)
+void					move_to_stack_b(t_stack *stack)
 {
-    size_t              chunk_num;
-    size_t              i;
+	size_t				chunk_num;
+	size_t				i;
 
 	if (STACK_SIZE < 3)
 		return ;
-    chunk_num = 0;
-    while (chunk_num < NUM_OF_CHUNKS)
-    {
-        i = 0;
-        while (i < stack->chunk[chunk_num].size - 1)
-        {
-            move_to_top(stack, chunk_num);
-            push_b(stack);
-            i++;
-
-/* debugging */
-
-		// dbg_print_stacks(stack);
-	
-/* */
-
-        }
-        chunk_num++;
-    }
+	chunk_num = 0;
+	while (chunk_num < NUM_OF_CHUNKS)
+	{
+		i = 0;
+		while (i < stack->chunk[chunk_num].size - 1)
+		{
+			move_to_top(stack, chunk_num);
+			push_b(stack);
+			i++;
+		}
+		chunk_num++;
+	}
 }

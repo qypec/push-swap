@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 09:47:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:13:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void					print_operations(t_list *operation)
 {
-	if (operation == NULL) // delete
-		ft_putchar('\n'); 
+	if (operation == NULL)
+		ft_putchar('\n');
 	while (operation != NULL)
 	{
 		ft_putendl((char *)(operation->content));
@@ -37,15 +37,14 @@ static void				rotate_to_sorting_state(t_stack *stack)
 	if (i <= stack->a->used_size / 2)
 		rotate_top_a(stack, i);
 	else
-		rotate_down_a(stack, stack->a->used_size - i);	
+		rotate_down_a(stack, stack->a->used_size - i);
 }
 
 static void				sort_triplet_a(t_stack *stack)
 {
 	if (STACK_SIZE < 3)
 		return ;
-	if (HEAD_ITEM(stack->a) == 1 && \
-		TAIL_ITEM(stack->a) != STACK_SIZE)
+	if (HEAD_ITEM(stack->a) == 1 && TAIL_ITEM(stack->a) != STACK_SIZE)
 	{
 		reverse_rotate_a(stack);
 		swap_a(stack);
@@ -60,8 +59,7 @@ static void				sort_triplet_a(t_stack *stack)
 		else
 			rotate_a(stack);
 	}
-	else if (HEAD_ITEM(stack->a) != STACK_SIZE && \
-			HEAD_ITEM(stack->a) != 1)
+	else if (HEAD_ITEM(stack->a) != STACK_SIZE && HEAD_ITEM(stack->a) != 1)
 	{
 		if (TAIL_ITEM(stack->a) == 1)
 			reverse_rotate_a(stack);
@@ -83,44 +81,14 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
-
-// debug
-
-	// dbg_print_stacks(stack);
-
-//
 	if (STACK_SIZE < 3)
 		sort_pair_a(stack);
 	move_to_stack_b(stack);
 	sort_triplet_a(stack);
-
-// debug
-
-	// dbg_print_stacks(stack);
-
-//
-
 	move_to_stack_a(stack);
-
-// debug
-
-	// dbg_print_stacks(stack);
-
-//
-
 	rotate_to_sorting_state(stack);
-
-	// print_operations(stack->operation);
-
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	print_operations(stack->operation);
-
-// debug
-
-	// dbg_print_stacks(stack);
-	
-//
-
 	stack_delete(&stack);
 }

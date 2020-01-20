@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:03:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 02:05:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:07:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void					add_number_to_psstk(t_psstk *stack, size_t index, \
 	stack->used_size++;
 }
 
-t_psstk					*psstk_init(int	size)
+t_psstk					*psstk_init(int size)
 {
 	t_psstk				*psstk;
 

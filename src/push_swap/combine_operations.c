@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:17:24 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 10:56:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:09:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static const char		*get_pair_name(const char *name)
 	return (NULL);
 }
 
-static t_list           **find_and_combine_pair(t_list **oper)
+static t_list			**find_and_combine_pair(t_list **oper)
 {
-    t_list				*operation;
+	t_list				*operation;
 	const char			*pair;
 	size_t				counter;
 
@@ -61,7 +61,8 @@ static t_list           **find_and_combine_pair(t_list **oper)
 	{
 		if (ft_strequ((const char *)operation->content, pair))
 			return (combine(oper, counter));
-		else if (!ft_strequ(((const char *)operation->content), (const char *)((*oper)->content)))
+		else if (!ft_strequ(((const char *)operation->content), \
+				(const char *)((*oper)->content)))
 			return (&(*oper)->next);
 		operation = operation->next;
 		counter++;
@@ -71,11 +72,11 @@ static t_list           **find_and_combine_pair(t_list **oper)
 
 void					combine_operations(t_list **operation)
 {
-    while (*operation != NULL)
-    {
+	while (*operation != NULL)
+	{
 		if (IS_COMBINE_OPERATIONS(((char *)((*operation)->content))))
 			operation = find_and_combine_pair(operation);
 		else
 			operation = &(*operation)->next;
-    }
+	}
 }

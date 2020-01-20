@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 12:37:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 14:05:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,13 @@ static void				validate_input_string(t_stack *stack, char *argv, \
 	ft_matrdel(&input_string);
 }
 
-
 t_stack					*get_input(int argc, char **argv)
 {
 	t_stack				*stack;
 	t_map				*nums_map;
 	t_buff				*nums_buff;
 	size_t				i;
-	
+
 	if (argc == 1)
 		print_man();
 	nums_map = ft_mapinit(500, NULL, &mapvalue_del);
