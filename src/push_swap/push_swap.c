@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 16:39:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 09:47:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int						main(int argc, char **argv)
 // debug
 
 	// dbg_print_stacks(stack);
-
+	
 //
 
 	stack_delete(&stack);

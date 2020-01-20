@@ -6,77 +6,69 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 02:02:45 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 10:50:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#define COUNTER_I ((argc == 2) ? i : (i + 1))
 
 static void				mapvalue_del(void **value)
 {
 	*value = 0;
 }
 
-static void				error_processing(const char *msg)
+static void				error_processing(const char *msg, char *str_num)
 {
-	ft_putendl(msg);
+	ft_printf("%s : %s\n", msg, str_num);
 	exit(-1);
 }
 
-static void				check_errors(char *item, long num, t_map **map)
+static void				validate_input_string(t_stack *stack, char *argv, t_map **nums_map, t_buff *nums_buff)
 {
-	if (!ft_is_digitline(item))
-		error_processing(ERROR_MSG_BAD_NUMBER);
-	if (ft_ismapitem(*map, item))
-		error_processing(ERROR_MSG_PAIR_OF_ELEMENTS);
-	if (IS_INT_OVERFLOW(num))
-		error_processing(ERROR_MSG_BIGGER_THAN_INT);
-	ft_mapinsert(map, item, (void *)&num);
-}
-
-static void				add_numbers_to_stack(t_stack *stack, \
-							char **matr, int argc)
-{
-	t_map				*map;
-	long				num;
+	long long int		int_num;
+	char				**input_string;
 	size_t				i;
 
-	map = ft_mapinit(stack->a->size * 4, NULL, mapvalue_del);
+	if ((input_string = ft_strsplit(argv, ' ')) == NULL)
+		input_string = ft_matrnew(argv, NULL);
 	i = 0;
-	while (i < stack->a->size)
+	while (input_string[i] != NULL)
 	{
-		num = ft_atoi(matr[COUNTER_I]);
-		check_errors(matr[COUNTER_I], num, &map);
-		add_number_to_psstk(stack->a, i, num);
+		if (!ft_is_digitline(input_string[i]))
+			error_processing(ERROR_MSG_BAD_NUMBER, input_string[i]);
+		int_num = ft_atoi(input_string[i]);
+		if (IS_INT_OVERFLOW(int_num))
+			error_processing(ERROR_MSG_BIGGER_THAN_INT, input_string[i]);
+		if (ft_ismapitem(*nums_map, input_string[i]))
+			error_processing(ERROR_MSG_PAIR_OF_ELEMENTS, input_string[i]);
+		ft_mapinsert(nums_map, input_string[i], (void *)0);
+		ft_buffadd(nums_buff, input_string[i]);
+		ft_buffaddsymb(nums_buff, ' ');
 		i++;
 	}
-	ft_mapdel(&map);
+	ft_matrdel(&input_string);
 }
+
 
 t_stack					*get_input(int argc, char **argv)
 {
 	t_stack				*stack;
-	char				**matr;
-	size_t				stacks_size;
-
+	t_map				*nums_map;
+	t_buff				*nums_buff;
+	size_t				i;
+	
 	if (argc == 1)
-		exit(1);
-	if (argc == 2)
+		print_man();
+	nums_map = ft_mapinit(500, NULL, &mapvalue_del);
+	nums_buff = ft_buffinit(100);
+	i = 1;
+	while (i != argc)
 	{
-		matr = ft_strsplit(argv[1], ' ');
-		stacks_size = ft_matrlen((const char **)matr);
+		validate_input_string(stack, argv[i], &nums_map, nums_buff);
+		i++;
 	}
-	else
-	{
-		matr = argv;
-		stacks_size = argc - 1;
-	}
-	stack = stack_init(stacks_size);
-	add_numbers_to_stack(stack, matr, argc);
-	fill_correct_position(stack->a, stack->a->size);
-	if (argc == 2)
-		ft_matrdel(&matr);
+	stack = change_nums_to_correct_position(ft_strsplit(nums_buff->line, ' '), nums_map->numof_items);
+	ft_mapdel(&nums_map);
+	ft_buffdel(&nums_buff);
 	return (stack);
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 08:13:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 10:50:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "../libft/includes/libft.h"
 
-# define ERROR_MSG_BAD_OPERATION "ERROR: bad operation\n!!!EXIT!!!"
-# define ERROR_MSG_BAD_NUMBER "Error"
-# define ERROR_MSG_PAIR_OF_ELEMENTS "ERROR: pair of elements\n!!!EXIT!!!"
-# define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int\n!!!EXIT!!!"
+# define ERROR_MSG_BAD_OPERATION "ERROR: bad operation"
+# define ERROR_MSG_BAD_NUMBER "ERROR: bad number"
+# define ERROR_MSG_PAIR_OF_ELEMENTS "ERROR: pair of elements"
+# define ERROR_MSG_BIGGER_THAN_INT "ERROR: bigger than int"
 
 # define STACK_SIZE stack->a->size
 # define U_SIZE(stack) (stack->used_size)
@@ -57,7 +57,6 @@ void					dbg_print_stacks(t_stack *stack);
 
 //
 
-
 t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
@@ -69,6 +68,8 @@ void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
 							int number);
 
 t_stack					*get_input(int argc, char **argv);
+t_stack					*change_nums_to_correct_position(char **nums, size_t stack_size);
+void                    print_man(void);
 
 void					swap_a(t_stack *stack);
 void					swap_b(t_stack *stack);
@@ -91,7 +92,6 @@ void					*execute_operations(t_stack *stack, char **operations);
 
 void					print_operations(t_list *operation);
 void					add_operation(t_list **operation, const char *name);
-void					fill_correct_position(t_psstk *stack, size_t size);
 
 void					move_to_stack_b(t_stack *stack);
 void					move_to_stack_a(t_stack *stack);
