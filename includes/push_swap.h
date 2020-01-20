@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 10:50:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 12:37:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void					dbg_print_stacks(t_stack *stack);
 
 //
 
+void				    error_processing_numbers(const char *msg, char *str_num);
+void    				error_processing_operations(t_stack **stack, \
+                            char ***operations);
+
 t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);
 t_psstk					*psstk_init(int	size);
@@ -68,7 +72,6 @@ void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
 							int number);
 
 t_stack					*get_input(int argc, char **argv);
-t_stack					*change_nums_to_correct_position(char **nums, size_t stack_size);
 void                    print_man(void);
 
 void					swap_a(t_stack *stack);

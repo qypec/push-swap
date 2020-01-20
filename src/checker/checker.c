@@ -6,19 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/03 14:14:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/20 12:35:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void				error_processing(t_stack **stack, char ***operations)
-{
-	stack_delete(stack);
-	ft_matrdel(operations);
-	ft_putendl(ERROR_MSG_BAD_OPERATION);
-	exit(-1);
-}
 
 static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 {
@@ -64,7 +56,7 @@ int						main(int argc, char **argv)
 	stack = get_input(argc, argv);
 	operations = get_operations();
 	if (operations != NULL && (execute_operations(stack, operations)) == NULL)
-		error_processing(&stack, &operations);
+		error_processing_operations(&stack, &operations);
 	validate_stacks(stack->a, stack->b);
 	stack_delete(&stack);
 	ft_matrdel(&operations);

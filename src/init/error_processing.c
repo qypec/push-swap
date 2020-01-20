@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_man.c                                        :+:      :+:    :+:   */
+/*   error_processing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 09:31:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 12:15:07 by yquaro           ###   ########.fr       */
+/*   Created: 2020/01/20 12:33:48 by yquaro            #+#    #+#             */
+/*   Updated: 2020/01/20 12:35:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void                    print_man(void)
+void    				error_processing_operations(t_stack **stack, \
+                            char ***operations)
 {
-    ft_printf("./push_swap `argument`\n");
-    exit(1);
+	stack_delete(stack);
+	ft_matrdel(operations);
+	ft_putendl(ERROR_MSG_BAD_OPERATION);
+	exit(-1);
+}
+
+void				    error_processing_numbers(const char *msg, char *str_num)
+{
+	ft_printf("%s : %s\n", msg, str_num);
+	exit(-1);
 }
