@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 07:46:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:15:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack					*stack_init(size_t size)
 	stack->a = psstk_init(size);
 	stack->b = psstk_init(size);
 	stack->operation = NULL;
+	stack->visu = NULL;
 	chunk_init(stack);
 	return (stack);
 }

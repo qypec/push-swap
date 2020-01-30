@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 14:13:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:48:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 
 	stack = get_input(argc, argv);
+	stack->visu = init_visu();
+	draw_stacks(stack);
 	if (STACK_SIZE < 3)
 		sort_pair_a(stack);
 	move_to_stack_b(stack);
@@ -89,6 +91,8 @@ int						main(int argc, char **argv)
 	rotate_to_sorting_state(stack);
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
-	print_operations(stack->operation);
+	// print_operations(stack->operation);
+	sleep(10);
+	delete_visu(&(stack->visu));
 	stack_delete(&stack);
 }

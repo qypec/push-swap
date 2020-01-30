@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:15:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:47:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void					push_a(t_stack *stack)
 	stack_shift_up(stack->b);
 	stack->b->used_size--;
 	add_operation(&(stack->operation), "pa");
+	draw_stacks(stack);
 }
 
 void					push_b(t_stack *stack)
@@ -63,4 +64,5 @@ void					push_b(t_stack *stack)
 	stack_shift_up(stack->a);
 	stack->a->used_size--;
 	add_operation(&(stack->operation), "pb");
+	draw_stacks(stack);
 }

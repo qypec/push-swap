@@ -6,14 +6,14 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/07 15:11:54 by yquaro            #+#    #+#              #
-#    Updated: 2020/01/10 16:15:27 by yquaro           ###   ########.fr        #
+#    Updated: 2020/01/30 18:03:07 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include ../includes/push_swap.mk
 
 CFLAGS = -g -Wall -Wextra -Werror
-COMPILING = $(CC) $(CFLAGS) $(HEADER_H)
+COMPILING = $(CC) $(CFLAGS) -lncurses $(HEADER_H)
 
 checker_compile:
 	@mv ../libft/$(LIBNAME) $(LIBNAME)

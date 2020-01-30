@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 14:05:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:26:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void				mapvalue_del(void **value)
 	*value = 0;
 }
 
-static int				*create_temp_array(size_t size, char **nums_str, \
+int						*create_temp_array(size_t size, char **nums_str, \
 							int *unsorted_arr)
 {
 	int					*sorted_arr;
@@ -49,6 +49,8 @@ static t_stack			*change_nums_to_correct_position(char **nums, \
 	stack = stack_init(stack_size);
 	sorted_arr = create_temp_array(stack_size, nums, (int *)&unsorted_arr);
 	ft_qsort(sorted_arr, stack_size);
+	// g_min = sorted_arr[0];
+	// g_max = sorted_arr[STACK_SIZE - 1];
 	i = -1;
 	while (++i < stack_size)
 	{

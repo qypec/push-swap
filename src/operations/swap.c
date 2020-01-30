@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 18:25:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/12/25 15:26:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:48:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void					swap_a(t_stack *stack)
 	stack->a->num[0] = stack->a->num[1];
 	stack->a->num[1] = tmp;
 	add_operation(&(stack->operation), "sa");
+	draw_stacks(stack);
 }
 
 void					swap_b(t_stack *stack)
@@ -34,6 +35,7 @@ void					swap_b(t_stack *stack)
 	stack->b->num[0] = stack->b->num[1];
 	stack->b->num[1] = tmp;
 	add_operation(&(stack->operation), "sb");
+	draw_stacks(stack);
 }
 
 void					swap_ab(t_stack *stack)
