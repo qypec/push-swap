@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:21:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/30 18:54:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 17:33:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ static void             draw_stack(WINDOW *win, t_psstk *stk)
     i = 0;
     while (i < stk->used_size)
     {
+		draw_line(win, 1 + i, stk->size, ' '); // clear line
 		draw_line(win, 1 + i, stk->num[i], LINE_CHAR);
 		i++;
     }
     wcolor_set(win, 0, NULL);
 	while (i < stk->size)
 	{
-		draw_line(win, 1 + i, WIN_STACK_COLS - 2, ' ');
+		draw_line(win, 1 + i, stk->size, ' ');
 		i++;
 	}
 }
@@ -53,5 +54,5 @@ void                    draw_stacks(t_stack *stack)
     draw_stack(stack->visu->win_stack_b, stack->b);
 	wrefresh(stack->visu->win_stack_a);
 	wrefresh(stack->visu->win_stack_b);
-	usleep(10000);
+	usleep(5000);
 }

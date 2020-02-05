@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/30 18:40:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 17:34:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MAX_SPEED_POINT 10
 # define MAX_DELAY 100000
 
-# define WIN_STACK_LINES (64)
+# define WIN_STACK_LINES (100)
 # define WIN_STACK_COLS (WIN_STACK_LINES * 2)
 # define WIN_INFO_LINES (WIN_STACK_LINES)
 # define WIN_INFO_COLS (WIN_STACK_COLS / 3)
