@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:05:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:24:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MAX_SPEED_POINT 10
 # define MAX_DELAY 100000
 
-# define WIN_STACK_LINES (80)
+# define WIN_STACK_LINES (82)
 # define WIN_STACK_COLS (WIN_STACK_LINES * 1.5)
 # define WIN_INFO_LINES (WIN_STACK_LINES * 0.75)
 # define WIN_INFO_COLS (WIN_STACK_COLS / 3)
@@ -48,11 +48,11 @@
 # define YELLOW					7
 # define RED					8
 # define CYAN					9
-# define GRAY_CARRY				10
-# define GREEN_CARRY			11
-# define YELLOW_CARRY			12
-# define RED_CARRY				13
-# define CYAN_CARRY				14
+# define GRAY_BACKGROUND				10
+# define GREEN_BACKGROUND			11
+# define YELLOW_BACKGROUND			12
+# define RED_BACKGROUND				13
+# define CYAN_BACKGROUND				14
 
 /*
 ** Buttons

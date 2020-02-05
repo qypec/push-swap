@@ -6,26 +6,38 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:21:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:19:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:37:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "visu.h"
 
-# define LINE_CHAR '_'
+#define LINE_CHAR ('_' | A_BOLD | COLOR_PAIR(GREEN))
 
 #define MARGIN_TOP 3
 
+static void				clear_line(WINDOW *win, size_t line)
+{
+	size_t				i;
+
+	i = 0;
+	while (i < WIN_STACK_COLS - 2)
+	{
+		mvwaddch(win, line, 1 + i, ' ');
+		i++;
+	}
+}
+
 static void				draw_line(WINDOW *win, size_t line, \
-							size_t numof_char, char ch)
+							size_t numof_char)
 {
 	size_t				i;
 
 	i = 0;
 	while (i < numof_char)
 	{
-		mvwaddch(win, line, 10 + i, ch);
+		mvwaddch(win, line, 10 + i, LINE_CHAR);
 		i++;
 	}
 }
@@ -38,14 +50,17 @@ static void             draw_stack(WINDOW *win, t_psstk *stk)
     i = 0;
     while (i < stk->used_size)
     {
-		draw_line(win, MARGIN_TOP + i, stk->size, ' '); // clear line
-		draw_line(win, MARGIN_TOP + i, stk->num[i], LINE_CHAR);
+		clear_line(win, MARGIN_TOP + i);
+		wcolor_set(win, CYAN, NULL);
+		mvwprintw(win, MARGIN_TOP + i, 5, "%d", stk->num[i]);
+		wcolor_set(win, GREEN, NULL);
+		draw_line(win, MARGIN_TOP + i, stk->num[i]);
 		i++;
     }
     wcolor_set(win, 0, NULL);
 	while (i < stk->size)
 	{
-		draw_line(win, MARGIN_TOP + i, stk->size, ' ');
+		clear_line(win, MARGIN_TOP + i);
 		i++;
 	}
 }

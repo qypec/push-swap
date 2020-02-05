@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:51:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:03:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:21:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 void					        init_win_stacks(t_visu *visu)
 {
 	visu->win_stack_a = newwin(WIN_STACK_LINES, WIN_STACK_COLS, 0, 0);
-	box(visu->win_stack_a, 0, 0);
+	// box(visu->win_stack_a, 0, 0);
 	wrefresh(visu->win_stack_a);
     visu->win_stack_b = newwin(WIN_STACK_LINES, WIN_STACK_COLS, 0, WIN_STACK_COLS);
-    box(visu->win_stack_b, 0, 0);
+    // box(visu->win_stack_b, 0, 0);
 	wrefresh(visu->win_stack_b);
 }
 
