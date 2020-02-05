@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 17:34:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:05:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # define MAX_SPEED_POINT 10
 # define MAX_DELAY 100000
 
-# define WIN_STACK_LINES (100)
-# define WIN_STACK_COLS (WIN_STACK_LINES * 2)
-# define WIN_INFO_LINES (WIN_STACK_LINES)
+# define WIN_STACK_LINES (80)
+# define WIN_STACK_COLS (WIN_STACK_LINES * 1.5)
+# define WIN_INFO_LINES (WIN_STACK_LINES * 0.75)
 # define WIN_INFO_COLS (WIN_STACK_COLS / 3)
-# define WIN_HELP_LINES (WIN_STACK_LINES / 5)
-# define WIN_HELP_COLS (WIN_STACK_COLS * 2)
+# define WIN_HELP_LINES (WIN_STACK_LINES * 0.25)
+# define WIN_HELP_COLS (WIN_INFO_COLS)
 
 /*
 ** Color
@@ -69,7 +69,6 @@ typedef struct                  s_visu
     WINDOW                      *win_help;
 }                               t_visu;
 
-
 t_visu					        *init_visu(void);
 void					        delete_visu(t_visu **visu);
 
@@ -77,7 +76,5 @@ void					        init_win_stacks(t_visu *visu);
 void					        init_win_info(t_visu *visu);
 void					        init_win_help(t_visu *visu);
 void					        init_colors(t_visu *visu);
-
-void                            draw_stacks(t_stack *stack);
 
 #endif

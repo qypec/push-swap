@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 17:59:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:05:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
+# include "visu.h"
 
 # define ERROR_MSG_BAD_OPERATION "ERROR: bad operation"
 # define ERROR_MSG_BAD_NUMBER "ERROR: bad number"
@@ -31,53 +32,9 @@
 # define NUM_OF_CHUNKS 3
 
 // visu
-#include <ncurses.h>
 
-# define _GIVE_NUMOF_LIVE_ 1
 
-# define RUNNING "RUNNING"
-# define STOPPED "STOPPED"
 
-# define IS_PAUSED		1
-# define IS_RUNNING		-1
-# define NODELAY_MACROS ((vm.visu->is_stopped == 1) ? TRUE : FALSE)
-# define MAX_SPEED_POINT 10
-# define MAX_DELAY 100000
-
-# define WIN_STACK_LINES (80)
-# define WIN_STACK_COLS (WIN_STACK_LINES * 1.5)
-# define WIN_INFO_LINES (WIN_STACK_LINES * 0.75)
-# define WIN_INFO_COLS (WIN_STACK_COLS / 3)
-# define WIN_HELP_LINES (WIN_STACK_LINES * 0.25)
-# define WIN_HELP_COLS (WIN_INFO_COLS)
-
-/*
-** Color
-*/
-
-# define COLOR_GRAY				8
-
-/*
-** Color pairs
-*/
-
-# define GRAY					5
-# define GREEN					6
-# define YELLOW					7
-# define RED					8
-# define CYAN					9
-# define GRAY_CARRY				10
-# define GREEN_CARRY			11
-# define YELLOW_CARRY			12
-# define RED_CARRY				13
-# define CYAN_CARRY				14
-
-/*
-** Buttons
-*/
-
-# define ESC_BUTTON				27
-# define SPACE_BUTTON			' '
 // visu end
 
 
@@ -96,13 +53,7 @@ typedef struct			s_psstk
 
 //visu 
 
-typedef struct                  s_visu
-{
-    WINDOW                      *win_stack_a;
-    WINDOW                      *win_stack_b;
-    WINDOW                      *win_info;
-    WINDOW                      *win_help;
-}                               t_visu;
+
 
 // visu end
 
@@ -170,15 +121,7 @@ int						*create_temp_array(size_t size, char **nums_str, \
 
 // visu
 
-t_visu					        *init_visu(void);
-void					        delete_visu(t_visu **visu);
-
-void					        init_win_stacks(t_visu *visu);
-void					        init_win_info(t_visu *visu);
-void					        init_win_help(t_visu *visu);
-void					        init_colors(t_visu *visu);
-
-void                            draw_stacks(t_stack *stack);
+void						draw_stacks(t_stack *stack);
 
 // visu end
 

@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:21:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 17:33:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:03:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "visu.h"
 
 # define LINE_CHAR '_'
 

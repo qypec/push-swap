@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:51:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 17:43:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:03:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "visu.h"
 
 void					        init_win_stacks(t_visu *visu)
 {
