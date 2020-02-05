@@ -6,14 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:07:22 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/05 18:09:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2)
-#define MIN_LINES_TO_VISU 70
+#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS + 10)
+#define MIN_LINES_TO_VISU (WIN_STACK_LINES + 5)
 
 static void				check_size_of_terminal(void)
 {
