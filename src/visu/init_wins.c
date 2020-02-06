@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:51:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 21:15:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 18:19:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void					        init_win_info(t_visu *visu)
 void					        init_win_help(t_visu *visu)
 {
 	visu->win_help = newwin(WIN_HELP_LINES, WIN_HELP_COLS, WIN_STACK_LINES * 0.75, WIN_STACK_COLS * 2);
-	box(visu->win_help, 0, 0);
+	// box(visu->win_help, 0, 0);
 	wrefresh(visu->win_help);
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 17:02:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 18:05:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int						*create_temp_array(size_t size, char **nums_str, \
 void					draw(t_stack *stack, const char *operation);
 void					draw_stacks(t_stack *stack);
 void					draw_operation(t_stack *stack, const char *operation);
+void					draw_help(t_visu *visu);
 void					handle_buttons(t_stack *stack);
 
 // visu end

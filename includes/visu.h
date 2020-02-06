@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 16:56:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 19:58:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void					        init_win_stacks(t_visu *visu);
 void					        init_win_info(t_visu *visu);
 void					        init_win_help(t_visu *visu);
 void					        init_colors(t_visu *visu);
+
+void	        				pause_before_termination(void);
 
 #endif

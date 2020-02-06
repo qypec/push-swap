@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:45:48 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 16:56:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:06:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			handle_buttons(t_stack *stack)
 {
 	int			key;
 
+	stack->visu->is_next_cycle = 0;
 	if ((key = getch()) == SPACE_BUTTON)
 	{
 		nodelay(stdscr, NODELAY_MACROS);
