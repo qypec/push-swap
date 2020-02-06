@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 21:16:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 17:01:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:56:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,13 @@ void					rotate_a(t_stack *stack)
 	size_t				i;
 	size_t				tmp;
 
-	if (stack->visu->is_next_cycle == 1 || stack->visu->is_stopped != 1)
-	{
-		if (IS_EMPTY(stack->a))
-			return ;
-		i = 0;
-		tmp = stack->a->num[0];
-		stack_shift_up(stack->a);
-		stack->a->num[stack->a->used_size - 1] = tmp;
-		add_operation(&(stack->operation), "ra");
-	}
-	draw(stack, "ra");
+	if (IS_EMPTY(stack->a))
+		return ;
+	i = 0;
+	tmp = stack->a->num[0];
+	stack_shift_up(stack->a);
+	stack->a->num[stack->a->used_size - 1] = tmp;
+	add_operation(&(stack->operation), "ra");
 }
 
 void					rotate_b(t_stack *stack)
@@ -64,17 +60,13 @@ void					rotate_b(t_stack *stack)
 	size_t				i;
 	size_t				tmp;
 
-	if (stack->visu->is_next_cycle == 1 || stack->visu->is_stopped != 1)
-	{
-		if (IS_EMPTY(stack->b))
-			return ;
-		i = 0;
-		tmp = stack->b->num[0];
-		stack_shift_up(stack->b);
-		stack->b->num[stack->b->used_size - 1] = tmp;
-		add_operation(&(stack->operation), "rb");
-	}
-	draw(stack, "rb");
+	if (IS_EMPTY(stack->b))
+		return ;
+	i = 0;
+	tmp = stack->b->num[0];
+	stack_shift_up(stack->b);
+	stack->b->num[stack->b->used_size - 1] = tmp;
+	add_operation(&(stack->operation), "rb");
 }
 
 void					rotate_ab(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 18:05:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:50:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ void					dbg_print_stacks(t_stack *stack);
 
 void					error_processing_numbers(const char *msg, \
 							char *str_num);
-void					error_processing_operations(t_stack **stack, \
-							char ***operations);
+void					error_processing_operations(t_stack **stack);
 
 t_stack					*stack_init(size_t size);
 void					stack_delete(t_stack **stack);
@@ -105,7 +104,8 @@ void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
-void					*execute_operations(t_stack *stack, char **operations);
+void					*execute_operations(t_stack *stack);
+void					*get_pointer_to_operation(char *operation);
 
 void					print_operations(t_list *operation);
 void					add_operation(t_list **operation, const char *name);
@@ -121,6 +121,7 @@ int						*create_temp_array(size_t size, char **nums_str, \
 
 // visu
 
+void					visu(t_stack *stack, t_list *operation);
 void					draw(t_stack *stack, const char *operation);
 void					draw_stacks(t_stack *stack);
 void					draw_operation(t_stack *stack, const char *operation);

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 19:58:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:14:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct                  s_visu
     float						delay;
 	int							is_next_cycle;
 }                               t_visu;
+
+int                             g_visuflag;
 
 t_visu					        *init_visu(void);
 void					        delete_visu(t_visu **visu);

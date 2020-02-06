@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:51:41 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 21:14:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:53:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ void					draw_operation(t_stack *stack, const char *operation)
 
 	mvwprintw(stack->visu->win_info, 1, \
 		(WIN_INFO_COLS - ft_strlen("OPERATIONS")) / 2, "OPERATIONS");
-	ft_lstpushback(&operations_on_screen, ft_lstnew(ft_strdup(operation), sizeof(char *)));
-	if ((++numof_oper) == MAX_CONTENT)
+	if (operation != NULL)
 	{
-		ft_lstdelhead(&operations_on_screen, del_lst_content);
-		numof_oper--;
+		ft_lstpushback(&operations_on_screen, ft_lstnew(ft_strdup(operation), sizeof(char *)));
+		if ((++numof_oper) == MAX_CONTENT)
+		{
+			ft_lstdelhead(&operations_on_screen, del_lst_content);
+			numof_oper--;
+		}
 	}
 	draw_bar(stack->visu->win_info, operations_on_screen);
 	box(stack->visu->win_info, 0, 0);

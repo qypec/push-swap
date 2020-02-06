@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:45:48 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:06:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 20:17:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void			handle_buttons(t_stack *stack)
 	}
 	else if (key == ESC_BUTTON)
 	{
-		delete_visu(&(stack->visu));
 		stack_delete(&stack);
 		exit(1);
 	}

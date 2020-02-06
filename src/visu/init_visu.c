@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 17:04:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 21:22:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				init_button_fields(t_visu *visu)
 	visu->is_stopped = 1;
 	visu->speed = MAX_SPEED_POINT;
 	visu->delay = 0.0;
-	visu->is_next_cycle = 0;
+	visu->is_next_cycle = 1;
 }
 
 static void				configure(t_visu *visu)
@@ -68,6 +68,8 @@ t_visu					*init_visu(void)
 
 void					delete_visu(t_visu **visu)
 {
+	if (*visu == NULL)
+		return ;
 	delwin((*visu)->win_stack_a);
 	delwin((*visu)->win_stack_b);
 	delwin((*visu)->win_info);
