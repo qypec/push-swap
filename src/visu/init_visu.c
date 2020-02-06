@@ -6,14 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:09:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:04:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS + 10)
-#define MIN_LINES_TO_VISU (WIN_STACK_LINES + 5)
+#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS)
+#define MIN_LINES_TO_VISU (WIN_STACK_LINES)
 
 static void				check_size_of_terminal(void)
 {
@@ -28,13 +28,13 @@ static void				check_size_of_terminal(void)
 	}
 }
 
-// static void				init_button_fields(t_visu *visu)
-// {
-// 	visu->is_stopped = 1;
-// 	visu->speed = MAX_SPEED_POINT;
-// 	visu->delay = 0.0;
-// 	visu->is_next_cycle = 0;
-// }
+static void				init_button_fields(t_visu *visu)
+{
+	visu->is_stopped = 1;
+	visu->speed = MAX_SPEED_POINT;
+	visu->delay = 0.0;
+	visu->is_next_cycle = 0;
+}
 
 static void				configure(t_visu *visu)
 {
@@ -57,12 +57,12 @@ t_visu					*init_visu(void)
 		exit(-1);
 	}
 	configure(visu);
-	// check_size_of_terminal();
+	check_size_of_terminal();
 	init_colors(visu);
     init_win_stacks(visu);
     init_win_info(visu);
     init_win_help(visu);
-	// init_button_fields(visu);
+	init_button_fields(visu);
 	return (visu);
 }
 
@@ -72,6 +72,10 @@ void					delete_visu(t_visu **visu)
 	delwin((*visu)->win_stack_b);
 	delwin((*visu)->win_info);
 	delwin((*visu)->win_help);
+	(*visu)->is_stopped = 0;
+	(*visu)->speed = 0;
+	(*visu)->delay = 0.0;
+	(*visu)->is_next_cycle = 0;
 	free(*visu);
 	*visu = NULL;
 	endwin();

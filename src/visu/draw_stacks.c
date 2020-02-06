@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:21:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:37:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:05:25 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ void                    draw_stacks(t_stack *stack)
     draw_stack(stack->visu->win_stack_b, stack->b);
 	wrefresh(stack->visu->win_stack_a);
 	wrefresh(stack->visu->win_stack_b);
-	usleep(5000);
 }

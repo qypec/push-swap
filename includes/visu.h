@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:24:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 16:56:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 
 #include <ncurses.h>
 
-# define _GIVE_NUMOF_LIVE_ 1
-
 # define RUNNING "RUNNING"
 # define STOPPED "STOPPED"
 
 # define IS_PAUSED		1
 # define IS_RUNNING		-1
-# define NODELAY_MACROS ((vm.visu->is_stopped == 1) ? TRUE : FALSE)
+# define NODELAY_MACROS ((stack->visu->is_stopped == 1) ? TRUE : FALSE)
 # define MAX_SPEED_POINT 10
 # define MAX_DELAY 100000
 
@@ -67,6 +65,10 @@ typedef struct                  s_visu
     WINDOW                      *win_stack_b;
     WINDOW                      *win_info;
     WINDOW                      *win_help;
+    int                         is_stopped;
+    size_t                      speed;
+    float						delay;
+	int							is_next_cycle;
 }                               t_visu;
 
 t_visu					        *init_visu(void);

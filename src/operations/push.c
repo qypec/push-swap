@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:15:05 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:46:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:00:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,32 @@ static void				stack_shift_up(t_psstk *stk)
 
 void					push_a(t_stack *stack)
 {
-	if (IS_EMPTY(stack->b))
-		return ;
-	stack_shift_down(stack->a);
-	add_number_to_psstk(stack->a, 0, stack->b->num[0]);
-	stack->a->num[0] = stack->b->num[0];
-	stack_shift_up(stack->b);
-	stack->b->used_size--;
-	add_operation(&(stack->operation), "pa");
+	if (stack->visu->is_next_cycle == 1 || stack->visu->is_stopped != 1)
+	{
+		if (IS_EMPTY(stack->b))
+			return ;
+		stack_shift_down(stack->a);
+		add_number_to_psstk(stack->a, 0, stack->b->num[0]);
+		stack->a->num[0] = stack->b->num[0];
+		stack_shift_up(stack->b);
+		stack->b->used_size--;
+		add_operation(&(stack->operation), "pa");
+	}
 	draw(stack, "pa");
 }
 
 void					push_b(t_stack *stack)
 {
-	if (IS_EMPTY(stack->a))
-		return ;
-	stack_shift_down(stack->b);
-	add_number_to_psstk(stack->b, 0, stack->a->num[0]);
-	stack->b->num[0] = stack->a->num[0];
-	stack_shift_up(stack->a);
-	stack->a->used_size--;
-	add_operation(&(stack->operation), "pb");
+	if (stack->visu->is_next_cycle == 1 || stack->visu->is_stopped != 1)
+	{
+		if (IS_EMPTY(stack->a))
+			return ;
+		stack_shift_down(stack->b);
+		add_number_to_psstk(stack->b, 0, stack->a->num[0]);
+		stack->b->num[0] = stack->a->num[0];
+		stack_shift_up(stack->a);
+		stack->a->used_size--;
+		add_operation(&(stack->operation), "pb");
+	}
 	draw(stack, "pb");
 }
