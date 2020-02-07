@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 19:31:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:10:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ int						main(int argc, char **argv)
 	t_stack				*stack;
 	t_stack				*stack_cpy;
 
-	g_visuflag = 1;
 	stack = get_input(argc, argv);
+	if (STACK_SIZE == 0)
+		return (0);
 	if (g_visuflag)
 		stack_cpy = get_input(argc, argv);
 	if (STACK_SIZE < 3)

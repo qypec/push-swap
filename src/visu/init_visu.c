@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 19:21:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:07:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS)
 #define MIN_LINES_TO_VISU (WIN_STACK_LINES)
 
-static void				check_size_of_terminal(void)
+static void				check_size_of_terminal(t_visu *visu)
 {
 	size_t				tty_lines;
 	size_t				tty_cols;
@@ -24,6 +24,7 @@ static void				check_size_of_terminal(void)
 	if (tty_lines < MIN_LINES_TO_VISU || tty_cols < MIN_COLS_TO_VISU)
 	{
 		ft_putendl("Enlarge the terminal window, please");
+		delete_visu(visu);
 		exit(0);
 	}
 }
@@ -57,7 +58,7 @@ t_visu					*init_visu(void)
 		exit(-1);
 	}
 	configure(visu);
-	check_size_of_terminal();
+	check_size_of_terminal(visu);
 	init_colors(visu);
     init_win_stacks(visu);
     init_win_info(visu);
@@ -68,6 +69,8 @@ t_visu					*init_visu(void)
 
 void					delete_visu(t_visu *visu)
 {
+	keypad(stdscr, FALSE);
+	nocbreak();
 	if (visu == NULL)
 		return ;
 	delwin(visu->win_stack_a);

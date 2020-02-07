@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:48:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:47:27 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:01:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,36 @@ static void				validate_stacks(t_psstk *stack_a, t_psstk *stack_b)
 	ft_putendl("OK");
 }
 
-static void				get_operations(t_stack *stack)
+static t_list			*get_operations(void)
 {
 	t_buff				*buffer;
 	char				symb;
 	char				**operations;
 	size_t				i;
+	t_list				*operation_list;
 
 	buffer = ft_buffinit(100);
 	while (read(0, &symb, 1) > 0)
 		ft_buffaddsymb(buffer, symb);
 	operations = ft_strsplit(buffer->line, '\n');
+	operation_list = NULL;
 	i = 0;
 	while (operations[i] != NULL)
-		ft_lstpushback(&(stack->operation), \
-			ft_lstnew(operations[i++], sizeof(char *)));
+		ft_lstpushback(&operation_list, \
+			ft_lstnew(ft_strdup(operations[i++]), sizeof(char *)));
 	ft_buffdel(&buffer);
-	free(operations);
-	operations = NULL;
+	ft_matrdel(&operations);
+	return (operation_list);
 }
 
 int						main(int argc, char **argv)
 {
 	t_stack				*stack;
+	t_list				*operation;
 
 	stack = get_input(argc, argv);
-	get_operations(stack);
-	if (stack->operation != NULL && (execute_operations(stack)) == NULL)
+	operation = get_operations();
+	if (operation != NULL && (execute_operations(stack, operation)) == NULL)
 		error_processing_operations(&stack);
 	validate_stacks(stack->a, stack->b);
 	stack_delete(&stack);

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:50:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:16:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void					add_number_to_psstk(t_psstk *stack_a, size_t index, \
 							int number);
 
 t_stack					*get_input(int argc, char **argv);
-void					print_man(void);
+void					print_usage(void);
 
 void					swap_a(t_stack *stack);
 void					swap_b(t_stack *stack);
@@ -104,7 +104,7 @@ void					rotate_top_b(t_stack *stack, size_t number_of_rotate);
 void					rotate_down_a(t_stack *stack, size_t number_of_rotate);
 void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
-void					*execute_operations(t_stack *stack);
+void					*execute_operations(t_stack *stack, t_list *operation);
 void					*get_pointer_to_operation(char *operation);
 
 void					print_operations(t_list *operation);

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:00:58 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 21:10:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 21:58:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void					*get_pointer_to_operation(char *operation)
 		return (NULL);
 }
 
-void					*execute_operations(t_stack *stack)
+void					*execute_operations(t_stack *stack, t_list *operation)
 {
 	t_list				*tmp_oper;
 	void				(*exec)(t_stack *stack);
 
-	tmp_oper = stack->operation;
+	tmp_oper = operation;
 	while (tmp_oper != NULL)
 	{
 		if ((exec = get_pointer_to_operation((char *)(tmp_oper->content))) == NULL)

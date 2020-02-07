@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:05:53 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/05 18:27:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:50:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void					init_colors(t_visu *visu)
 {
 	if (!has_colors())
 	{
-		delete_visu(&(visu));
+		delete_visu(visu);
 		ft_putendl("Your terminal does not support color");
 		exit(1);
 	}

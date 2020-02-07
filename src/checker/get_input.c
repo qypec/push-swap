@@ -6,11 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/30 18:26:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:16:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+#define ERR_BAD_FLAG_NAME "error: bad flag name"
 
 static void				mapvalue_del(void **value)
 {
@@ -49,8 +51,6 @@ static t_stack			*change_nums_to_correct_position(char **nums, \
 	stack = stack_init(stack_size);
 	sorted_arr = create_temp_array(stack_size, nums, (int *)&unsorted_arr);
 	ft_qsort(sorted_arr, stack_size);
-	// g_min = sorted_arr[0];
-	// g_max = sorted_arr[STACK_SIZE - 1];
 	i = -1;
 	while (++i < stack_size)
 	{
@@ -99,6 +99,28 @@ static void				validate_input_string(t_stack *stack, char *argv, \
 	ft_matrdel(&input_string);
 }
 
+static size_t			parse_flags(int argc, char **argv)
+{
+	size_t				i;
+
+	g_visuflag = 0;
+	i = 1;
+	while (i != argc && argv[i][0] == '-')
+	{
+		if (argv[i][1] == 'v')
+		{
+			if (argv[i][2] != '\0')
+			{
+				ft_putendl(ERR_BAD_FLAG_NAME);
+				exit(-1);
+			}
+			g_visuflag = 1;
+		}
+		i++;
+	}
+	return (i);
+}
+
 t_stack					*get_input(int argc, char **argv)
 {
 	t_stack				*stack;
@@ -107,10 +129,10 @@ t_stack					*get_input(int argc, char **argv)
 	size_t				i;
 
 	if (argc == 1)
-		print_man();
+		print_usage();
 	nums_map = ft_mapinit(500, NULL, &mapvalue_del);
 	nums_buff = ft_buffinit(100);
-	i = 1;
+	i = parse_flags(argc, argv);
 	while (i != argc)
 	{
 		validate_input_string(stack, argv[i], &nums_map, nums_buff);
