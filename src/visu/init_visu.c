@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 21:22:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:21:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,19 @@ t_visu					*init_visu(void)
 	return (visu);
 }
 
-void					delete_visu(t_visu **visu)
+void					delete_visu(t_visu *visu)
 {
-	if (*visu == NULL)
+	if (visu == NULL)
 		return ;
-	delwin((*visu)->win_stack_a);
-	delwin((*visu)->win_stack_b);
-	delwin((*visu)->win_info);
-	delwin((*visu)->win_help);
-	(*visu)->is_stopped = 0;
-	(*visu)->speed = 0;
-	(*visu)->delay = 0.0;
-	(*visu)->is_next_cycle = 0;
-	free(*visu);
-	*visu = NULL;
+	delwin(visu->win_stack_a);
+	delwin(visu->win_stack_b);
+	delwin(visu->win_info);
+	delwin(visu->win_help);
+	visu->is_stopped = 0;
+	visu->speed = 0;
+	visu->delay = 0.0;
+	visu->is_next_cycle = 0;
+	free(visu);
+	visu = NULL;
 	endwin();
 }

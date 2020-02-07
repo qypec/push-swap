@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 21:23:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:31:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,13 @@ int						main(int argc, char **argv)
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
 	if (g_visuflag)
-	{	
+	{
 		visu(stack_cpy, stack->operation);
 		pause_before_termination();
 	}
 	else
 		print_operations(stack->operation);
 	stack_delete(&stack);
-	stack_delete(&stack_cpy);
+	if (g_visuflag)
+		stack_delete(&stack_cpy);
 }

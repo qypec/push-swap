@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 00:56:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:16:57 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:20:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void					lst_content_del(void *content, size_t content_size)
 
 void					stack_delete(t_stack **stack)
 {
-	delete_visu(&((*stack)->visu));
+	delete_visu((*stack)->visu);
 	psstk_delete(&((*stack)->a));
 	psstk_delete(&((*stack)->b));
 	ft_lstdel(&((*stack)->operation), lst_content_del);
