@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/09 20:51:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 21:46:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@
 
 # define NUM_OF_CHUNKS 3
 
-// visu
-
-
-
-// visu end
-
-
 typedef struct			s_chunk
 {
 	size_t				size;
@@ -51,12 +44,6 @@ typedef struct			s_psstk
 	size_t				used_size;
 }						t_psstk;
 
-//visu 
-
-
-
-// visu end
-
 typedef struct			s_stack
 {
 	t_psstk				*a;
@@ -65,8 +52,6 @@ typedef struct			s_stack
 	t_chunk				*chunk;
 	t_visu				*visu;
 }						t_stack;
-
-
 
 void					dbg_print_stacks(t_stack *stack);
 
@@ -107,6 +92,7 @@ void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 void					*execute_operations(t_stack *stack, t_list *operation);
 void					*get_pointer_to_operation(char *operation);
 size_t					parse_flags(int argc, char **argv);
+int						skip_flags(char **input_string, int *i);
 
 void					print_operations(t_list *operation);
 void					add_operation(t_list **operation, const char *name);
@@ -120,8 +106,6 @@ void					combine_operations(t_list **operation);
 int						*create_temp_array(size_t size, char **nums_str, \
 							int *unsorted_arr);
 
-// visu
-
 void					visu(t_stack *stack, t_list *operation);
 void					draw(t_stack *stack, const char *operation);
 void					draw_stacks(t_stack *stack);
@@ -129,7 +113,5 @@ void					draw_operation(t_stack *stack, const char *operation);
 void					draw_help(t_visu *visu);
 void					handle_buttons(t_stack *stack);
 int						is_visu(t_stack *stack);
-
-// visu end
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/09 21:24:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 21:39:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,17 @@ static void				validate_input_string(char *argv, t_map **nums_map, \
 {
 	long long int		int_num;
 	char				**input_string;
-	size_t				i;
+	int					i;
 
 	if ((input_string = ft_strsplit(argv, ' ')) == NULL)
 		input_string = ft_matrnew(argv, NULL);
-	i = 0;
-	while (input_string[i] != NULL)
+	i = -1;
+	while (input_string[++i] != NULL)
 	{
-		if (input_string[i][0] == '-')
-		{
-			i++;
+		if (skip_flags(input_string, &i))
 			continue ;
-		}
 		if (!ft_is_digitline(input_string[i]))
-			error_processing_numbers(ERROR_MSG_BAD_NUMBER, \
-				input_string[i]);
+			error_processing_numbers(ERROR_MSG_BAD_NUMBER, input_string[i]);
 		int_num = ft_atoi(input_string[i]);
 		if (IS_INT_OVERFLOW(int_num))
 			error_processing_numbers(ERROR_MSG_BIGGER_THAN_INT, \
@@ -99,7 +95,6 @@ static void				validate_input_string(char *argv, t_map **nums_map, \
 		ft_mapinsert(nums_map, input_string[i], (void *)0);
 		ft_buffadd(nums_buff, input_string[i]);
 		ft_buffaddsymb(nums_buff, ' ');
-		i++;
 	}
 	ft_matrdel(&input_string);
 }
