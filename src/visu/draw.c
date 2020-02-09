@@ -6,12 +6,26 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:41:30 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 19:39:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 20:51:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "visu.h"
+
+int						is_visu(t_stack *stack)
+{
+	if (g_visuflag)
+	{
+		if (STACK_SIZE > 80)
+		{
+			ft_putendl("Visualization is possible for up to 80 operations");
+			exit(1);
+		}
+		return (1);
+	}
+	return (0);
+}
 
 void					draw(t_stack *stack, const char *operation)
 {

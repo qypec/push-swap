@@ -6,25 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 21:16:32 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:56:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:56:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void				stack_shift_down(t_psstk *stk)
-{
-	size_t				i;
-
-	if (IS_EMPTY(stk))
-		return ;
-	i = stk->used_size - 1;
-	while (i)
-	{
-		stk->num[i] = stk->num[i - 1];
-		i--;
-	}
-}
 
 static void				stack_shift_up(t_psstk *stk)
 {

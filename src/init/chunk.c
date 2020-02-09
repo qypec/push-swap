@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:59:20 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/17 08:38:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:42:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 void				chunk_init(t_stack *stack)
 {
-	size_t			i;
-
 	if ((stack->chunk = (t_chunk *)malloc(sizeof(t_chunk) * \
 			NUM_OF_CHUNKS)) == NULL)
 		exit(-1);

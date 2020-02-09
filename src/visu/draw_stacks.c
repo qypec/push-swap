@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:21:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 17:05:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 23:08:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static void				draw_line(WINDOW *win, size_t line, \
 	}
 }
 
-static void             draw_stack(WINDOW *win, t_psstk *stk)
+static void				draw_stack(WINDOW *win, t_psstk *stk)
 {
-    size_t              i;
+	size_t				i;
 
-    wcolor_set(win, GREEN, NULL);
-    i = 0;
-    while (i < stk->used_size)
-    {
+	wcolor_set(win, GREEN, NULL);
+	i = 0;
+	while (i < stk->used_size)
+	{
 		clear_line(win, MARGIN_TOP + i);
 		wcolor_set(win, CYAN, NULL);
 		mvwprintw(win, MARGIN_TOP + i, 5, "%d", stk->num[i]);
 		wcolor_set(win, GREEN, NULL);
 		draw_line(win, MARGIN_TOP + i, stk->num[i]);
 		i++;
-    }
-    wcolor_set(win, 0, NULL);
+	}
+	wcolor_set(win, 0, NULL);
 	while (i < stk->size)
 	{
 		clear_line(win, MARGIN_TOP + i);
@@ -65,12 +65,14 @@ static void             draw_stack(WINDOW *win, t_psstk *stk)
 	}
 }
 
-void                    draw_stacks(t_stack *stack)
+void					draw_stacks(t_stack *stack)
 {
-	mvwprintw(stack->visu->win_stack_a, 1, (WIN_STACK_COLS - ft_strlen("STACK A")) / 2, "STACK A");
-	mvwprintw(stack->visu->win_stack_b, 1, (WIN_STACK_COLS - ft_strlen("STACK B")) / 2, "STACK B");
-    draw_stack(stack->visu->win_stack_a, stack->a);
-    draw_stack(stack->visu->win_stack_b, stack->b);
+	mvwprintw(stack->visu->win_stack_a, 1, \
+		(WIN_STACK_COLS - ft_strlen("STACK A")) / 2, "STACK A");
+	mvwprintw(stack->visu->win_stack_b, 1, \
+		(WIN_STACK_COLS - ft_strlen("STACK B")) / 2, "STACK B");
+	draw_stack(stack->visu->win_stack_a, stack->a);
+	draw_stack(stack->visu->win_stack_b, stack->b);
 	wrefresh(stack->visu->win_stack_a);
 	wrefresh(stack->visu->win_stack_b);
 }

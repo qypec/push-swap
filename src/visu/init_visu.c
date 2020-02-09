@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:43:55 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 22:07:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:58:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void				init_button_fields(t_visu *visu)
 	visu->is_next_cycle = 1;
 }
 
-static void				configure(t_visu *visu)
+static void				configure(void)
 {
 	cbreak();
 	keypad(stdscr, TRUE);
@@ -57,12 +57,12 @@ t_visu					*init_visu(void)
 		ft_putendl("Error initialising ncurses.");
 		exit(-1);
 	}
-	configure(visu);
+	configure();
 	check_size_of_terminal(visu);
 	init_colors(visu);
-    init_win_stacks(visu);
-    init_win_info(visu);
-    init_win_help(visu);
+	init_win_stacks(visu);
+	init_win_info(visu);
+	init_win_help(visu);
 	init_button_fields(visu);
 	return (visu);
 }

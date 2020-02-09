@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:17:24 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 14:09:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:51:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void				rename_operation(t_list **oper, const char *name)
 {
 	char				*new_operation;
 
+	new_operation = NULL;
 	if (ft_strequ(name, "sa") || ft_strequ(name, "sb"))
 		new_operation = ft_strdup("ss");
 	else if (ft_strequ(name, "ra") || ft_strequ(name, "rb"))

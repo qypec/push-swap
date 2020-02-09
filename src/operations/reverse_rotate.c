@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:55:01 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:57:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:56:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,6 @@ static void				stack_shift_down(t_psstk *stk)
 		stk->num[i] = stk->num[i - 1];
 		i--;
 	}
-}
-
-static void				stack_shift_up(t_psstk *stk)
-{
-	size_t				i;
-
-	if (IS_EMPTY(stk))
-		return ;
-	i = 0;
-	while (i < stk->used_size - 1)
-	{
-		stk->num[i] = stk->num[i + 1];
-		i++;
-	}
-	stk->num[i] = 0;
 }
 
 void					reverse_rotate_a(t_stack *stack)

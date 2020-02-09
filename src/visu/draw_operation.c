@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:51:41 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/06 20:53:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 23:01:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void				clear_bar(WINDOW *win)
 	}
 }
 
-static void				draw_current_operation(WINDOW *win, size_t margin_top, char *operation)
+static void				draw_current_operation(WINDOW *win, \
+							size_t margin_top, char *operation)
 {
 	mvwprintw(win, margin_top, 1, "%c  ", CURRENT_POS_SYMB);
 	wattron(win, A_STANDOUT | COLOR_PAIR(CYAN));
@@ -51,7 +52,8 @@ static void				draw_current_operation(WINDOW *win, size_t margin_top, char *oper
 	wattroff(win, A_STANDOUT | COLOR_PAIR(CYAN));
 }
 
-static void				draw_bar(WINDOW *win, t_list *operations_on_screen)
+static void				draw_bar(WINDOW *win, \
+							t_list *operations_on_screen)
 {
 	size_t				margin_top;
 
@@ -60,15 +62,18 @@ static void				draw_bar(WINDOW *win, t_list *operations_on_screen)
 	while (operations_on_screen != NULL)
 	{
 		if (operations_on_screen->next != NULL)
-			mvwprintw(win, margin_top, MARGIN_LEFT, (char *)(operations_on_screen->content));
+			mvwprintw(win, margin_top, MARGIN_LEFT, \
+				(char *)(operations_on_screen->content));
 		else
-			draw_current_operation(win, margin_top, (char *)(operations_on_screen->content));
+			draw_current_operation(win, margin_top, \
+				(char *)(operations_on_screen->content));
 		margin_top++;
 		operations_on_screen = operations_on_screen->next;
 	}
 }
 
-void					draw_operation(t_stack *stack, const char *operation)
+void					draw_operation(t_stack *stack, \
+							const char *operation)
 {
 	static size_t		numof_oper = 0;
 	static t_list		*operations_on_screen = NULL;
@@ -77,7 +82,8 @@ void					draw_operation(t_stack *stack, const char *operation)
 		(WIN_INFO_COLS - ft_strlen("OPERATIONS")) / 2, "OPERATIONS");
 	if (operation != NULL)
 	{
-		ft_lstpushback(&operations_on_screen, ft_lstnew(ft_strdup(operation), sizeof(char *)));
+		ft_lstpushback(&operations_on_screen, \
+			ft_lstnew(ft_strdup(operation), sizeof(char *)));
 		if ((++numof_oper) == MAX_CONTENT)
 		{
 			ft_lstdelhead(&operations_on_screen, del_lst_content);

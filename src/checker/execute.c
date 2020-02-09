@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:00:58 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 21:58:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:53:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void					*execute_operations(t_stack *stack, t_list *operation)
 	tmp_oper = operation;
 	while (tmp_oper != NULL)
 	{
-		if ((exec = get_pointer_to_operation((char *)(tmp_oper->content))) == NULL)
+		if ((exec = get_pointer_to_operation((char *)(tmp_oper->content))) \
+				== NULL)
 			return (NULL);
 		exec(stack);
 		tmp_oper = tmp_oper->next;

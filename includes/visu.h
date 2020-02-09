@@ -6,14 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:44:33 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 19:21:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 20:31:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VISU_H
 # define VISU_H
 
-#include <ncurses.h>
+# include <ncurses.h>
 
 # define RUNNING "RUNNING"
 # define STOPPED "STOPPED"
@@ -46,11 +46,11 @@
 # define YELLOW					7
 # define RED					8
 # define CYAN					9
-# define GRAY_BACKGROUND				10
-# define GREEN_BACKGROUND			11
-# define YELLOW_BACKGROUND			12
-# define RED_BACKGROUND				13
-# define CYAN_BACKGROUND				14
+# define GRAY_BACKGROUND		10
+# define GREEN_BACKGROUND		11
+# define YELLOW_BACKGROUND		12
+# define RED_BACKGROUND			13
+# define CYAN_BACKGROUND		14
 
 /*
 ** Buttons

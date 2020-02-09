@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:36:54 by yquaro            #+#    #+#             */
-/*   Updated: 2020/01/20 14:09:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/07 22:50:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static size_t			get_optimum_operations(t_stack *stack, size_t index_b)
 	size_t				item_b;
 
 	item_b = stack->b->num[index_b];
-	if (item_b > TAIL_ITEM(stack->a) && \
-			item_b < HEAD_ITEM(stack->a))
+	if ((int)item_b > TAIL_ITEM(stack->a) && \
+			(int)item_b < HEAD_ITEM(stack->a))
 		return (index_b);
 	index_a = 1;
 	while (index_a < stack->a->used_size)
 	{
-		if (item_b > stack->a->num[index_a - 1] && \
-				item_b < stack->a->num[index_a])
+		if ((int)item_b > stack->a->num[index_a - 1] && \
+				(int)item_b < stack->a->num[index_a])
 			break ;
 		index_a++;
 	}
@@ -56,14 +56,14 @@ static void				rotate_a_for_min(t_stack *stack, size_t index_b)
 	size_t				item_b;
 
 	item_b = stack->b->num[index_b];
-	if (item_b > TAIL_ITEM(stack->a) && \
-			item_b < HEAD_ITEM(stack->a))
+	if ((int)item_b > TAIL_ITEM(stack->a) && \
+			(int)item_b < HEAD_ITEM(stack->a))
 		return ;
 	index_a = 1;
 	while (index_a < stack->a->used_size - 1)
 	{
-		if (item_b > stack->a->num[index_a - 1] && \
-				item_b < stack->a->num[index_a])
+		if ((int)item_b > stack->a->num[index_a - 1] && \
+				(int)item_b < stack->a->num[index_a])
 			break ;
 		index_a++;
 	}

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 22:16:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 20:51:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
 void					*execute_operations(t_stack *stack, t_list *operation);
 void					*get_pointer_to_operation(char *operation);
+size_t					parse_flags(int argc, char **argv);
 
 void					print_operations(t_list *operation);
 void					add_operation(t_list **operation, const char *name);
@@ -127,6 +128,7 @@ void					draw_stacks(t_stack *stack);
 void					draw_operation(t_stack *stack, const char *operation);
 void					draw_help(t_visu *visu);
 void					handle_buttons(t_stack *stack);
+int						is_visu(t_stack *stack);
 
 // visu end
 

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:55:39 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/07 22:10:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/09 20:51:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static void				sort_triplet_a(t_stack *stack)
 {
 	if (STACK_SIZE < 3)
 		return ;
-	if (HEAD_ITEM(stack->a) == 1 && TAIL_ITEM(stack->a) != STACK_SIZE)
+	if (HEAD_ITEM(stack->a) == 1 && TAIL_ITEM(stack->a) != (int)STACK_SIZE)
 	{
 		reverse_rotate_a(stack);
 		swap_a(stack);
 	}
-	else if (HEAD_ITEM(stack->a) == STACK_SIZE)
+	else if (HEAD_ITEM(stack->a) == (int)STACK_SIZE)
 	{
 		if (TAIL_ITEM(stack->a) == 1)
 		{
@@ -59,11 +59,11 @@ static void				sort_triplet_a(t_stack *stack)
 		else
 			rotate_a(stack);
 	}
-	else if (HEAD_ITEM(stack->a) != STACK_SIZE && HEAD_ITEM(stack->a) != 1)
+	else if (HEAD_ITEM(stack->a) != (int)STACK_SIZE && HEAD_ITEM(stack->a) != 1)
 	{
 		if (TAIL_ITEM(stack->a) == 1)
 			reverse_rotate_a(stack);
-		else if (TAIL_ITEM(stack->a) == STACK_SIZE)
+		else if (TAIL_ITEM(stack->a) == (int)STACK_SIZE)
 			swap_a(stack);
 	}
 }
@@ -84,7 +84,7 @@ int						main(int argc, char **argv)
 	stack = get_input(argc, argv);
 	if (STACK_SIZE == 0)
 		return (0);
-	if (g_visuflag)
+	if (is_visu(stack))
 		stack_cpy = get_input(argc, argv);
 	if (STACK_SIZE < 3)
 		sort_pair_a(stack);
@@ -94,14 +94,13 @@ int						main(int argc, char **argv)
 	rotate_to_sorting_state(stack);
 	remove_self_destruction_operations(&(stack->operation));
 	combine_operations(&(stack->operation));
-	if (g_visuflag)
+	if (is_visu(stack))
 	{
 		visu(stack_cpy, stack->operation);
 		pause_before_termination();
+		stack_delete(&stack_cpy);
 	}
 	else
 		print_operations(stack->operation);
 	stack_delete(&stack);
-	if (g_visuflag)
-		stack_delete(&stack_cpy);
 }
