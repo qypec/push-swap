@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/09 21:46:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/18 10:07:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ void					rotate_top_a(t_stack *stack, size_t number_of_rotate);
 
 void					*execute_operations(t_stack *stack, t_list *operation);
 void					*get_pointer_to_operation(char *operation);
-size_t					parse_flags(int argc, char **argv);
-int						skip_flags(char **input_string, int *i);
+int						parse_flags(char *str);
 
 void					print_operations(t_list *operation);
 void					add_operation(t_list **operation, const char *name);

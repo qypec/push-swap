@@ -6,13 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 18:24:56 by yquaro            #+#    #+#             */
-/*   Updated: 2020/02/09 21:39:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2020/02/18 10:08:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#define ERR_BAD_FLAG_NAME "error: bad flag name"
 
 static void				mapvalue_del(void **value)
 {
@@ -81,10 +79,13 @@ static void				validate_input_string(char *argv, t_map **nums_map, \
 	i = -1;
 	while (input_string[++i] != NULL)
 	{
-		if (skip_flags(input_string, &i))
+		if (parse_flags(input_string[i]))
 			continue ;
 		if (!ft_is_digitline(input_string[i]))
+		{
+			ft_putendl(input_string[i]);
 			error_processing_numbers(ERROR_MSG_BAD_NUMBER, input_string[i]);
+		}
 		int_num = ft_atoi(input_string[i]);
 		if (IS_INT_OVERFLOW(int_num))
 			error_processing_numbers(ERROR_MSG_BIGGER_THAN_INT, \
@@ -110,7 +111,6 @@ t_stack					*get_input(int argc, char **argv)
 		print_usage();
 	nums_map = ft_mapinit(500, NULL, &mapvalue_del);
 	nums_buff = ft_buffinit(100);
-	parse_flags(argc, argv);
 	i = 1;
 	while (argv[i] != NULL)
 	{
