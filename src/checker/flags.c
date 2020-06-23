@@ -13,18 +13,6 @@
 #include "push_swap.h"
 #define ERR_BAD_FLAG_NAME "error: bad flag name"
 
-// int						skip_flags(char **input_string, int *i)
-// {
-// 	if (*input_string == NULL)
-// 		return (0);
-// 	if (!ft_is_digitline(input_string[*i]) && input_string[*i][0] == '-')
-// 	{
-// 		(*i)++;
-// 		return (1);
-// 	}
-// 	return (0);
-// }
-
 int						parse_flags(char *str)
 {
 	if (str[0] != '-')

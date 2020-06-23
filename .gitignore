@@ -1,8 +1,0 @@
-*.o
-/.vscode
-test.c
-*.a
-minishell
-/a.out
-/*.dSYM
-test_unit
