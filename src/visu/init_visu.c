@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS)
-#define MIN_LINES_TO_VISU (WIN_STACK_LINES)
+#define MIN_COLS_TO_VISU (WIN_STACK_COLS * 2 + WIN_INFO_COLS - 100)
+#define MIN_LINES_TO_VISU (WIN_STACK_LINES - 10)
 
 static void				check_size_of_terminal(t_visu *visu)
 {
