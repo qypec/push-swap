@@ -38,4 +38,5 @@
 
 *[(полное описание)](readme/push_swap.en.pdf)*
 
-### Решение
+### Визуализация
+![](readme/push_swap_visu.gif)
